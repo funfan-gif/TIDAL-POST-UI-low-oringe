@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="《潮汐邮局》Week 2 V2 Final Master 可交互低保真原型">
+  <title>潮汐邮局｜V2 Final Master</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="prototype-frame" aria-label="潮汐邮局可交互低保真原型">
+    <header class="topbar">
+      <div class="brand-block" aria-label="项目名称">
+        <span class="brand-cn">潮汐邮局</span>
+        <span class="brand-en">TIDAL POST</span>
+      </div>
+      <div class="screen-marker" aria-live="polite">
+        <span id="screenNumber">01 / 06</span>
+        <strong id="screenName">港口</strong>
+      </div>
+      <div class="account-block">
+        <span>邮票</span>
+        <strong id="stampBalance">120</strong>
+      </div>
+    </header>
+
+    <div class="page-stage">
+      <section class="screen is-active" data-screen="harbor" aria-labelledby="harborTitle">
+        <div class="screen-copy">
+          <p class="eyebrow">01 · HARBOR / 今日潮汐 06:40</p>
+          <h1 id="harborTitle" tabindex="-1">旧邮局港</h1>
+          <p class="lead">码头刚送来一封等待回信的委托。先确认寄件要求，再整理邮袋。</p>
+        </div>
+        <div class="harbor-layout">
+          <article class="mission-ticket" aria-label="当前委托">
+            <div class="ticket-index">委托 01</div>
+            <div>
+              <p class="label">当前委托</p>
+              <h2>蓝潮岛的回信</h2>
+              <p class="muted">收件人：艾琳</p>
+            </div>
+            <dl class="mini-data">
+              <div><dt>所需邮件</dt><dd>蓝色信封 ×1</dd></div>
+              <div><dt>航程</dt><dd>2.4 海里</dd></div>
+              <div><dt>奖励</dt><dd>邮票 +40</dd></div>
+            </dl>
+            <div class="ticket-footer">
+              <span class="status-chip" id="harborMissionStatus">等待查看</span>
+              <button class="button button-primary" type="button" data-action="open-mission">查看委托</button>
+            </div>
+          </article>
+
+          <aside class="harbor-note" aria-label="本次投递路径">
+            <p class="label">今日航行记录</p>
+            <ol class="route-outline">
+              <li><span>01</span><div><strong>理解委托</strong><small>确认收件人、邮件与奖励</small></div></li>
+              <li><span>02</span><div><strong>保存邮袋</strong><small>草稿保存后才能出航</small></div></li>
+              <li><span>03</span><div><strong>选择可达航线</strong><small>潮位会影响岛屿状态</small></div></li>
+            </ol>
+            <p class="quiet-note" id="harborCompletionNote">本次邮票：120</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="mission" aria-labelledby="missionTitle" hidden>
+        <div class="screen-copy split-heading">
+          <div>
+            <p class="eyebrow">02 · MISSION DETAIL / 委托单 TP-042</p>
+            <h1 id="missionTitle" tabindex="-1">蓝潮岛的回信</h1>
+          </div>
+          <span class="status-chip" id="missionStateChip">尚未接取</span>
+        </div>
+        <div class="mission-layout">
+          <article class="letter-sheet">
+            <div class="letter-heading">
+              <p class="label">寄件要求</p>
+              <span>BLUE TIDE ISLAND</span>
+            </div>
+            <p class="letter-copy">“请把港口收到的蓝色信封带来。退潮前，北侧码头会留一盏灯。”</p>
+            <dl class="detail-list">
+              <div><dt>收件人</dt><dd>艾琳</dd></div>
+              <div><dt>目的地</dt><dd>蓝潮岛 · 北侧码头</dd></div>
+              <div><dt>所需邮件</dt><dd>蓝色信封 ×1</dd></div>
+              <div><dt>完成奖励</dt><dd>邮票 +40</dd></div>
+            </dl>
+          </article>
+          <aside class="contract-panel">
+            <p class="label">出航条件</p>
+            <ul class="condition-list">
+              <li><span>01</span><div><strong>接取委托</strong><small>把任务加入本次航行</small></div></li>
+              <li><span>02</span><div><strong>保存邮袋</strong><small>蓝色信封 ×1</small></div></li>
+              <li><span>03</span><div><strong>选择航线</strong><small>目的地必须当前可达</small></div></li>
+            </ul>
+            <p class="context-note" id="missionContextNote">接取后进入邮袋，选择并保存所需邮件。</p>
+          </aside>
+        </div>
+        <div class="screen-actions">
+          <button class="button button-secondary" type="button" data-action="mission-back">返回港口</button>
+          <button class="button button-primary" type="button" data-action="mission-primary">接取并整理邮袋</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="mailbag" aria-labelledby="mailbagTitle" hidden>
+        <div class="screen-copy split-heading mailbag-heading">
+          <div>
+            <p class="eyebrow">03 · MAILBAG / 草稿与保存是不同状态</p>
+            <h1 id="mailbagTitle" tabindex="-1">整理本次邮袋</h1>
+          </div>
+          <div class="state-summary">
+            <span>当前状态</span>
+            <strong id="mailbagSummary">尚未选择</strong>
+          </div>
+        </div>
+        <div class="mailbag-layout">
+          <aside class="category-rail" aria-label="邮袋分类">
+            <p class="label">分类</p>
+            <button type="button" class="category is-current" data-category="letters">信件 <span>2</span></button>
+            <button type="button" class="category" data-category="parcels">包裹 <span>1</span></button>
+            <button type="button" class="category" data-category="materials">材料 <span>4</span></button>
+            <button type="button" class="category" data-category="keepsakes">纪念品 <span>1</span></button>
+          </aside>
+
+          <div class="inventory-panel">
+            <div class="inventory-heading">
+              <p class="label" id="inventoryCategoryLabel">信件</p>
+              <span id="inventoryHelp">选择要装入本次邮袋的邮件</span>
+            </div>
+            <div class="inventory-list" id="inventoryList">
+              <button type="button" class="inventory-item" data-item="blue-envelope" aria-pressed="false">
+                <span class="item-code">B-01</span>
+                <span><strong>蓝色信封</strong><small>蓝潮岛 · 未投递</small></span>
+                <span class="item-quantity">×1</span>
+              </button>
+              <button type="button" class="inventory-item is-muted" data-item="shell-postcard" aria-pressed="false">
+                <span class="item-code">S-08</span>
+                <span><strong>贝壳湾明信片</strong><small>已归档 · 不属于当前委托</small></span>
+                <span class="item-quantity">×1</span>
+              </button>
+            </div>
+            <p class="selection-memory" id="selectionMemory">当前没有编辑中的选择。</p>
+          </div>
+
+          <article class="item-detail" aria-label="邮件详情">
+            <p class="label">当前选择</p>
+            <div id="emptyItemState">
+              <h2>选择一封邮件</h2>
+              <p class="muted">选中后会先进入草稿；只有点击“保存邮袋”才满足出航条件。</p>
+            </div>
+            <div id="selectedItemState" hidden>
+              <div class="mail-mark">B-01</div>
+              <h2>蓝色信封</h2>
+              <dl class="detail-list compact">
+                <div><dt>收件人</dt><dd>艾琳</dd></div>
+                <div><dt>目的地</dt><dd>蓝潮岛</dd></div>
+                <div><dt>任务匹配</dt><dd>是</dd></div>
+                <div><dt>保存状态</dt><dd id="saveStateText">草稿，尚未保存</dd></div>
+              </dl>
+            </div>
+            <div class="detail-actions">
+              <button class="button button-text" type="button" data-action="view-mission-from-bag">查看委托</button>
+              <button class="button button-primary" id="saveMailbagButton" type="button" data-action="save-mailbag" disabled>保存邮袋</button>
+            </div>
+          </article>
+        </div>
+        <div class="screen-actions between">
+          <p class="action-reason" id="mailbagNextReason">选择并保存“蓝色信封”后可以前往地图。</p>
+          <button class="button button-primary" id="goMapButton" type="button" data-action="go-map" disabled>前往群岛地图</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="map" aria-labelledby="mapTitle" hidden>
+        <div class="screen-copy split-heading map-heading">
+          <div>
+            <p class="eyebrow">04 · ARCHIPELAGO MAP / 当前委托始终可见</p>
+            <h1 id="mapTitle" tabindex="-1">选择本次航线</h1>
+          </div>
+          <div class="mission-reminder"><span>当前委托</span><strong>蓝潮岛的回信</strong><small>蓝色信封已保存</small></div>
+        </div>
+        <div class="map-layout">
+          <div class="sea-chart" aria-label="群岛地图">
+            <div class="map-grid-lines" aria-hidden="true"></div>
+            <span class="current-port">旧邮局港<br><small>当前位置</small></span>
+            <button type="button" class="island island-blue" data-island="blue" aria-pressed="false">
+              <strong>蓝潮岛</strong><small>可达 · 2.4 海里</small>
+            </button>
+            <button type="button" class="island island-fog" data-island="fog" aria-pressed="false">
+              <strong>雾礁岛</strong><small>潮位状态未知</small>
+            </button>
+            <button type="button" class="island island-shell" data-island="shell" disabled>
+              <strong>贝壳湾</strong><small>非当前任务</small>
+            </button>
+            <div class="route-line route-blue" id="blueRoute" aria-hidden="true"></div>
+            <div class="route-line route-fog" id="fogRoute" aria-hidden="true"></div>
+            <div class="compass-copy" aria-hidden="true">N<br>航向 028°</div>
+          </div>
+
+          <aside class="route-panel">
+            <p class="label">航线判断</p>
+            <div id="routeEmptyState">
+              <h2>请选择目的岛</h2>
+              <p class="muted">地图会同时显示当前位置、当前委托和潮位条件。</p>
+            </div>
+            <div id="routeBlueState" hidden>
+              <span class="status-chip is-ok">航线可达</span>
+              <h2>蓝潮岛</h2>
+              <dl class="detail-list compact">
+                <div><dt>距离</dt><dd>2.4 海里</dd></div>
+                <div><dt>预计用时</dt><dd>04:20</dd></div>
+                <div><dt>潮位</dt><dd>中潮，允许靠岸</dd></div>
+                <div><dt>风险</dt><dd>低</dd></div>
+              </dl>
+            </div>
+            <div id="routeFogState" class="failure-message" hidden role="alert">
+              <span class="status-chip is-warning">当前不可达</span>
+              <h2>雾礁岛</h2>
+              <p>当前潮位过低，暂无法安全靠岸。</p>
+              <p class="muted">恢复路径：重新选择本次委托的目的地“蓝潮岛”。</p>
+              <button class="button button-secondary full-width" type="button" data-action="recover-blue">重新选择蓝潮岛</button>
+            </div>
+            <div class="route-actions">
+              <button class="button button-text" type="button" data-action="map-back">返回邮袋</button>
+              <button class="button button-primary" id="startSailingButton" type="button" data-action="start-sailing" disabled>开始航行</button>
+            </div>
+            <p class="action-reason" id="routeReason">选择一个当前可达的目的岛。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="sailing" aria-labelledby="sailingTitle" hidden>
+        <div class="hud-stage">
+          <div class="hud-topline">
+            <div class="hud-box">
+              <p class="label">当前委托</p>
+              <strong>蓝潮岛的回信</strong>
+              <small>蓝色信封 ×1 · 已保存</small>
+            </div>
+            <div class="hud-box align-right">
+              <p class="label">潮况</p>
+              <strong>中潮 / 平稳</strong>
+              <small>靠岸条件满足</small>
+            </div>
+          </div>
+          <div class="navigation-field">
+            <div class="horizon-line" aria-hidden="true"></div>
+            <div class="heading-scale" aria-hidden="true"><span>020</span><strong>028</strong><span>036</span></div>
+            <div class="vessel-label">邮船<br><small>航向 028°</small></div>
+            <div class="destination-label">蓝潮岛<br><small>0.3 海里</small></div>
+          </div>
+          <div class="hud-bottomline">
+            <div>
+              <p class="eyebrow">05 · SAILING HUD</p>
+              <h1 id="sailingTitle" tabindex="-1">保持航向，准备靠岸</h1>
+              <p class="muted">任务、邮件与目的地状态在航行中保持可见。</p>
+            </div>
+            <button class="button button-primary large" type="button" data-action="arrive">抵达蓝潮岛</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="result" aria-labelledby="resultTitle" hidden>
+        <div class="result-layout">
+          <div class="result-copy">
+            <p class="eyebrow">06 · DELIVERY RESULT / TP-042</p>
+            <span class="status-chip is-ok">投递成功</span>
+            <h1 id="resultTitle" tabindex="-1">回信已交给艾琳</h1>
+            <p class="lead">委托已经完成。奖励会在你确认领取后才计入邮票总数。</p>
+            <dl class="detail-list result-details">
+              <div><dt>投递邮件</dt><dd>蓝色信封 ×1</dd></div>
+              <div><dt>到达地点</dt><dd>蓝潮岛 · 北侧码头</dd></div>
+              <div><dt>委托状态</dt><dd>已完成</dd></div>
+            </dl>
+          </div>
+          <aside class="reward-receipt">
+            <p class="label">待领取奖励</p>
+            <div class="reward-value"><span>邮票</span><strong>+40</strong></div>
+            <div class="balance-row"><span>当前余额</span><strong id="resultBalance">120</strong></div>
+            <div class="balance-row pending" id="pendingBalance"><span>领取后余额</span><strong>160</strong></div>
+            <button class="button button-primary full-width" id="claimRewardButton" type="button" data-action="claim-reward">领取奖励</button>
+            <p class="action-reason" id="rewardReason">奖励显示中，尚未到账。</p>
+          </aside>
+        </div>
+        <div class="screen-actions result-actions">
+          <button class="button button-secondary" id="continueButton" type="button" data-action="continue-task" disabled>继续接取任务</button>
+          <button class="button button-primary" id="returnHarborButton" type="button" data-action="return-harbor" disabled>返回港口</button>
+        </div>
+      </section>
+    </div>
+
+    <footer class="bottombar">
+      <div class="flow-tracker" aria-label="流程进度">
+        <span class="is-current" data-step="harbor">01 港口</span>
+        <span data-step="mission">02 委托</span>
+        <span data-step="mailbag">03 邮袋</span>
+        <span data-step="map">04 地图</span>
+        <span data-step="sailing">05 航行</span>
+        <span data-step="result">06 结果</span>
+      </div>
+      <span class="version">V2 FINAL MASTER · 1920 × 1080</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
