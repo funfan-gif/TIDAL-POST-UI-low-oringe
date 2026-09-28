@@ -1,0 +1,86 @@
+{
+  "fileKey": "m3YZJuwn5JkYnFCPW8fh5W",
+  "page": {
+    "id": "0:1",
+    "name": "V2 Final Master — 1920×1080 Captures"
+  },
+  "requiredFrames": {
+    "harbor": "8:2",
+    "mission": "16:2",
+    "mailbag": "10:2",
+    "map": "11:2",
+    "sailing": "12:2",
+    "result": "13:2"
+  },
+  "phase0": {
+    "status": "complete",
+    "codeConnect": "not present",
+    "subscribedLibraries": [],
+    "localComponentCount": 0,
+    "existingVariableCollections": [
+      "VariableCollectionId:26:2",
+      "VariableCollectionId:26:3",
+      "VariableCollectionId:26:4",
+      "VariableCollectionId:26:5"
+    ],
+    "existingTextStyleCount": 6,
+    "existingEffectStyleCount": 2,
+    "availableChineseFont": "Noto Sans SC"
+  },
+  "componentSystem": "61:2",
+  "components": {
+    "Icon/Main/Harbor": "61:7",
+    "Icon/Main/Mission": "61:9",
+    "Icon/Main/Mailbag": "61:11",
+    "Icon/Main/Map": "61:13",
+    "Icon/Main/Sailing": "61:15",
+    "Icon/Main/Delivery": "61:17",
+    "Button/Action": "61:27",
+    "Status/Pill": "61:38",
+    "Mailbag/Item Slot": "61:56",
+    "Map/Destination Node": "61:74",
+    "HUD/Readout": "61:85",
+    "Mission/Task Card": "61:88",
+    "Reward/Claim Block": "61:95"
+  },
+  "assetNodes": {
+    "source": "D:/游戏界面设计/第三周/assets/week3/icons",
+    "retainedAsComponentFills": true
+  },
+  "screens": {
+    "8:2": { "status": "upgraded", "name": "01 — 港口 Harbor" },
+    "16:2": { "status": "upgraded", "name": "02 — 委托详情 Mission Detail" },
+    "10:2": { "status": "upgraded", "name": "03 — 邮袋 Mailbag" },
+    "11:2": { "status": "upgraded", "name": "04 — 群岛地图 Archipelago Map" },
+    "12:2": { "status": "upgraded", "name": "05 — 航行 HUD Sailing" },
+    "13:2": { "status": "upgraded", "name": "06 — 投递结果 Delivery Result" }
+  },
+  "motion": {
+    "fallback": "Figma motion context returned no keyframe tracks; native prototype Smart Animate used",
+    "transition": "SMART_ANIMATE / EASE_OUT / 0.35s",
+    "flowStartPoints": {
+      "Main Flow · Harbor to Result": "8:2",
+      "Return Flow · Back to Harbor": "16:2",
+      "Failure Flow · Locked Route": "11:2"
+    },
+    "clickTargets": {
+      "harborMission": "63:85",
+      "missionMailbag": "63:193",
+      "missionReturn": "63:217",
+      "mailbagMap": "63:333",
+      "mailbagReturn": "63:331",
+      "mapSailing": "64:151",
+      "mapReturn": "64:149",
+      "sailingResult": "65:103",
+      "resultContinue": "64:347",
+      "resultReturn": "64:349"
+    }
+  },
+  "htmlCapture": {
+    "captureId": "756dc45d-9874-4c51-b340-8f1deb6c2436",
+    "temporaryNodeId": "69:104",
+    "status": "captured, visually compared, then removed per generate-design workflow",
+    "archivedScreenshot": "qa/v3-figma-final/07-html-capture-reference.png"
+  },
+  "lastUpdated": "2026-09-28"
+}

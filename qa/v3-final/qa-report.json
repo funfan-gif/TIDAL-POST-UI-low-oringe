@@ -1,0 +1,339 @@
+{
+  "generatedAt": "2026-09-28T12:04:52.097Z",
+  "passed": true,
+  "assertions": [
+    {
+      "name": "capture preset 01-harbor",
+      "passed": true,
+      "detail": "expected harbor"
+    },
+    {
+      "name": "capture preset 02-mission",
+      "passed": true,
+      "detail": "expected mission"
+    },
+    {
+      "name": "capture preset 03-mailbag",
+      "passed": true,
+      "detail": "expected mailbag"
+    },
+    {
+      "name": "capture preset 04-map",
+      "passed": true,
+      "detail": "expected map"
+    },
+    {
+      "name": "capture preset 05-sailing",
+      "passed": true,
+      "detail": "expected sailing"
+    },
+    {
+      "name": "capture preset 06-result",
+      "passed": true,
+      "detail": "expected result"
+    },
+    {
+      "name": "Main starts at Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='open-mission']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main opens Mission",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='mission-primary']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main opens Mailbag",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-item='blue-envelope']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='save-mailbag']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main saves correct item",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='go-map']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main opens Map",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-island='blue']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main selects reachable island",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='start-sailing']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Main opens Sailing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sailing map opens",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sailing map closes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sailing pauses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sailing resumes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sailing updates real position",
+      "passed": true,
+      "detail": "{\"startPosition\":{\"x\":123.74,\"y\":391.41,\"heading\":71.13,\"speed\":9.62,\"rudder\":0,\"throttle\":0.72,\"distance\":746.38,\"elapsed\":0.33,\"readyToDeliver\":false,\"paused\":false,\"mapOpen\":false,\"delivered\":false},\"sailingState\":{\"x\":810.1,\"y\":156.8,\"heading\":71.13,\"speed\":32,\"rudder\":0,\"throttle\":1,\"distance\":21.04,\"elapsed\":23.53,\"readyToDeliver\":true,\"paused\":false,\"mapOpen\":false,\"delivered\":false}}"
+    },
+    {
+      "name": "Sailing reaches delivery radius",
+      "passed": true,
+      "detail": "{\"x\":810.1,\"y\":156.8,\"heading\":71.13,\"speed\":32,\"rudder\":0,\"throttle\":1,\"distance\":21.04,\"elapsed\":23.53,\"readyToDeliver\":true,\"paused\":false,\"mapOpen\":false,\"delivered\":false}"
+    },
+    {
+      "name": "Main reaches Result",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='claim-reward']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reward claim is explicit",
+      "passed": true,
+      "detail": "{\"screen\":\"result\",\"stamps\":160,\"missionAccepted\":true,\"selectedItem\":\"blue-envelope\",\"mailbagSaved\":true,\"selectedIsland\":\"blue\",\"rewardClaimed\":true,\"completed\":true,\"missionReturnTarget\":\"mailbag\",\"activeCategory\":\"letters\",\"sailing\":{\"x\":810.1,\"y\":156.8,\"heading\":71.13,\"speed\":0,\"rudder\":0,\"throttle\":1,\"distance\":21.04,\"elapsed\":23.53,\"readyToDeliver\":true,\"paused\":false,\"mapOpen\":false,\"delivered\":true}}"
+    },
+    {
+      "name": "click [data-action='return-harbor']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Result returns to Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='open-mission']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='mission-back']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mission returns to Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='open-mission']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='mission-primary']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='view-mission-from-bag']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='mission-back']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mission remembers Mailbag return target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-item='blue-envelope']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='save-mailbag']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='go-map']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='map-back']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Map returns to Mailbag with saved state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='open-mission']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='mission-primary']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-item='shell-postcard']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='save-mailbag']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Wrong item cannot be saved",
+      "passed": true,
+      "detail": "{\"screen\":\"mailbag\",\"stamps\":120,\"missionAccepted\":true,\"selectedItem\":\"shell-postcard\",\"mailbagSaved\":false,\"selectedIsland\":null,\"rewardClaimed\":false,\"completed\":false,\"missionReturnTarget\":\"mailbag\",\"activeCategory\":\"letters\",\"sailing\":{\"x\":122,\"y\":392,\"heading\":71.13,\"speed\":0,\"rudder\":0,\"throttle\":0.72,\"distance\":748.22,\"elapsed\":0,\"readyToDeliver\":false,\"paused\":false,\"mapOpen\":false,\"delivered\":false}}"
+    },
+    {
+      "name": "Wrong item exposes recovery copy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-item='blue-envelope']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='save-mailbag']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='go-map']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-island='fog']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Locked island blocks sailing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "click [data-action='recover-blue']",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Failure recovery selects Blue Island",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reduced motion override",
+      "passed": true,
+      "detail": "1e-05s"
+    },
+    {
+      "name": "Responsive width 1366x768",
+      "passed": true,
+      "detail": "{\"doc\":1366,\"viewport\":1366,\"bodyHeight\":768}"
+    },
+    {
+      "name": "Responsive width 1440x900",
+      "passed": true,
+      "detail": "{\"doc\":1440,\"viewport\":1440,\"bodyHeight\":810}"
+    },
+    {
+      "name": "Responsive width 390x844",
+      "passed": true,
+      "detail": "{\"doc\":390,\"viewport\":390,\"bodyHeight\":1467}"
+    },
+    {
+      "name": "No console errors",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "No network failures",
+      "passed": true,
+      "detail": "[]"
+    }
+  ],
+  "failures": [],
+  "consoleErrors": [],
+  "networkFailures": [],
+  "screenshots": [
+    "01-harbor.png",
+    "02-mission.png",
+    "03-mailbag.png",
+    "04-map.png",
+    "05-sailing.png",
+    "06-result.png",
+    "flow-failure-mailbag.png",
+    "flow-failure-route.png",
+    "flow-main-result-claimed.png",
+    "flow-return-mailbag.png",
+    "responsive-1366x768.png",
+    "responsive-1440x900.png",
+    "responsive-390x844.png"
+  ]
+}
