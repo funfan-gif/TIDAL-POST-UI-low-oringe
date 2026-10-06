@@ -1,0 +1,553 @@
+{
+  "generatedAt": "2026-10-04T10:38:55.273Z",
+  "passed": true,
+  "checkCount": 27,
+  "checks": [
+    {
+      "name": "Business code before render() is byte-identical",
+      "passed": true
+    },
+    {
+      "name": "Drag, keyboard, storage, query, confirmation and setup after render() are byte-identical",
+      "passed": true
+    },
+    {
+      "name": "Function Pass stylesheet is byte-identical",
+      "passed": true
+    },
+    {
+      "name": "Original 36-check script retained without assertion changes",
+      "passed": true
+    },
+    {
+      "name": "V3, sailing.js, icons and historic QA retain all protected hashes",
+      "passed": true,
+      "evidence": {
+        "count": 67,
+        "changedProtected": []
+      }
+    },
+    {
+      "name": "Exact collision obstacle geometry and transforms retained",
+      "passed": true,
+      "evidence": {
+        "before": [
+          {
+            "tag": "ellipse",
+            "attrs": [
+              [
+                "id",
+                "fog-obstacle"
+              ],
+              [
+                "data-obstacle",
+                "fog"
+              ],
+              [
+                "cx",
+                "730"
+              ],
+              [
+                "cy",
+                "555"
+              ],
+              [
+                "rx",
+                "205"
+              ],
+              [
+                "ry",
+                "125"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "ellipse",
+            "attrs": [
+              [
+                "id",
+                "wreck-obstacle"
+              ],
+              [
+                "data-obstacle",
+                "wreck"
+              ],
+              [
+                "cx",
+                "1065"
+              ],
+              [
+                "cy",
+                "737"
+              ],
+              [
+                "rx",
+                "92"
+              ],
+              [
+                "ry",
+                "58"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "port-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "blue-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "lighthouse-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M-36 24Q-32-10-7-20T31 22Z"
+              ],
+              [
+                "fill",
+                "#b8c5ad"
+              ],
+              [
+                "stroke",
+                "#8aab9a"
+              ],
+              [
+                "stroke-width",
+                "2"
+              ]
+            ],
+            "parentTransform": "translate(330 535)"
+          }
+        ],
+        "after": [
+          {
+            "tag": "ellipse",
+            "attrs": [
+              [
+                "id",
+                "fog-obstacle"
+              ],
+              [
+                "data-obstacle",
+                "fog"
+              ],
+              [
+                "cx",
+                "730"
+              ],
+              [
+                "cy",
+                "555"
+              ],
+              [
+                "rx",
+                "205"
+              ],
+              [
+                "ry",
+                "125"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "ellipse",
+            "attrs": [
+              [
+                "id",
+                "wreck-obstacle"
+              ],
+              [
+                "data-obstacle",
+                "wreck"
+              ],
+              [
+                "cx",
+                "1065"
+              ],
+              [
+                "cy",
+                "737"
+              ],
+              [
+                "rx",
+                "92"
+              ],
+              [
+                "ry",
+                "58"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "port-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "blue-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"
+              ]
+            ],
+            "parentTransform": null
+          },
+          {
+            "tag": "path",
+            "attrs": [
+              [
+                "id",
+                "lighthouse-land"
+              ],
+              [
+                "data-obstacle",
+                "coast"
+              ],
+              [
+                "d",
+                "M-36 24Q-32-10-7-20T31 22Z"
+              ],
+              [
+                "fill",
+                "#b8c5ad"
+              ],
+              [
+                "stroke",
+                "#8aab9a"
+              ],
+              [
+                "stroke-width",
+                "2"
+              ]
+            ],
+            "parentTransform": "translate(330 535)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Map width remains 70–76% of reference viewport",
+      "passed": true,
+      "evidence": {
+        "map": {
+          "width": 1404.04443359375,
+          "height": 936.0997924804688,
+          "x": 33.977725982666016,
+          "y": 109.95011138916016,
+          "right": 1438.022159576416,
+          "bottom": 1046.049903869629
+        },
+        "ledger": {
+          "width": 404.166259765625,
+          "height": 917.08984375,
+          "x": 1467.4168701171875,
+          "y": 127.45509338378906,
+          "right": 1871.5831298828125,
+          "bottom": 1044.544937133789
+        },
+        "mapShare": 0.7312731424967448,
+        "titleSize": "27px",
+        "glyph": {
+          "width": 24.599609375,
+          "height": 24.599639892578125,
+          "x": 534.010009765625,
+          "y": 169.4141387939453,
+          "right": 558.609619140625,
+          "bottom": 194.01377868652344
+        },
+        "images": [
+          "assets/art-pass-02/sea-paper.png",
+          "assets/art-pass-02/land-pigment.svg",
+          "assets/art-pass-02/land-pigment.svg",
+          "../assets/icons/05_sail.png",
+          "../assets/icons/04_map.png"
+        ]
+      }
+    },
+    {
+      "name": "Small drag instruction SVG cannot obscure map",
+      "passed": true,
+      "evidence": {
+        "width": 24.599609375,
+        "height": 24.599639892578125,
+        "x": 534.010009765625,
+        "y": 169.4141387939453,
+        "right": 558.609619140625,
+        "bottom": 194.01377868652344
+      }
+    },
+    {
+      "name": "Keyboard entry reaches Return link",
+      "passed": true
+    },
+    {
+      "name": "Tab reaches W1 without programmatic focus",
+      "passed": true
+    },
+    {
+      "name": "Waypoint keyboard focus has visible ring and hint",
+      "passed": true,
+      "evidence": {
+        "stroke": "3px",
+        "dash": "4px, 4px"
+      }
+    },
+    {
+      "name": "Keyboard-only adjustment enters blocked and locks confirm",
+      "passed": true
+    },
+    {
+      "name": "Keyboard-only recovery restores valid and enabled confirm",
+      "passed": true
+    },
+    {
+      "name": "Tab reaches W2",
+      "passed": true
+    },
+    {
+      "name": "Tab reaches Dispatch confirmation",
+      "passed": true
+    },
+    {
+      "name": "Confirmation keyboard focus retains visible outline",
+      "passed": true,
+      "evidence": {
+        "width": "3px",
+        "style": "solid"
+      }
+    },
+    {
+      "name": "Keyboard Enter confirms and exposes postal approval",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion disables approval animation",
+      "passed": true,
+      "evidence": {
+        "name": "none",
+        "duration": "0s"
+      }
+    },
+    {
+      "name": "Keyboard Escape returns from modal",
+      "passed": true
+    },
+    {
+      "name": "Dispatch hover provides restrained lift",
+      "passed": true,
+      "evidence": {
+        "beforeBox": {
+          "x": 1498.26416015625,
+          "y": 857.668212890625,
+          "width": 337.5865478515625,
+          "height": 78.6444091796875
+        },
+        "hoverBox": {
+          "x": 1498.2799072265625,
+          "y": 855.6682739257812,
+          "width": 337.5865478515625,
+          "height": 78.6444091796875
+        }
+      }
+    },
+    {
+      "name": "Dispatch press compresses by about 1–2px",
+      "passed": true,
+      "evidence": {
+        "beforeBox": {
+          "x": 1498.26416015625,
+          "y": 857.668212890625,
+          "width": 337.5865478515625,
+          "height": 78.6444091796875
+        },
+        "pressedBox": {
+          "x": 1498.25244140625,
+          "y": 859.1681518554688,
+          "width": 337.58642578125,
+          "height": 78.6444091796875
+        }
+      }
+    },
+    {
+      "name": "Normal approval stamp uses a 150–250ms one-shot",
+      "passed": true,
+      "evidence": {
+        "name": "dispatch-press",
+        "duration": "0.19s"
+      }
+    },
+    {
+      "name": "Blocked retains dashed line, cross, hatch, lock and reason without colour",
+      "passed": true,
+      "evidence": {
+        "dashed": "13px, 9px",
+        "cross": {
+          "x": 834.8095703125,
+          "y": 514.4285278320312,
+          "width": 23.74163818359375,
+          "height": 23.74163818359375,
+          "top": 514.4285278320312,
+          "right": 858.5512084960938,
+          "bottom": 538.170166015625,
+          "left": 834.8095703125
+        },
+        "label": {
+          "x": 680.2479248046875,
+          "y": 554.0112915039062,
+          "width": 136.05450439453125,
+          "height": 31.1260986328125,
+          "top": 554.0112915039062,
+          "right": 816.3024291992188,
+          "bottom": 585.1373901367188,
+          "left": 680.2479248046875
+        },
+        "hatch": "0.58",
+        "lock": true,
+        "cursor": "not-allowed",
+        "reason": "W1—W2 穿越 4m 以下浅滩"
+      }
+    },
+    {
+      "name": "Crossed navigation mark is separated from bearing paper",
+      "passed": true,
+      "evidence": {
+        "dashed": "13px, 9px",
+        "cross": {
+          "x": 834.8095703125,
+          "y": 514.4285278320312,
+          "width": 23.74163818359375,
+          "height": 23.74163818359375,
+          "top": 514.4285278320312,
+          "right": 858.5512084960938,
+          "bottom": 538.170166015625,
+          "left": 834.8095703125
+        },
+        "label": {
+          "x": 680.2479248046875,
+          "y": 554.0112915039062,
+          "width": 136.05450439453125,
+          "height": 31.1260986328125,
+          "top": 554.0112915039062,
+          "right": 816.3024291992188,
+          "bottom": 585.1373901367188,
+          "left": 680.2479248046875
+        },
+        "hatch": "0.58",
+        "lock": true,
+        "cursor": "not-allowed",
+        "reason": "W1—W2 穿越 4m 以下浅滩"
+      }
+    },
+    {
+      "name": "Reduced motion leaves no animated or transitioning game elements",
+      "passed": true,
+      "evidence": []
+    },
+    {
+      "name": "50% scene and hit targets stay usable",
+      "passed": true,
+      "evidence": {
+        "stage": {
+          "x": 0,
+          "y": 0,
+          "width": 960,
+          "height": 540,
+          "top": 0,
+          "right": 960,
+          "bottom": 540,
+          "left": 0
+        },
+        "handle": {
+          "x": 245.7320556640625,
+          "y": 371.1387023925781,
+          "width": 33.63397216796875,
+          "height": 33.63397216796875,
+          "top": 371.1387023925781,
+          "right": 279.36602783203125,
+          "bottom": 404.7726745605469,
+          "left": 245.7320556640625
+        },
+        "instruction": {
+          "x": 267.0050048828125,
+          "y": 84.70706939697266,
+          "width": 12.2998046875,
+          "height": 12.299819946289062,
+          "top": 84.70706939697266,
+          "right": 279.3048095703125,
+          "bottom": 97.00688934326172,
+          "left": 267.0050048828125
+        }
+      }
+    },
+    {
+      "name": "No runtime or local request failures",
+      "passed": true,
+      "evidence": []
+    }
+  ],
+  "errors": []
+}

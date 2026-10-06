@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="sage"><stop stop-color="#688664" stop-opacity=".48"/><stop offset=".55" stop-color="#8ea372" stop-opacity=".22"/><stop offset="1" stop-color="#8ea372" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ochre"><stop stop-color="#c9bb78" stop-opacity=".5"/><stop offset="1" stop-color="#c9bb78" stop-opacity="0"/></radialGradient>
+    <radialGradient id="dry"><stop stop-color="#d7d9b0" stop-opacity=".5"/><stop offset="1" stop-color="#d7d9b0" stop-opacity="0"/></radialGradient>
+    <filter id="paint" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency=".026" numOctaves="3" seed="19" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="32"/><feGaussianBlur stdDeviation="1.6"/></filter>
+  </defs>
+  <g filter="url(#paint)">
+    <ellipse cx="162" cy="125" rx="196" ry="152" fill="url(#ochre)"/>
+    <ellipse cx="327" cy="289" rx="223" ry="218" fill="url(#sage)"/>
+    <ellipse cx="67" cy="406" rx="136" ry="162" fill="url(#sage)"/>
+    <ellipse cx="392" cy="80" rx="135" ry="155" fill="url(#dry)"/>
+    <ellipse cx="203" cy="335" rx="141" ry="185" fill="url(#dry)"/>
+  </g>
+</svg>

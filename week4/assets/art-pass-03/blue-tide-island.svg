@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <defs>
+    <filter id="wet" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".038" numOctaves="2" seed="16" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="4"/><feGaussianBlur stdDeviation=".55"/></filter>
+    <clipPath id="land"><path d="M79 48L91 42 103 35 109 43 111 59Q112 75 121 76L137 69 144 57 147 39 162 31 180 37 199 30 216 38 229 52 246 65 252 77 275 82 296 96 319 100 329 110 341 112 344 128 361 143 365 161 353 176 332 182 316 179 303 188 280 191 260 204 241 209 228 203 213 207 190 198 177 188 155 191 142 188 122 194 103 184 82 184 64 170 54 157 58 137 71 120 70 98 76 80Z"/></clipPath>
+  </defs>
+  <g filter="url(#wet)">
+    <path d="M62 34L89 25 112 22 138 21 162 13 187 23 217 19 243 42 263 63 291 69 317 81 349 92 362 119 382 142 383 169 359 196 328 201 309 202 280 216 250 230 216 223 191 218 163 210 139 214 109 205 84 203 48 179 32 157 39 130 53 108 55 80Z" fill="#9ac3b2" opacity=".3"/>
+    <path d="M72 42L99 28 119 32 142 32 158 22 183 29 211 24 232 43 255 71 283 77 315 93 345 102 351 124 374 148 374 167 351 184 324 192 303 196 280 205 244 218 216 213 189 207 161 201 139 205 109 195 81 194 57 177 43 154 51 133 64 116 64 94Z" fill="#e3d9b6" opacity=".83"/>
+    <path d="M97 38Q135 40 145 57T129 87Q100 83 92 64Z" fill="#c2dcd0" opacity=".75"/>
+  </g>
+  <path d="M79 48L91 42 103 35 109 43 111 59Q112 75 121 76L137 69 144 57 147 39 162 31 180 37 199 30 216 38 229 52 246 65 252 77 275 82 296 96 319 100 329 110 341 112 344 128 361 143 365 161 353 176 332 182 316 179 303 188 280 191 260 204 241 209 228 203 213 207 190 198 177 188 155 191 142 188 122 194 103 184 82 184 64 170 54 157 58 137 71 120 70 98 76 80Z" fill="#afc19a" fill-opacity=".91" stroke="#698c78" stroke-width="1.6" stroke-linejoin="round"/>
+  <g clip-path="url(#land)" filter="url(#wet)">
+    <path d="M83 72Q113 91 158 68T231 99Q229 137 192 145T102 127Z" fill="#91ad83" opacity=".4"/>
+    <path d="M166 29Q200 19 246 68L261 97Q217 78 204 107T157 94Z" fill="#c9ce9b" opacity=".55"/>
+    <path d="M228 102Q286 82 325 126T352 172L298 179Q264 160 237 167T201 145Z" fill="#89aa8d" opacity=".4"/>
+    <path d="M76 145Q114 127 149 153T216 194L168 201 98 188Z" fill="#88a789" opacity=".33"/>
+    <path d="M270 177Q303 165 347 167L323 192 280 215 244 218Z" fill="#d0cda0" opacity=".45"/>
+  </g>
+  <path d="M120 78Q139 98 183 110T227 142L239 167M183 110L267 135" fill="none" stroke="#ded8b7" stroke-width="5" stroke-linecap="round" opacity=".68"/>
+  <!-- Blue Tide Post Hut: broad eaves, envelope board, mailbox and a small postal pennant. -->
+  <g transform="translate(208 135)" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M4 44L55 40 62 52 5 59Z" fill="#698d7c" opacity=".16"/>
+    <path d="M6 16L50 15 50 48 7 52Z" fill="#f0e5cb" stroke="#748d7b" stroke-width="1.5"/>
+    <path d="M50 15L59 21 59 46 50 48Z" fill="#c9d2b7" stroke="#748d7b" stroke-width="1.3"/>
+    <path d="M0 19L9 1 48-4 63 16 31 23Z" fill="#c1967a" stroke="#8e8975" stroke-width="1.5"/>
+    <path d="M9 1L31 23M15 5L49 2M39 13L57 12" fill="none" stroke="#d6b092" stroke-width="1.5"/>
+    <path d="M23 51V33Q28 29 34 33V50" fill="#829f8b" stroke="#708e7a" stroke-width="1.2"/>
+    <path d="M12 25h7v11h-7m27-13h7v11h-7" fill="#8ca899" stroke="#758e7b" stroke-width="1.1"/>
+    <path d="M24 24h13v7H24Zm0 0 6.5 4 6.5-4" fill="#f3ead3" stroke="#758e7b" stroke-width="1"/>
+    <path d="M61 51V34q1-7 8-5v21Z" fill="#b39175" stroke="#7d907a" stroke-width="1.2"/><path d="M63 36h5" stroke="#ecdec0" stroke-width="1.2"/>
+    <path d="M56 15V-17" stroke="#7f937b" stroke-width="1.4"/><path d="M56-14l17-2-3 13-14-2Z" fill="#e8debf" stroke="#81977e" stroke-width="1.1"/><path d="M60-11h8v5h-8Zm0 0 4 3 4-3" fill="none" stroke="#81977e" stroke-width=".9"/>
+  </g>
+  <!-- Four brush-shaped trees, with distinct crowns rather than repeated house markers. -->
+  <g fill="#81a184" fill-opacity=".52" stroke="#77977d" stroke-width=".9">
+    <path d="M93 135q-12-7-4-17-6-13 7-15 8-13 17-3 16-1 13 12 10 13-5 21Z"/>
+    <path d="M171 163q-11-3-8-14-5-12 8-15 13-11 20 3 9 8 1 19Z"/>
+    <path d="M293 125q-12-8-6-17-1-15 14-15 15 1 18 13 10 9-1 19Z"/>
+    <path d="M319 155q-12-4-8-15-1-10 10-12 12-4 16 10 4 13-18 17Z"/>
+  </g>
+  <g fill="none" stroke="#688b73" stroke-width="1.15" stroke-linecap="round" opacity=".7"><path d="M107 144l1-26m0 12-8-6m9 0 7-8M177 171l3-22m-1 12-6-5M303 136v-25m0 14 8-7m-8 0-5-6M324 166l-1-21m1 12-5-6"/></g>
+  <!-- Southwest stone shore, soft east-coast beach and interrupted surf. -->
+  <g fill="#a9b6a8" stroke="#7c9688" stroke-width="1" opacity=".84"><path d="M58 157l7-8 11 3 1 10-9 5-8-4Z"/><path d="M72 169l10-3 8 8-4 7-12-3Z"/><path d="M91 180l8-6 12 6-3 8-14-2Z"/></g>
+  <g fill="none" stroke-linecap="round"><path d="M331 130q20 13 23 31m-54 35-23 10m-84-5-15-7M88 59l-6 14" stroke="#eee5c9" stroke-width="3" opacity=".72"/><path d="M338 131l9 8m-68 76-13 3m-180-37-10-4M98 93l-3 7" stroke="#edf3e5" stroke-width="1.8" opacity=".85"/><path d="M202 63l8 5m59 46 9 1m-131 58 11 4" stroke="#739379" stroke-width="1" opacity=".35"/></g>
+</svg>

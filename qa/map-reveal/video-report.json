@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-10-05T13:54:31.909Z",
+  "capture": "Actual root browser flow, browser screenshot frames encoded by native MediaRecorder; no animation seeking or skip",
+  "frames": 75,
+  "phases": [
+    {
+      "phase": "MAP_REVEALING",
+      "time": 2061.10000000149
+    },
+    {
+      "phase": "MAP_READY",
+      "time": 3706.60000000149
+    }
+  ],
+  "naturalRevealDurationMs": 1645.5,
+  "screen": "sailing",
+  "errors": [],
+  "files": [
+    {
+      "name": "map-reveal-flow.webm",
+      "bytes": 386276
+    },
+    {
+      "name": "mailbag-to-sailing.webm",
+      "bytes": 1348170
+    }
+  ]
+}

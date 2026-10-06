@@ -1,0 +1,11 @@
+{
+  "viewport": [
+    1920,
+    1080
+  ],
+  "changedPixels": 0,
+  "ratio": 0.0,
+  "maxChannelDelta": 0,
+  "passed": true,
+  "conditions": "Same Edge, 1920\u00d71080, neutral cursor, blurred focus, default safe route."
+}

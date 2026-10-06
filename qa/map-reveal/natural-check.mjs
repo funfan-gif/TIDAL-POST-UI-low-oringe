@@ -1,0 +1,7 @@
+import {createRequire} from 'node:module';import fs from 'node:fs';import path from 'node:path';import{fileURLToPath}from'node:url';
+const require=createRequire('C:/Users/jk666/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/package.json');const{chromium}=require('playwright');const out=path.dirname(fileURLToPath(import.meta.url));
+const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});const page=await browser.newPage({viewport:{width:1920,height:1080},reducedMotion:'no-preference'});
+await page.goto('http://127.0.0.1:4174/');await page.locator('[data-action="open-mission"]').click();await page.locator('[data-action="mission-primary"]').click();await page.locator('[data-item="blue-envelope"]').click();await page.locator('#saveMailbagButton').click();await page.locator('#goMapButton').click();
+const start=Date.now(), samples=[];
+for(const t of [500,800,1100]){await page.waitForTimeout(Math.max(0,t-(Date.now()-start)));samples.push(await page.evaluate(()=>({reveal:window.__tidalPost.reveal(),clip:getComputedStyle(document.querySelector('.chart-paper')).clipPath,roll:document.querySelector('.paper-roll-carrier')?getComputedStyle(document.querySelector('.paper-roll-carrier')).transform:null})));await page.screenshot({path:path.join(out,`natural-${t}.png`)});}
+console.log(JSON.stringify(samples,null,2));await browser.close();

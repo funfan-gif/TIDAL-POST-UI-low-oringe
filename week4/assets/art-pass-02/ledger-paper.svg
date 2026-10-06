@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="950" viewBox="0 0 420 950">
+ <defs><filter id="fiber"><feTurbulence type="fractalNoise" baseFrequency=".39" numOctaves="3" seed="18"/><feColorMatrix values="0 0 0 0 .60 0 0 0 0 .51 0 0 0 0 .33 0 0 0 .12 0"/></filter><radialGradient id="old"><stop stop-color="#fcf7e9"/><stop offset=".82" stop-color="#f5ecd5"/><stop offset="1" stop-color="#e3d4b5"/></radialGradient><pattern id="lines" width="420" height="33" patternUnits="userSpaceOnUse"><path d="M25 32q150-2 365 0" fill="none" stroke="#769186" opacity=".10"/></pattern></defs>
+ <path fill="url(#old)" d="M0 0h420v950H0z"/><path fill="url(#lines)" d="M0 0h420v950H0z"/>
+ <path filter="url(#fiber)" opacity=".6" d="M0 0h420v950H0z"/>
+ <path d="M22 25q-4 450 1 894" stroke="#ba8270" stroke-width="1.5" opacity=".24" fill="none"/>
+ <path d="M70 0q-5 285 2 940M0 432q167-3 420 4" stroke="#a18e6635" fill="none"/><path d="M73 0q-5 285 2 940M0 434q167-3 420 4" stroke="#fffaf3" stroke-opacity=".5" fill="none"/>
+ <g fill="#355f591c"><circle cx="39" cy="270" r="2.8"/><circle cx="39" cy="303" r="2.8"/><circle cx="39" cy="336" r="2.8"/></g>
+ <path d="M290 8q60 18 120 100V0H290Z" fill="#b9a47b" opacity=".04"/>
+</svg>

@@ -1,0 +1,19 @@
+/* Only location artwork and its existing hazard binding are extended here. */
+.landmark-terrain,
+.location-art,
+.shoal-contour,
+.shoal-danger-edge,
+.reef-danger-art { pointer-events: none; }
+.location-art { opacity: .94; }
+.navigation-aid { opacity: .85; }
+.shoal-danger-edge {
+  opacity: 0;
+  fill: none;
+  stroke: #b57962;
+  stroke-width: 1.6;
+  stroke-dasharray: 5 8;
+}
+.reef-danger-art { opacity: 0; }
+.hazard-zone.is-danger .reef-danger-art { opacity: .84; }
+.hazard-zone.is-danger .shoal-danger-edge { opacity: .78; }
+#fog-zone.is-danger .hazard-hatch { opacity: .5; }

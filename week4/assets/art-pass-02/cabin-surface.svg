@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+ <defs>
+  <filter id="grain"><feTurbulence baseFrequency=".009 .09" numOctaves="3" seed="13"/><feColorMatrix values="0 0 0 0 .58 0 0 0 0 .72 0 0 0 0 .64 0 0 0 .19 0"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  <filter id="damp"><feTurbulence baseFrequency=".008" numOctaves="3" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="32"/><feGaussianBlur stdDeviation="23"/></filter>
+  <radialGradient id="light" cx="40%" cy="34%" r="76%"><stop stop-color="#5a7c77"/><stop offset=".65" stop-color="#3e6461"/><stop offset="1" stop-color="#294b4e"/></radialGradient>
+  <pattern id="salt" width="277" height="193" patternUnits="userSpaceOnUse"><g fill="#cdd6bf" opacity=".12"><circle cx="22" cy="15" r="1"/><circle cx="49" cy="173" r=".7"/><circle cx="174" cy="54" r=".6"/><circle cx="244" cy="139" r=".9"/><circle cx="164" cy="178" r=".8"/></g><path d="M83 52q4 6 1 9m77 44q3 4 2 9m-96 63h3" stroke="#cae0cf" opacity=".04" fill="none"/></pattern>
+ </defs>
+ <path fill="url(#light)" d="M0 0h1920v1080H0z" filter="url(#grain)"/>
+ <g fill="none" stroke="#192f32" opacity=".22"><path d="M-30 182Q527 172 1038 185T1980 165" stroke-width="3"/><path d="M-20 539Q580 530 1080 544T1950 526" stroke-width="4"/><path d="M-20 899Q600 889 1200 907T1980 900" stroke-width="4"/></g>
+ <g fill="none" stroke="#92aaa0" opacity=".07"><path d="M-10 39Q367 44 1020 25T1980 54M-30 73Q500 88 1023 58T1980 102M-20 967Q500 948 1100 982T1980 995M-20 1016Q500 980 1300 1031T1980 1028"/><path d="M1500 225Q1750 207 1940 240M1510 627Q1740 601 1940 636"/></g>
+ <g filter="url(#damp)" opacity=".13" fill="#aad0bc"><path d="M0 0h1160q-87 92-535 80T0 145Z"/><path d="M1758 0q-192 367 122 625l40-40V0Z"/></g>
+ <path fill="url(#salt)" d="M0 0h1920v1080H0z"/>
+</svg>

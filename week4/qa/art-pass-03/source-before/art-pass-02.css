@@ -1,0 +1,226 @@
+/* Art Pass 02 is a composable visual layer; the Function Pass stylesheet stays intact. */
+:root {
+  --chart-display: "KaiTi", "STKaiti", "SimSun", serif;
+  --chart-numbers: "Georgia", "Times New Roman", serif;
+  --chart-paper: #f3e8cd;
+  --chart-safe-ink: #2e665f;
+  --chart-danger-ink: #b55f4d;
+}
+
+body { background: #203f43; }
+.game-stage {
+  background: #3b6260 url("assets/art-pass-02/cabin-surface.svg") center / cover;
+  box-shadow: inset 0 0 75px #142c3155;
+}
+.game-stage:before { background: none; }
+.desk-heading { color: #ede7d4; }
+.desk-title { border: 0; padding-left: 7px; }
+.desk-title > span { color: #d3dfce; font: 16px var(--chart-display); letter-spacing: .05em; }
+.desk-title i { color: #90ada0; }
+.desk-title h1 { font: 27px/1.3 var(--chart-display); letter-spacing: .05em; }
+.desk-title h1 small { color: #c0d0c1; font: italic 14px var(--chart-numbers); letter-spacing: .02em; }
+.back-link { font-size: 15px; color: #e0e6d9; }
+.back-link img { width: 48px; height: 48px; }
+.desk-time { gap: 12px; }
+.desk-time .sun-mark { width: 35px; height: 35px; fill: none; stroke: #bdd1ba; stroke-width: 1.6; }
+.desk-time strong { color: #eee5cd; font-size: 27px; }
+.desk-time div span { color: #ccd9c6; font-size: 13px; }
+
+.chart-paper {
+  border: 7px solid #e6d8b9;
+  border-radius: 0;
+  background: #eee1c4;
+  box-shadow: 0 12px 28px #102b354d;
+  clip-path: polygon(.1% .2%, 9% .3%, 11% 0, 24% .3%, 39% 0, 50% .2%, 63% 0, 77% .2%, 87% .1%, 99.8% .2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, .2% 99.7%, .4% 88%, 0 76%, .3% 62%, .1% 46%, .3% 31%, 0 17%);
+}
+.chart-paper:before { border: 0; box-shadow: inset 0 0 18px #bfad7e25; }
+.sea-paper-texture { opacity: 1; }
+.water-wash { opacity: 0; }
+.chart-instruction {
+  pointer-events: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 10px 0;
+  top: 35px;
+  left: 493px;
+  color: #55796c;
+  font: 19px var(--chart-display);
+  transform: rotate(-1.2deg);
+}
+.drag-glyph { width: 24px; height: 24px; fill: none; stroke: #55796c; stroke-width: 1.7; }
+.chart-paper .drag-glyph { width: 24px; height: 24px; display: block; flex-shrink: 0; }
+.chart-name { font: 34px var(--chart-display); fill: #305f5a; }
+.chart-caption > image { opacity: .75; }
+.chart-caption .small-label { font-size: 15px; }
+.chart-caption .chart-number { font-size: 11px; letter-spacing: .08em; }
+.chart-grid path { stroke: #456f6321; }
+.grid-labels { fill: #6a8a7b; font-size: 15px; }
+.bathymetry { stroke: #5c918242; stroke-width: 1.2; filter: url(#inkStroke); }
+.depths { fill: #658b7d; opacity: .78; font-size: 18px; }
+.coast-wash { fill: #b7c8a360; stroke: #f5ecd5b0; stroke-width: 27px; filter: url(#pigment); }
+.land { fill: #a8bd8bc7; stroke: #5d8472; }
+.hill { stroke: #74927126; stroke-width: 17px; filter: url(#pigment); }
+.island-pigment { opacity: .75; mix-blend-mode: multiply; }
+.coast-pencil { fill: none; stroke: #527362; stroke-width: 1.1; opacity: .37; }
+.village { filter: url(#inkStroke); }
+.island-name { font: 27px var(--chart-display); fill: #507461; }
+.shoal { fill: #d9cea28c; }
+.shoal-pigment { opacity: .28; }
+.hazard-zone .place-name { font: 29px var(--chart-display); fill: #4e7068; }
+.hazard-zone .hazard-note { fill: #876b53; font: 18px var(--chart-display); }
+.hazard-zone.is-danger .place-name { fill: #835d4d; }
+.hazard-hatch { transition: opacity 150ms ease-out; }
+.hazard-zone.is-danger .hazard-hatch { opacity: .58; }
+.channel-name { font: 29px var(--chart-display); letter-spacing: .18em; fill: #587e70; }
+.small-label { font-family: var(--chart-display); font-size: 18px; fill: #527b6b; }
+.compass { opacity: .62; }
+.compass path { fill: #e8ddb880; }
+.compass .north { fill: #5a8270; }
+.pier { stroke: #8b8b68; stroke-width: 8; filter: url(#inkStroke); }
+
+/* Address labels are pasted postal slips, not generic map cards. */
+.address-paper { fill: #f8efddc4; stroke: none; filter: url(#pigment); }
+.address-rule { fill: none; stroke: #587d6d; stroke-width: 1.2; opacity: .65; }
+.postal-stripes { stroke: #b7836a; stroke-width: 3; opacity: .75; }
+.endpoint-role { fill: #54776a; font-size: 14px; }
+.endpoint-label .place-name { font: bold 31px var(--chart-display); fill: #294f4e; }
+.coordinate { fill: #59796d; font: 16px var(--chart-numbers); }
+.destination-marker { fill: #f4ead4; stroke: #2e665f; filter: url(#inkStroke); }
+.destination-marker > circle { stroke-dasharray: 110 3 24 4; }
+.port-marker > circle { fill: #f5ebd9; }
+.route-underlay { stroke: #f9f0dd; stroke-opacity: .80; stroke-width: 9; }
+.route-segment { stroke: var(--chart-safe-ink); stroke-width: 5.3; filter: url(#inkStroke); }
+.route-segment.is-blocked { stroke: var(--chart-danger-ink); stroke-width: 6; stroke-dasharray: 13 9; }
+.route-direction { stroke: #f5ead5; stroke-width: 1.3; fill: var(--chart-safe-ink); filter: url(#inkStroke); }
+.route-cross { stroke: #9f5141; stroke-width: 3.4; fill: none; stroke-linecap: round; paint-order: stroke; }
+.route-cross .cross-paper { fill: #f5ecd5; stroke: #b56a55; stroke-width: 1; }
+.segment-label .bearing-paper { fill: #f5ecd5cc; stroke: none; }
+.segment-label text { fill: #2e665f; font-size: 17px; }
+.segment-label.is-blocked text { fill: #a45140; }
+.segment-label.is-blocked .bearing-paper { fill: #f6e7d6dd; }
+.waypoint-disc { fill: #f3e5c8; stroke-width: 1.6; stroke-opacity: .7; }
+.waypoint-halo { fill: #f3e5c82a; stroke: #3b747451; }
+.pin-tag { fill: #f7ecd6; stroke: #8c9f82; stroke-width: 1; filter: url(#softShadow); }
+.pin-ink-ring { fill: none; stroke: #396d60; stroke-width: 1.6; opacity: .82; filter: url(#inkStroke); pointer-events: none; }
+.pin-head { fill: #b09a61; stroke: #817e56; stroke-width: 1; pointer-events: none; }
+.waypoint > text { fill: #305f53; font: bold 18px var(--chart-numbers); }
+.waypoint:hover .pin-tag, .waypoint:focus-visible .pin-tag { transform: translateY(-1.5px); }
+.waypoint-tip rect { rx: 0; fill: #f7ecd6; stroke-width: .8; }
+.waypoint-tip text { font: 13px "Microsoft YaHei", sans-serif; fill: #466d61; }
+.waypoint.is-dragging .waypoint-disc { fill: #f7eedb; stroke-width: 2; }
+.waypoint.is-dragging .pin-head { fill: #d6a64c; }
+.warning-copy { font: bold 22px var(--chart-display); fill: #a35a45; stroke-width: 6; }
+#map-warning:not([hidden]) { animation: warning-ink 160ms ease-out; }
+.map-legend text { fill: #587967; font-size: 15px; }
+.map-legend .chart-number { fill: #7d937f; font-size: 11px; }
+.legend-safe { stroke: #2e665f; }
+
+/* Punched and ruled manifest paper on a quiet drawing board. */
+.ledger {
+  background: #f1e6cf url("assets/art-pass-02/ledger-paper.svg") center / 100% 100%;
+  border: 0;
+  border-radius: 1px;
+  box-shadow: 6px 9px 0 #8c9b793b, 0 13px 25px #17383955;
+  transform: rotate(.45deg);
+  padding-top: 34px;
+}
+.ledger:before { opacity: 0; }
+.ledger:after {
+  inset: auto 0 -1px;
+  height: 7px;
+  background: radial-gradient(circle at 7px 8px, #3b6260 0 4px, transparent 4.3px) 0 0 / 14px 8px repeat-x;
+  opacity: .9;
+}
+.ledger-clip {
+  background: #91a58d;
+  border: 2px solid #697d6d;
+  border-radius: 4px 5px 2px 2px;
+  box-shadow: 0 2px 1px #29475226;
+  width: 73px;
+  left: 162px;
+  height: 26px;
+  top: -15px;
+  transform: rotate(-1.7deg);
+}
+.ledger-heading { border-bottom: 1px dashed #8d9f7e88; }
+.ledger-heading h2 { font: 29px/1.3 var(--chart-display); letter-spacing: .02em; margin-bottom: 2px; }
+.ledger-heading p { font-size: 11px; color: #72846c; }
+.ledger-heading span { font-size: 15px; color: #6d846d; }
+.postal-seal { border-color: #a08346; color: #937741; font-family: var(--chart-display); border-style: double; opacity: .68; }
+.mail-order { border-bottom: 1px dashed #8d9f7e66; }
+.mail-order > strong { font: bold 25px/1.3 var(--chart-display); }
+.mail-order > span { font-size: 13px; color: #6a806d; }
+.mail-order p { color: #587264; }
+.mail-order b { font-weight: 500; }
+.tide-window strong { color: #365e55; }
+.tide-window p { color: #66806d; }
+.tide-line { margin-top: 5px; height: 12px; border-bottom: 1px solid #95af8f; }
+.tide-line span { height: 1px; background: #6b967c; }
+.tide-line i { background: #547e65; box-shadow: 0 0 0 2px #f1e6cf; }
+.section-heading h3 { font: 17px var(--chart-display); }
+.section-heading > span { color: #7d8a70; }
+.route-list li { border-bottom: 1px dotted #94a1896b; font-size: 14px; }
+.route-list li b { color: #365f53; }
+.route-list li.is-blocked b { color: #a05240; }
+.distance-total { padding-top: 14px; }
+.distance-total > span { color: #597969; }
+.distance-total strong { font-size: 36px; color: #305e53; }
+.distance-total small { color: #6d846d; }
+.route-status {
+  padding: 15px 3px 13px;
+  gap: 12px;
+  background: none;
+  border-top: 2px solid #4d7c6280;
+  border-bottom: 0;
+  margin-top: 17px;
+}
+.route-status h3 { font: bold 27px/1.2 var(--chart-display); color: #2e6653; }
+.route-status p { color: #52775f; font-size: 14px; line-height: 1.65; }
+.state-symbol { border: 0; color: #436f59; width: 32px; height: 32px; }
+.state-symbol svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.route-status.is-blocked { background: none; border-top-color: #b8634e99; }
+.route-status.is-blocked h3 { color: #9e523f; }
+.route-status.is-blocked p { color: #8a5c49; }
+.route-status.is-blocked .state-symbol { color: #a35b45; }
+.ledger-actions { padding-top: 12px; }
+.ledger-actions > button:first-child {
+  height: 76px;
+  border: 0;
+  border-radius: 0;
+  background: transparent url("assets/art-pass-02/dispatch-frame.svg") center / 100% 100% no-repeat;
+  color: #315f51;
+  font: bold 26px var(--chart-display);
+  gap: 10px;
+  box-shadow: 0 4px 5px #655d3610;
+  transition: transform 140ms ease-out, filter 140ms ease-out;
+}
+.ledger-actions > button:first-child:hover:not(:disabled) { background-color: transparent; transform: translateY(-2px); filter: brightness(1.04); }
+.ledger-actions > button:first-child:active:not(:disabled) { transform: translateY(1.5px); filter: brightness(.98); }
+.ledger-actions > button:disabled { color: #8d9580; background-color: transparent; box-shadow: none; filter: grayscale(.7); cursor: not-allowed; }
+.ledger-actions > button:disabled span { font-size: 23px; }
+.ledger-actions img { width: 37px; height: 37px; }
+.ledger-actions b { width: 25px; height: 25px; display: block; }
+.ledger-actions b svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ledger-actions b svg { display: block; }
+.ledger-actions p { color: #71856c; margin-top: 9px; }
+.ledger-actions > button:last-child { color: #54735e; font-size: 14px; display: flex; align-items: center; gap: 7px; }
+.ledger-actions > button:last-child svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.ledger-footnote { color: #8a967b; font-size: 10px; }
+
+dialog { background: #f4ead3 url("assets/art-pass-02/ledger-paper.svg") center / cover; border: 1px solid #a5ae88; border-radius: 2px; }
+dialog::backdrop { background: #17383b88; backdrop-filter: blur(2px); }
+dialog h2 { font: bold 31px var(--chart-display); }
+dialog form { gap: 12px; }
+dialog img { width: 90px; height: 90px; }
+.approval-stamp { width: 300px; color: #638263; border: 3px double #638263; padding: 11px 13px; transform: rotate(-4deg); }
+.approval-stamp strong { display: block; font: bold 20px var(--chart-numbers); letter-spacing: .09em; }
+.approval-stamp span { display: block; font: 25px var(--chart-display); margin: 7px 0; }
+.approval-stamp small { color: inherit; font-size: 10px; }
+dialog[open] .approval-stamp { animation: dispatch-press 190ms ease-out; }
+.sailing-link { background: #3b6b58; border-radius: 2px; font-family: var(--chart-display); font-size: 24px; }
+@keyframes dispatch-press { from { opacity: 0; transform: rotate(-4deg) scale(1.1); } to { opacity: 1; transform: rotate(-4deg) scale(1); } }
+@keyframes warning-ink { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

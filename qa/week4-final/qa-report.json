@@ -1,0 +1,534 @@
+{
+  "testedAt": "2026-10-06T08:21:53.699Z",
+  "browser": "Microsoft Edge / Playwright",
+  "assertions": [
+    {
+      "name": "Root contains exactly six screens, no iframe and no old island picker",
+      "passed": true
+    },
+    {
+      "name": "Mission return leads to Harbor",
+      "passed": true
+    },
+    {
+      "name": "Unsaved mailbag locks map entry",
+      "passed": true
+    },
+    {
+      "name": "Wrong mail fails save and cannot enter map",
+      "passed": true
+    },
+    {
+      "name": "Blue envelope recovery saves the task mailbag",
+      "passed": true
+    },
+    {
+      "name": "Mailbag → Mission → Escape preserves saved mailbag",
+      "passed": true
+    },
+    {
+      "name": "First formal entry uses 5500ms full roll and MAP_REVEALING",
+      "passed": true
+    },
+    {
+      "name": "Before 200ms clicks and skip keys do not reveal or confirm",
+      "passed": true
+    },
+    {
+      "name": "Reveal locks route, reset and keyboard mutation",
+      "passed": true
+    },
+    {
+      "name": "Chart transform stays unchanged at 0%, 35% and 70%",
+      "passed": true
+    },
+    {
+      "name": "Mask reveals 35% of unscaled final chart",
+      "passed": true,
+      "detail": "inset(0px 65% 0px 0px)"
+    },
+    {
+      "name": "Single roll has curved caps, inner crease and separate cast shadow",
+      "passed": true
+    },
+    {
+      "name": "Natural completion removes temporary roll and restores focus/input",
+      "passed": true,
+      "detail": {
+        "rolls": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "willChange": "auto",
+        "ledger": "1",
+        "focused": "waypoint-1",
+        "animations": 0
+      }
+    },
+    {
+      "name": "Ready route matches original reference geometry and 2.4nm distance",
+      "passed": true
+    },
+    {
+      "name": "Valid but unconfirmed route cannot enter Sailing",
+      "passed": true
+    },
+    {
+      "name": "Unconfirmed sailing guard enforces Map",
+      "passed": true
+    },
+    {
+      "name": "Final SVG viewBox, screen matrix and collision proxies match Week4",
+      "passed": true,
+      "detail": {
+        "viewBox": "0 0 1400 930",
+        "matrix": [
+          0.9849368605808525,
+          -0.004297625058954688,
+          0.004297625058954688,
+          0.9849368605808525,
+          44.545801940989385,
+          123.01269737117191
+        ],
+        "proxy": [
+          "<ellipse id=\"fog-obstacle\" data-obstacle=\"fog\" cx=\"730\" cy=\"555\" rx=\"205\" ry=\"125\" class=\"shoal obstacle\"></ellipse>",
+          "<ellipse id=\"wreck-obstacle\" data-obstacle=\"wreck\" cx=\"1065\" cy=\"737\" rx=\"92\" ry=\"58\" class=\"shoal obstacle\"></ellipse>",
+          "<path id=\"port-land\" data-obstacle=\"coast\" class=\"obstacle land\" d=\"M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z\"></path>",
+          "<path id=\"blue-land\" data-obstacle=\"coast\" class=\"obstacle land\" d=\"M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z\"></path>",
+          "<path id=\"lighthouse-land\" data-obstacle=\"coast\" class=\"obstacle\" d=\"M-36 24Q-32-10-7-20T31 22Z\" fill=\"#b8c5ad\" stroke=\"#8aab9a\" stroke-width=\"2\"></path>"
+        ],
+        "paperClip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)"
+      }
+    },
+    {
+      "name": "Real W1 drag blocks the segment through Fog Reef",
+      "passed": true,
+      "detail": {
+        "waypoints": [
+          {
+            "x": 484.999961716037,
+            "y": 665.000021988067
+          },
+          {
+            "x": 940,
+            "y": 315
+          }
+        ],
+        "confirmed": false,
+        "valid": false,
+        "segments": [
+          {
+            "a": {
+              "x": 275,
+              "y": 720
+            },
+            "b": {
+              "x": 484.999961716037,
+              "y": 665.000021988067
+            },
+            "bearing": 72.95685516790087,
+            "distance": 0.4691362031391052,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 484.999961716037,
+              "y": 665.000021988067
+            },
+            "b": {
+              "x": 940,
+              "y": 315
+            },
+            "bearing": 47.99854427759442,
+            "distance": 1.3076301656542908,
+            "hazards": [
+              "fog"
+            ],
+            "blocked": true,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 940,
+              "y": 315
+            },
+            "b": {
+              "x": 1115,
+              "y": 255
+            },
+            "bearing": 68.13046689519149,
+            "distance": 0.4026906661338432,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          }
+        ],
+        "total": 2.179457034927239
+      }
+    },
+    {
+      "name": "Blocked state locks confirm and shows hatch, warning and recovery ghost",
+      "passed": true
+    },
+    {
+      "name": "Blocked plan cannot confirm or sail",
+      "passed": true
+    },
+    {
+      "name": "Moving W1 around north passage restores valid plan",
+      "passed": true
+    },
+    {
+      "name": "Keyboard moves W1 by original 8 chart units",
+      "passed": true
+    },
+    {
+      "name": "Confirm records a valid plan in Root state",
+      "passed": true
+    },
+    {
+      "name": "Confirmation keeps Blue envelope ×1 and Blue Tide north pier",
+      "passed": true
+    },
+    {
+      "name": "Editing a confirmed plan revokes confirmation and saved sailing plan",
+      "passed": true
+    },
+    {
+      "name": "Map return preserves saved Blue envelope",
+      "passed": true
+    },
+    {
+      "name": "Returning uses only 180ms quick fade",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "mode": "quick",
+        "elapsed": 33.19999999999901,
+        "duration": 180,
+        "finishedAt": 6833.799999999814
+      }
+    },
+    {
+      "name": "Edited W1/W2 survive returning",
+      "passed": true
+    },
+    {
+      "name": "Reload preserves saved mail and draft without replay",
+      "passed": true
+    },
+    {
+      "name": "Confirmed map enters original Canvas Sailing in same root document",
+      "passed": true
+    },
+    {
+      "name": "Early delivery is rejected by actual sailing engine",
+      "passed": true
+    },
+    {
+      "name": "Sailing map control still works",
+      "passed": true
+    },
+    {
+      "name": "Sailing pause stops motion",
+      "passed": true
+    },
+    {
+      "name": "Real keyboard sailing reaches delivery circle",
+      "passed": true,
+      "detail": {
+        "x": 762.01,
+        "y": 173.24,
+        "heading": 71.13,
+        "speed": 32,
+        "rudder": 0,
+        "throttle": 1,
+        "distance": 71.85,
+        "elapsed": 21.98,
+        "readyToDeliver": true,
+        "paused": false,
+        "mapOpen": false,
+        "delivered": false
+      }
+    },
+    {
+      "name": "Actual delivery opens Result with planned distance",
+      "passed": true
+    },
+    {
+      "name": "Reward is credited exactly once",
+      "passed": true
+    },
+    {
+      "name": "Reward return completes Harbor flow",
+      "passed": true
+    },
+    {
+      "name": "New mission resets reveal flag, bag and plan",
+      "passed": true
+    },
+    {
+      "name": "New mission permits full roll again",
+      "passed": true
+    },
+    {
+      "name": "New mission route resets to original safe waypoints",
+      "passed": true
+    },
+    {
+      "name": "Skip mouse fully restores map, focus and controls",
+      "passed": true,
+      "detail": {
+        "rolls": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "willChange": "auto",
+        "ledger": "1",
+        "focused": "waypoint-1",
+        "animations": 0
+      }
+    },
+    {
+      "name": "Skip mouse has no leftover animation or accidental action",
+      "passed": true
+    },
+    {
+      "name": "Skip Enter fully restores map, focus and controls",
+      "passed": true,
+      "detail": {
+        "rolls": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "willChange": "auto",
+        "ledger": "1",
+        "focused": "waypoint-1",
+        "animations": 0
+      }
+    },
+    {
+      "name": "Skip Enter has no leftover animation or accidental action",
+      "passed": true
+    },
+    {
+      "name": "Skip Space fully restores map, focus and controls",
+      "passed": true,
+      "detail": {
+        "rolls": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "willChange": "auto",
+        "ledger": "1",
+        "focused": "waypoint-1",
+        "animations": 0
+      }
+    },
+    {
+      "name": "Skip Space has no leftover animation or accidental action",
+      "passed": true
+    },
+    {
+      "name": "Skip Escape fully restores map, focus and controls",
+      "passed": true,
+      "detail": {
+        "rolls": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "willChange": "auto",
+        "ledger": "1",
+        "focused": "waypoint-1",
+        "animations": 0
+      }
+    },
+    {
+      "name": "Skip Escape has no leftover animation or accidental action",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion uses 150ms fade, no traveling roll",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "mode": "reduced",
+        "elapsed": 104.26600000000002,
+        "duration": 150,
+        "finishedAt": 0
+      }
+    },
+    {
+      "name": "Reduced motion retains route validation, confirmation and sailing gate",
+      "passed": true
+    },
+    {
+      "name": "1920×1080 scene fits during roll",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "name": "1920×1080 reveal leaves chart coordinate transform unchanged",
+      "passed": true
+    },
+    {
+      "name": "1920×1080 real pointer collision and recovery works",
+      "passed": true
+    },
+    {
+      "name": "1366×768 scene fits during roll",
+      "passed": true,
+      "detail": {
+        "x": 0.33331298828125,
+        "y": 0,
+        "width": 1365.3334350585938,
+        "height": 768
+      }
+    },
+    {
+      "name": "1366×768 reveal leaves chart coordinate transform unchanged",
+      "passed": true
+    },
+    {
+      "name": "1366×768 real pointer collision and recovery works",
+      "passed": true
+    },
+    {
+      "name": "All 157 protected map logic, old QA, assets and original sailing/styles files remain byte-identical",
+      "passed": true,
+      "detail": {
+        "protected": 157,
+        "changed": [],
+        "auditedAt": "2026-10-06T08:36:53.611544+00:00"
+      }
+    },
+    {
+      "name": "Browser has no runtime/console errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Browser has no failed or missing resources",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "passed": 59,
+  "total": 59,
+  "errors": [],
+  "networkFailures": [],
+  "evidence": {
+    "arrival": {
+      "screen": "sailing",
+      "stamps": 120,
+      "missionAccepted": true,
+      "selectedItem": "blue-envelope",
+      "mailbagSaved": true,
+      "selectedIsland": "blue",
+      "rewardClaimed": false,
+      "completed": false,
+      "missionReturnTarget": "mailbag",
+      "activeCategory": "letters",
+      "routePlan": {
+        "commission": "TP-042",
+        "destination": "blue-tide-north-pier",
+        "start": {
+          "x": 275,
+          "y": 720
+        },
+        "w1": {
+          "x": 520,
+          "y": 355
+        },
+        "w2": {
+          "x": 940,
+          "y": 315
+        },
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 355
+          },
+          {
+            "x": 940,
+            "y": 315
+          }
+        ],
+        "distance": 2.357053401914148,
+        "bearings": [
+          29.83119307297909,
+          83.63825523695493,
+          68.13046689519149
+        ],
+        "segments": [
+          {
+            "a": {
+              "x": 275,
+              "y": 720
+            },
+            "b": {
+              "x": 520,
+              "y": 355
+            },
+            "bearing": 29.83119307297909,
+            "distance": 1.0518795509753627,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 520,
+              "y": 355
+            },
+            "b": {
+              "x": 940,
+              "y": 315
+            },
+            "bearing": 83.63825523695493,
+            "distance": 0.9024831848049422,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 940,
+              "y": 315
+            },
+            "b": {
+              "x": 1115,
+              "y": 255
+            },
+            "bearing": 68.13046689519149,
+            "distance": 0.4026906661338432,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          }
+        ],
+        "valid": true,
+        "confirmed": true
+      },
+      "mapRevealSeen": true,
+      "mapPhase": "MAP_CONFIRMED",
+      "missionRound": 1,
+      "sailing": {
+        "x": 762.01,
+        "y": 173.24,
+        "heading": 71.13,
+        "speed": 32,
+        "rudder": 0,
+        "throttle": 1,
+        "distance": 71.85,
+        "elapsed": 21.98,
+        "readyToDeliver": true,
+        "paused": false,
+        "mapOpen": false,
+        "delivered": false
+      }
+    }
+  }
+}

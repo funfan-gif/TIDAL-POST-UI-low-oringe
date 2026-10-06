@@ -1,0 +1,18 @@
+[
+  {
+    "file": "map-reveal-flow.webm",
+    "frames": 17,
+    "firstTimestamp": 51,
+    "lastTimestamp": 2479,
+    "durationMs": 2513,
+    "metadataAdded": true
+  },
+  {
+    "file": "mailbag-to-sailing.webm",
+    "frames": 68,
+    "firstTimestamp": 51,
+    "lastTimestamp": 8477,
+    "durationMs": 8511,
+    "metadataAdded": true
+  }
+]

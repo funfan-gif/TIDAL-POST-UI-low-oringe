@@ -1,0 +1,271 @@
+{
+  "generatedAt": "2026-10-05T16:57:23.262Z",
+  "capture": "Natural playback; no timeline seek, pause or speed override",
+  "passed": 17,
+  "total": 17,
+  "samples": [
+    {
+      "elapsed": 1504.1,
+      "clip": "inset(0px 89.2221% 0px 0px)",
+      "revealed": 0.10777900000000007,
+      "rollX": 150.89,
+      "matrix": [
+        0.9849368605808525,
+        -0.004297625058954688,
+        0.004297625058954688,
+        0.9849368605808525,
+        44.545801940989385,
+        123.01269737117191
+      ],
+      "inert": true,
+      "ledgerOpacity": "0"
+    },
+    {
+      "elapsed": 3004.2,
+      "clip": "inset(0px 40.6508% 0px 0px)",
+      "revealed": 0.593492,
+      "rollX": 830.889,
+      "matrix": [
+        0.9849368605808525,
+        -0.004297625058954688,
+        0.004297625058954688,
+        0.9849368605808525,
+        44.545801940989385,
+        123.01269737117191
+      ],
+      "inert": true,
+      "ledgerOpacity": "0"
+    },
+    {
+      "elapsed": 4504.1,
+      "clip": "inset(0px 2.59621% 0px 0px)",
+      "revealed": 0.9740379,
+      "rollX": 1363.65,
+      "matrix": [
+        0.9849368605808525,
+        -0.004297625058954688,
+        0.004297625058954688,
+        0.9849368605808525,
+        44.545801940989385,
+        123.01269737117191
+      ],
+      "inert": true,
+      "ledgerOpacity": "0"
+    }
+  ],
+  "checks": [
+    {
+      "name": "First saved-mail entry uses 5500ms full reveal",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "mode": "full",
+        "elapsed": 79.09999999999995,
+        "duration": 5500,
+        "finishedAt": 0
+      }
+    },
+    {
+      "name": "After 1.5 seconds only the early part is unfolded",
+      "passed": true,
+      "detail": {
+        "elapsed": 1504.1,
+        "clip": "inset(0px 89.2221% 0px 0px)",
+        "revealed": 0.10777900000000007,
+        "rollX": 150.89,
+        "matrix": [
+          0.9849368605808525,
+          -0.004297625058954688,
+          0.004297625058954688,
+          0.9849368605808525,
+          44.545801940989385,
+          123.01269737117191
+        ],
+        "inert": true,
+        "ledgerOpacity": "0"
+      }
+    },
+    {
+      "name": "Route confirmation stays locked while unfolding",
+      "passed": true
+    },
+    {
+      "name": "At 3 seconds the roll is visibly in the middle",
+      "passed": true,
+      "detail": {
+        "elapsed": 3004.2,
+        "clip": "inset(0px 40.6508% 0px 0px)",
+        "revealed": 0.593492,
+        "rollX": 830.889,
+        "matrix": [
+          0.9849368605808525,
+          -0.004297625058954688,
+          0.004297625058954688,
+          0.9849368605808525,
+          44.545801940989385,
+          123.01269737117191
+        ],
+        "inert": true,
+        "ledgerOpacity": "0"
+      }
+    },
+    {
+      "name": "At 4.5 seconds the roll is still present near the far edge",
+      "passed": true,
+      "detail": {
+        "elapsed": 4504.1,
+        "clip": "inset(0px 2.59621% 0px 0px)",
+        "revealed": 0.9740379,
+        "rollX": 1363.65,
+        "matrix": [
+          0.9849368605808525,
+          -0.004297625058954688,
+          0.004297625058954688,
+          0.9849368605808525,
+          44.545801940989385,
+          123.01269737117191
+        ],
+        "inert": true,
+        "ledgerOpacity": "0"
+      }
+    },
+    {
+      "name": "Roll and paper mask travel together without scaling",
+      "passed": true,
+      "detail": [
+        {
+          "elapsed": 1504.1,
+          "clip": "inset(0px 89.2221% 0px 0px)",
+          "revealed": 0.10777900000000007,
+          "rollX": 150.89,
+          "matrix": [
+            0.9849368605808525,
+            -0.004297625058954688,
+            0.004297625058954688,
+            0.9849368605808525,
+            44.545801940989385,
+            123.01269737117191
+          ],
+          "inert": true,
+          "ledgerOpacity": "0"
+        },
+        {
+          "elapsed": 3004.2,
+          "clip": "inset(0px 40.6508% 0px 0px)",
+          "revealed": 0.593492,
+          "rollX": 830.889,
+          "matrix": [
+            0.9849368605808525,
+            -0.004297625058954688,
+            0.004297625058954688,
+            0.9849368605808525,
+            44.545801940989385,
+            123.01269737117191
+          ],
+          "inert": true,
+          "ledgerOpacity": "0"
+        },
+        {
+          "elapsed": 4504.1,
+          "clip": "inset(0px 2.59621% 0px 0px)",
+          "revealed": 0.9740379,
+          "rollX": 1363.65,
+          "matrix": [
+            0.9849368605808525,
+            -0.004297625058954688,
+            0.004297625058954688,
+            0.9849368605808525,
+            44.545801940989385,
+            123.01269737117191
+          ],
+          "inert": true,
+          "ledgerOpacity": "0"
+        }
+      ]
+    },
+    {
+      "name": "Planning ledger waits until the paper has unfolded",
+      "passed": true
+    },
+    {
+      "name": "Actual natural playback lasts between 5 and 6 seconds",
+      "passed": true,
+      "detail": {
+        "duration": 5431.89999999851,
+        "phases": [
+          {
+            "phase": "MAP_REVEALING",
+            "time": 1265.2999999970198
+          },
+          {
+            "phase": "MAP_READY",
+            "time": 6697.19999999553
+          }
+        ]
+      }
+    },
+    {
+      "name": "Completion restores paper edge, controls and W1 focus",
+      "passed": true,
+      "detail": {
+        "temporary": 0,
+        "inert": false,
+        "clip": "polygon(0.1% 0.2%, 9% 0.3%, 11% 0px, 24% 0.3%, 39% 0px, 50% 0.2%, 63% 0px, 77% 0.2%, 87% 0.1%, 99.8% 0.2%, 99.9% 12%, 99.7% 24%, 100% 38%, 99.8% 51%, 100% 66%, 99.7% 83%, 99.9% 99.6%, 88% 99.8%, 79% 99.6%, 67% 100%, 53% 99.7%, 39% 99.9%, 26% 99.7%, 14% 100%, 0.2% 99.7%, 0.4% 88%, 0px 76%, 0.3% 62%, 0.1% 46%, 0.3% 31%, 0px 17%)",
+        "ledger": "1",
+        "focus": "waypoint-1"
+      }
+    },
+    {
+      "name": "Returning to the map still uses 180ms fade",
+      "passed": true,
+      "detail": {
+        "active": false,
+        "mode": "quick",
+        "elapsed": 0,
+        "duration": 180,
+        "finishedAt": 9303.5
+      }
+    },
+    {
+      "name": "Skip Enter clears roll and restores input",
+      "passed": true
+    },
+    {
+      "name": "Skip   clears roll and restores input",
+      "passed": true
+    },
+    {
+      "name": "Skip Escape clears roll and restores input",
+      "passed": true
+    },
+    {
+      "name": "Skip click clears roll and restores input",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion stays a 150ms fade",
+      "passed": true,
+      "detail": {
+        "active": false,
+        "mode": "reduced",
+        "elapsed": 0,
+        "duration": 150,
+        "finishedAt": 376
+      }
+    },
+    {
+      "name": "All 161 protected original files remain unchanged",
+      "passed": true,
+      "detail": {
+        "count": 161,
+        "changed": []
+      }
+    },
+    {
+      "name": "Browser playback has no runtime or missing-resource errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

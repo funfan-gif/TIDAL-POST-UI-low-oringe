@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="300" viewBox="0 0 460 300">
+  <defs>
+    <filter id="wet" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".037" numOctaves="2" seed="31" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="5.5"/><feGaussianBlur stdDeviation=".7"/></filter>
+    <pattern id="sand" width="37" height="31" patternUnits="userSpaceOnUse"><path d="M7 6h1m16 12h1m-9 9h2" stroke="#a5a68a" stroke-width="1.25" stroke-linecap="round" opacity=".43"/></pattern>
+    <path id="shoal" d="M27 141Q22 119 40 101L67 97Q78 83 77 62L106 58 125 37Q146 39 155 24L186 28 204 18Q229 24 246 36L277 31Q304 34 317 51L333 58 349 74Q371 78 387 96L411 103 411 125Q432 136 435 163L423 179 426 199Q409 217 393 217L370 239 347 232Q327 252 303 246L280 260 257 249Q240 267 218 260L197 266 177 252Q150 257 130 244L108 249 91 233Q74 233 65 215L47 210 43 192Q22 189 23 170L16 154Z"/>
+  </defs>
+  <!-- Watercolour sand lies beneath rock clusters; there is no solid land island. -->
+  <g filter="url(#wet)">
+    <path d="M16 124L32 94 69 84 74 53 109 45 141 15 178 15 203 6 251 20 280 20 322 39 349 56 382 67 424 92 425 123 449 145 447 179 434 213 400 230 373 252 345 249 310 262 279 276 250 263 214 277 174 269 128 261 99 260 77 242 53 235 33 211 19 192 6 161Z" fill="#b6c8b6" opacity=".19"/>
+    <use href="#shoal" fill="#d3cfaa" opacity=".58"/>
+    <path d="M74 102Q98 64 155 76T230 70Q278 61 312 105L333 142Q299 175 241 156T154 183Q113 184 76 153Z" fill="#dcd5ae" opacity=".42"/>
+    <path d="M87 186Q129 165 158 201T248 215Q282 199 322 225L292 249 249 244 218 255 162 243 123 238Z" fill="#b7c0a5" opacity=".31"/>
+    <path d="M281 76Q325 59 355 100L393 119 409 159Q386 181 350 153T294 143Z" fill="#b3c0a8" opacity=".34"/>
+    <path d="M35 129Q73 112 106 149L83 180 50 167Z" fill="#bdc7ad" opacity=".34"/>
+    <use href="#shoal" fill="url(#sand)"/>
+  </g>
+  <g fill="none" stroke="#a4b39b" stroke-width="1.1" opacity=".46" stroke-linecap="round">
+    <path d="M73 92q21-24 46-26l23-21m14 13q38-19 72-3M324 87q39 14 50 40m21 56-19 27M89 210q15 21 40 17m161 8 18-10"/>
+    <path d="M78 124q24-30 52-19m86-50q51 12 75 31m29 101q-9 20-37 23m-152 11q-20-4-25-20"/>
+  </g>
+  <!-- Two submerged rocks, flatter and lower in contrast. -->
+  <g fill="#91ada4" fill-opacity=".43" stroke="#7c9c90" stroke-opacity=".48" stroke-width="1.1">
+    <path d="M307 100l6-10 14-4 10 6 4 12-11 9-17-3Z"/><path d="M136 225l4-8 12-3 12 6-3 11-15 5-11-5Z"/>
+  </g>
+  <!-- Three exposed rock groups: broken, rounded silhouettes with pale wet tops. -->
+  <g stroke="#68867d" stroke-width="1.45" stroke-linejoin="round">
+    <path d="M81 150l4-13 12-5 10-11 14 4 7 12 12 5 1 12-10 10-22 1-17-7Z" fill="#809c90"/>
+    <path d="M84 144l15-5 10-10 10 2 2 9-14 9-15-1Z" fill="#b0c1aa" stroke-width=".9"/>
+    <path d="M155 82l8-14 14-1 9-9 14 7 5 18-10 10-25 1Z" fill="#80998d"/>
+    <path d="M161 77l17-4 8-8 11 5-4 10-15 5Z" fill="#b8c5af" stroke-width=".9"/>
+    <path d="M340 180l4-12 10-7 16-1 7-12 13 7 4 16 10 9-4 14-20 6-24-6Z" fill="#7d9a8e"/>
+    <path d="M349 174l9-7 14-1 9-10 8 11-10 10-20 2Z" fill="#b2c2ac" stroke-width=".9"/>
+  </g>
+  <!-- Interrupted foam traces, not a continuous pictogram underline. -->
+  <g fill="none" stroke="#e6eee0" stroke-width="2.1" stroke-linecap="round" opacity=".82">
+    <path d="M77 163l8 4m8 4q11 6 24 3m13-4 10-6M152 94l7 5m10 2q20 2 29-4m7-4 5-5M335 190l7 7m9 4q16 10 30 6m12-3 10-5M307 114l8 3m15 0 7-4M133 235l10 4m10-1 8-3"/>
+  </g>
+  <!-- Quiet hand-painted mist: static, broken washes around the northern reefs. -->
+  <g filter="url(#wet)" fill="#e5eee8" fill-opacity=".5">
+    <path d="M57 112Q85 88 130 98T195 105L181 121Q145 111 119 118T70 123Z"/>
+    <path d="M169 56Q210 39 245 61T308 76L296 88Q260 88 229 74T181 73Z"/>
+    <path d="M284 167Q324 144 364 155T417 179L408 190Q381 175 356 178T295 182Z"/>
+  </g>
+  <g font-family="Georgia,serif" font-style="italic" font-size="16" fill="#839d89" opacity=".8"><text x="238" y="117">5 m</text><text x="294" y="217">4 m</text></g>
+</svg>

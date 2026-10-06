@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="潮汐邮局第四周：固定目的地、可拖动航点与低潮航线判断。">
+  <title>潮汐邮局 · 邮务航海图桌</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="week4-map.css">
+  <link rel="stylesheet" href="art-pass-02.css">
+  <script src="week4-map.js" defer></script>
+</head>
+<body>
+<main class="game-stage" aria-label="潮汐邮局邮务航海图桌">
+  <header class="desk-heading">
+    <a class="back-link" href="../index.html?capture=03-mailbag" aria-label="返回 V3 邮袋"><img src="../assets/icons/01_back.png" alt=""><span>返回邮袋</span></a>
+    <div class="desk-title"><span>潮汐邮局 <i>/</i> Tidal Post</span><h1>邮务航海图桌 <small>Mail Route Chart</small></h1></div>
+    <div class="desk-time"><svg class="sun-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="10"/><path d="M24 3v6m0 30v6M3 24h6m30 0h6M9 9l5 5m20 20 5 5M9 39l5-5m20-20 5-5"/></svg><div><strong>06:40</strong><span>低潮回升 · 北线开放</span></div></div>
+  </header>
+
+  <section class="chart-paper" aria-label="可交互的原创航海图">
+    <svg id="chart" viewBox="0 0 1400 930" aria-labelledby="chartTitle chartDesc">
+      <title id="chartTitle">旧邮局港至蓝潮岛北侧码头</title>
+      <desc id="chartDesc">拖动 W1 和 W2 规划航线。北航道水深充足，雾礁浅滩与旧沉船礁在低潮不可通行。航段数据及错误原因同步显示于航线记录。</desc>
+      <defs>
+        <linearGradient id="water" x2=".7" y2="1"><stop stop-color="#e4eee7"/><stop offset=".5" stop-color="#cddfd8"/><stop offset="1" stop-color="#b9d3cd"/></linearGradient>
+        <linearGradient id="land" x2=".8" y2="1"><stop stop-color="#d8dfba"/><stop offset=".55" stop-color="#b6c6a4"/><stop offset="1" stop-color="#90b4a4"/></linearGradient>
+        <pattern id="shoalDots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="#8b957a" opacity=".5"/><circle cx="12" cy="12" r=".9" fill="#8b957a" opacity=".4"/></pattern>
+        <pattern id="dangerHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V14" stroke="#b36353" stroke-width="3" opacity=".65"/></pattern>
+        <pattern id="paperGrain" width="130" height="100" patternUnits="userSpaceOnUse"><path d="M3 5h2m29 17h1m43 30h2m30 31h1M16 79h1m37 14h2m28-85h1m28 21h1" stroke="#54766b" stroke-width="1" opacity=".17"/></pattern>
+        <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".024" numOctaves="3" seed="7" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="7"/></filter>
+        <filter id="softShadow"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#294752" flood-opacity=".16"/></filter>
+        <filter id="inkStroke" x="-8%" y="-8%" width="116%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".17" numOctaves="2" seed="11" result="ink-grain"/><feDisplacementMap in="SourceGraphic" in2="ink-grain" scale=".75"/></filter>
+        <radialGradient id="readingWash" cx=".53" cy=".44" r=".63"><stop stop-color="#f7efdc" stop-opacity=".38"/><stop offset=".65" stop-color="#f7efdc" stop-opacity=".13"/><stop offset="1" stop-color="#f7efdc" stop-opacity="0"/></radialGradient>
+        <filter id="pigment" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".027" numOctaves="3" seed="4" result="pigment-grain"/><feDisplacementMap in="SourceGraphic" in2="pigment-grain" scale="11"/><feGaussianBlur stdDeviation=".75"/></filter>
+        <clipPath id="blue-paint-clip"><path d="M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"/></clipPath>
+        <clipPath id="port-paint-clip"><path d="M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"/></clipPath>
+        <symbol id="tree-mark" viewBox="0 0 36 48"><path d="M7 35Q0 27 8 20 3 11 13 8 15-2 22 8 33 5 30 17 40 26 29 33 25 41 7 35Z" fill="#799c77" fill-opacity=".42"/><path d="M17 44q3-19 1-31m0 18-8-7m9 4 7-8" fill="none" stroke="#557765" stroke-width="1.2" stroke-linecap="round"/></symbol>
+        <symbol id="reef" viewBox="-20 -20 40 40"><path d="M-13 8L-7-8 0 1 7-13 15 8Z" fill="#728b85" stroke="#496c69" stroke-width="2" stroke-linejoin="round"/><path d="M-19 14Q-10 8 0 14T19 14" fill="none" stroke="#688b83" stroke-width="2"/></symbol>
+        <symbol id="buoy" viewBox="-20 -32 40 64"><path d="M-14 18Q0 24 14 18L8 8H-8Z" fill="#fbf8f1" stroke="#3b7474" stroke-width="2.5"/><path d="M0 8V-19M-7-12L0-23 7-12Z" fill="#3b7474" stroke="#3b7474" stroke-width="2"/><path d="M-19 26Q-9 20 0 26T19 26" fill="none" stroke="#3b7474" stroke-width="2"/></symbol>
+        <symbol id="warning" viewBox="0 0 40 40"><path d="M20 3L38 35H2Z" fill="#fbf8f1" stroke="#b36353" stroke-width="3" stroke-linejoin="round"/><path d="M20 13V23" stroke="#9a4f40" stroke-width="3.5" stroke-linecap="round"/><circle cx="20" cy="29" r="2" fill="#9a4f40"/></symbol>
+        <symbol id="house" viewBox="0 0 50 50"><path d="M7 23V44H42V23" fill="#f4efe5" stroke="#6f897d" stroke-width="2"/><path d="M3 24L25 5 46 24Z" fill="#d49b7a" stroke="#927866" stroke-width="2"/><path d="M21 44V30H29V44M11 29h5v7h-5m22-7h5v7h-5" fill="#799e94"/></symbol>
+      </defs>
+
+      <!-- 01 sea / 02 watercolor coastal wash -->
+      <rect width="1400" height="930" fill="url(#water)"/>
+      <image class="sea-paper-texture" href="assets/art-pass-02/sea-paper.png" x="0" y="0" width="1400" height="930" preserveAspectRatio="none" pointer-events="none"/>
+      <rect width="1400" height="930" fill="url(#readingWash)" pointer-events="none"/>
+      <path d="M0 0H1400V930H0Z" fill="url(#paperGrain)"/>
+      <path d="M50 920Q450 730 720 845T1420 810M-40 510Q250 330 480 490T1060 620T1500 510M100 190Q470 275 720 185T1430 120" class="water-wash"/>
+
+      <!-- 03 bathymetry: broad shoal contours do not denote another destination -->
+      <g class="bathymetry">
+        <path d="M358 623C335 464 474 378 665 383S1000 456 1012 573 865 764 676 764 395 735 358 623Z"/>
+        <path d="M428 615C400 490 536 412 684 424S948 474 950 565 831 709 678 713 448 701 428 615Z"/>
+        <ellipse cx="730" cy="555" rx="242" ry="155"/>
+        <path d="M1011 166C907 169 980 288 947 374S1007 622 1242 625 1450 524 1450 353"/>
+        <path d="M1066 230C993 214 1034 303 1000 392S1062 571 1245 567 1415 484 1410 368"/>
+        <path d="M-10 434C165 440 167 534 276 577S421 809 349 910M-10 490C108 504 133 576 235 622S355 820 287 920"/>
+      </g>
+      <g class="depths"><text x="378" y="466">20 m</text><text x="505" y="473">10 m</text><text x="562" y="515">5 m</text><text x="352" y="345">24</text><text x="697" y="294">22</text><text x="910" y="221">18</text><text x="807" y="760">16</text><text x="439" y="793">12</text><text x="1250" y="686">20</text><text x="941" y="818">18</text><text x="1280" y="288">10 m</text><text x="177" y="443">10 m</text></g>
+
+      <!-- 04 shoals / hazards: paths are also the exact collision geometry -->
+      <g id="fog-zone" class="hazard-zone">
+        <ellipse class="shoal-pigment" cx="730" cy="555" rx="202" ry="124" fill="#c2c6a5" filter="url(#pigment)" pointer-events="none"/>
+        <ellipse id="fog-obstacle" data-obstacle="fog" cx="730" cy="555" rx="205" ry="125" class="shoal obstacle"/>
+        <ellipse cx="730" cy="555" rx="205" ry="125" fill="url(#shoalDots)" pointer-events="none"/>
+        <ellipse class="hazard-hatch" cx="730" cy="555" rx="205" ry="125" fill="url(#dangerHatch)" pointer-events="none"/>
+        <use href="#reef" x="581" y="518" width="48" height="48"/><use href="#reef" x="665" y="475" width="42" height="42"/><use href="#reef" x="848" y="550" width="50" height="50"/>
+        <text x="740" y="570" class="place-name" text-anchor="middle">雾礁浅滩</text><text x="740" y="600" class="hazard-note" text-anchor="middle">低潮 · 水深 &lt; 4 m</text>
+      </g>
+      <g id="wreck-zone" class="hazard-zone">
+        <ellipse id="wreck-obstacle" data-obstacle="wreck" cx="1065" cy="737" rx="92" ry="58" class="shoal obstacle"/>
+        <ellipse class="hazard-hatch" cx="1065" cy="737" rx="92" ry="58" fill="url(#dangerHatch)"/>
+        <path d="M1031 730L1090 744 1075 758 1037 748Z M1060 736L1065 707M1040 716L1087 727" fill="#9aa495" stroke="#6b827b" stroke-width="3"/>
+        <text x="1065" y="838" text-anchor="middle" class="small-label">旧沉船礁 · 3 m</text>
+      </g>
+
+      <!-- 02 coastline / original islands -->
+      <g class="coast-wash" filter="url(#wash)">
+        <path d="M0 554C73 529 112 553 154 584S242 628 252 670 242 725 275 768 216 821 218 871L0 930Z"/>
+        <path d="M1070 374C1036 409 1049 449 1017 475S1059 551 1116 539 1187 583 1244 553 1357 539 1379 493 1319 451 1329 420 1244 403 1222 370 1130 343 1070 374Z"/>
+      </g>
+      <g class="coastline">
+        <path id="port-land" data-obstacle="coast" class="obstacle land" d="M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"/>
+        <path id="blue-land" data-obstacle="coast" class="obstacle land" d="M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"/>
+        <path d="M0 675Q77 635 138 695T212 842M1100 460Q1130 385 1184 435T1302 487" class="hill"/>
+        <path d="M1093 490Q1135 453 1178 484T1261 504" class="hill"/>
+        <path d="M24 808Q88 750 149 802M48 734Q92 694 139 748" class="hill"/>
+      </g>
+      <g class="village"><use href="#house" x="94" y="642" width="48" height="48"/><use href="#house" x="158" y="681" width="37" height="37"/><use href="#house" x="1147" y="451" width="43" height="43"/><use href="#house" x="1204" y="472" width="36" height="36"/></g>
+      <g class="island-pigment" pointer-events="none"><image href="assets/art-pass-02/land-pigment.svg" x="1010" y="353" width="373" height="220" preserveAspectRatio="none" clip-path="url(#blue-paint-clip)"/><image href="assets/art-pass-02/land-pigment.svg" x="0" y="560" width="280" height="370" preserveAspectRatio="none" clip-path="url(#port-paint-clip)"/></g>
+      <g class="map-brush-marks" pointer-events="none"><use href="#tree-mark" x="1080" y="434" width="31" height="43"/><use href="#tree-mark" x="1110" y="465" width="25" height="35"/><use href="#tree-mark" x="1251" y="471" width="29" height="39"/><use href="#tree-mark" x="1282" y="488" width="22" height="32"/><use href="#tree-mark" x="43" y="698" width="29" height="41"/><use href="#tree-mark" x="72" y="739" width="25" height="35"/><use href="#tree-mark" x="138" y="775" width="23" height="34"/>
+      <path d="M1087 470q26 30 60 20m64 30q30-2 44-20M37 674q10-14 33-17M85 850q38-5 57-23" class="coast-pencil"/><path d="M1135 406l11 4m-5-12 15 4M173 787l13 3m-20 7 11 3" class="coast-pencil"/></g>
+      <text x="1196" y="425" class="island-name" text-anchor="middle">蓝 潮 岛</text>
+      <path d="M1115 368V255M1102 255H1128" class="pier"/>
+      <path d="M234 714H275M240 704V724M254 704V724" class="pier"/>
+
+      <!-- 05 local chart grid / coordinates -->
+      <g id="grid" class="chart-grid"></g>
+      <g id="grid-labels" class="grid-labels"></g>
+
+      <!-- 06 landmarks / 07 navigation aids -->
+      <g transform="translate(330 535)">
+        <path id="lighthouse-land" data-obstacle="coast" class="obstacle" d="M-36 24Q-32-10-7-20T31 22Z" fill="#b8c5ad" stroke="#8aab9a" stroke-width="2"/>
+        <path d="M-12 19L-8-37H8L13 19Z" fill="#fbf8f1" stroke="#557c75" stroke-width="2.5"/><path d="M-7-37V-49H7V-37M-13-49L0-61 13-49Z" fill="#d49b7a" stroke="#557c75" stroke-width="2"/><path d="M-8-18H10M-10-7H11" stroke="#799b8e" stroke-width="5"/>
+        <path d="M-20-42L-54-63M20-42L54-63" stroke="#bcaa70" stroke-width="2" stroke-dasharray="4 5"/>
+        <text x="-15" y="58" class="small-label" text-anchor="middle">白塔灯塔</text>
+      </g>
+      <use href="#buoy" x="623" y="361" width="36" height="56"/>
+      <text x="673" y="402" class="small-label">邮鸥浮标</text>
+      <use href="#buoy" x="977" y="357" width="32" height="50"/>
+      <text x="1007" y="403" class="small-label">北口航标</text>
+      <text x="669" y="240" class="channel-name">北 航 道</text>
+      <text x="660" y="267" class="small-label">20 m 以上 · 低潮可通行</text>
+
+      <!-- 08 route / 09 waypoints: JS redraws the three segments, never the geography -->
+      <g id="route-underlay" aria-hidden="true"></g>
+      <g id="route-segments" aria-hidden="true"></g>
+      <g id="route-direction-marks" aria-hidden="true" pointer-events="none"></g>
+      <g id="segment-labels" aria-hidden="true"></g>
+      <g id="recovery-ghost" hidden aria-hidden="true"><path d="M485 655Q465 530 520 355"/><circle cx="520" cy="355" r="23"/><text x="520" y="363" text-anchor="middle">W1</text><text x="489" y="317">移至北航道</text></g>
+      <g id="waypoints">
+        <g class="waypoint" id="waypoint-1" role="button" tabindex="0" aria-label="W1 航点，拖动或用方向键调整" aria-describedby="dragHelp"><circle class="hit-area" r="34"/><circle class="waypoint-halo" r="29"/><path class="pin-tag" d="M-25-14L24-16 26 16-23 18Z"/><circle class="waypoint-disc" r="21"/><path class="pin-ink-ring" d="M-22-6Q-19-25 1-24T23 2 4 24-23 1"/><circle class="pin-head" cx="-13" cy="-15" r="4"/><text y="7" text-anchor="middle">W1</text><g class="waypoint-tip"><rect x="-84" y="39" width="168" height="34" rx="10"/><text x="0" y="62" text-anchor="middle">拖动调整 · 方向键微调</text></g></g>
+        <g class="waypoint" id="waypoint-2" role="button" tabindex="0" aria-label="W2 航点，拖动或用方向键调整" aria-describedby="dragHelp"><circle class="hit-area" r="34"/><circle class="waypoint-halo" r="29"/><path class="pin-tag" d="M-25-14L24-16 26 16-23 18Z"/><circle class="waypoint-disc" r="21"/><path class="pin-ink-ring" d="M-22-6Q-19-25 1-24T23 2 4 24-23 1"/><circle class="pin-head" cx="-13" cy="-15" r="4"/><text y="7" text-anchor="middle">W2</text><g class="waypoint-tip"><rect x="-84" y="39" width="168" height="34" rx="10"/><text x="0" y="62" text-anchor="middle">拖动调整 · 方向键微调</text></g></g>
+      </g>
+
+      <!-- 10 fixed endpoints / labels -->
+      <g class="port-marker" transform="translate(275 720)"><circle r="29"/><circle r="20"/><image href="../assets/icons/05_sail.png" x="-26" y="-26" width="52" height="52"/></g>
+      <g class="destination-marker" transform="translate(1115 255)"><circle r="24"/><path d="M-12-8H12V9H-12ZM-12-8L0 2 12-8"/></g>
+      <g class="endpoint-label"><path class="address-paper" d="M279 752L543 749 547 789 544 837 283 842 277 800Z"/><path class="address-rule" d="M294 782Q390 784 455 781"/><text x="294" y="776" class="endpoint-role">当前位置 / 起点</text><text x="294" y="810" class="place-name">旧邮局港</text><text id="port-coordinate" x="294" y="834" class="coordinate"/></g>
+      <g class="endpoint-label destination-label"><path class="address-paper" d="M1012 130L1336 126 1342 165 1337 222 1015 227 1009 179Z"/><path class="address-rule" d="M1028 161Q1170 164 1305 160"/><path class="postal-stripes" d="M1017 141v15m0 9v15m0 9v15"/><text x="1034" y="154" class="endpoint-role">本次邮务 / 固定目的地</text><text x="1034" y="190" class="place-name">蓝潮岛 · 北侧码头</text><text id="target-coordinate" x="1034" y="216" class="coordinate"/></g>
+
+      <!-- 11 state feedback -->
+      <g id="map-warning" hidden><use href="#warning" x="702" y="627" width="36" height="36"/><text x="750" y="653" class="warning-copy">暗礁暴露 · 请绕行</text></g>
+      <g class="chart-caption"><image href="../assets/icons/04_map.png" x="38" y="28" width="77" height="77"/><text x="126" y="58" class="chart-name">北线邮务海图</text><text x="128" y="85" class="small-label">旧邮局港 → 蓝潮岛北侧码头</text><text x="128" y="107" class="chart-number">TP / 042 · LOCAL CHART GRID</text></g>
+      <g class="compass" transform="translate(1222 60)"><circle r="42"/><circle r="34"/><path d="M0-37L9 0 0 37-9 0ZM-37 0L0-9 37 0 0 9Z"/><path d="M0-37L0 0 9 0Z" class="north"/><text y="-47" text-anchor="middle">N</text><text x="53" y="5" text-anchor="middle">E</text><text y="60" text-anchor="middle">S</text><text x="-53" y="5" text-anchor="middle">W</text></g>
+      <g class="map-legend" transform="translate(56 886)"><path d="M0 0H35" class="legend-safe"/><text x="44" y="6">可通行航线</text><use href="#warning" x="206" y="-17" width="28" height="28"/><text x="243" y="6">低潮危险</text><circle cx="411" r="11" class="legend-waypoint"/><text x="432" y="6">可拖动航点</text><path d="M703 0h170m-170-6v12m85-12v12m85-12v12" class="scale-line"/><text x="696" y="25">0</text><text x="837" y="25">0.4 nm</text><text x="1048" y="8" class="chart-number">虚构海域 · 邮务局绘制</text></g>
+      <g id="debug-geometry" hidden pointer-events="none"></g>
+    </svg>
+    <div id="dragHelp" class="chart-instruction"><svg class="drag-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25L25 5M5 16v9h9M16 5h9v9"/></svg> 拖动 W1 / W2 规划航线 <span>·</span> 避开低潮浅滩</div>
+  </section>
+
+  <aside class="ledger" aria-labelledby="ledgerTitle">
+    <div class="ledger-clip" aria-hidden="true"></div>
+    <header class="ledger-heading"><div><p>TP-042 / NORTH ROUTE</p><h2 id="ledgerTitle">邮务航线记录</h2><span>Mail Route Ledger</span></div><div class="postal-seal" aria-hidden="true">潮汐<br>邮务</div></header>
+    <section class="mail-order"><span>本次邮务 · 已接取</span><strong>蓝色信封 ×1</strong><p>送往 <b>蓝潮岛 · 北侧码头</b></p></section>
+    <section class="tide-window"><div><span>潮汐窗口</span><strong>06:40 <i>→</i> 07:20</strong></div><p>低潮回升 · 北航道可通行</p><div class="tide-line" aria-hidden="true"><span></span><i></i></div></section>
+    <section class="route-list"><div class="section-heading"><h3>航段 / Bearing</h3><span>航向 · 海里</span></div><ol id="route-ledger"></ol><div class="distance-total"><span>预计航程</span><strong><span id="total-distance">2.4</span> <small>nm</small></strong></div></section>
+    <section id="route-status" class="route-status" aria-live="polite" aria-atomic="true"><span id="status-icon" class="state-symbol" aria-hidden="true"></span><div><h3 id="status-title">航线安全</h3><p id="status-reason">三个航段均避开低潮浅滩</p><p id="recovery-copy">航点可继续调整，确认后准备出航</p></div></section>
+    <footer class="ledger-actions"><button id="confirm-route" type="button"><img src="../assets/icons/05_sail.png" alt=""><span>确认航线</span><b aria-hidden="true"></b></button><p id="confirm-hint">确认后将航线记入本次邮务</p><button id="reset-route" type="button"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 10Q22 0 24 16T9 25M7 3v8h8"/></svg> 重置航点</button></footer>
+    <span class="ledger-footnote">HARBOR SERVICE / NORTH PASSAGE</span>
+  </aside>
+
+  <dialog id="confirmation" aria-labelledby="confirmation-title"><form method="dialog"><div class="approval-stamp"><strong>ROUTE APPROVED</strong><span>邮务出航许可</span><small>TP-042 / NORTH ROUTE</small></div><img src="../assets/icons/05_sail_selected.png" alt=""><span class="success-label">航线已确认</span><h2 id="confirmation-title">北线邮务，准备出航</h2><p>蓝色信封 ×1 → 蓝潮岛 · 北侧码头</p><p id="confirmed-distance"></p><a class="sailing-link" href="../index.html?capture=05-sailing">出航</a><button type="submit">返回海图调整</button><small>已记入本次邮务航线</small></form></dialog>
+  <output id="debug-panel" hidden></output>
+</main>
+</body>
+</html>
+

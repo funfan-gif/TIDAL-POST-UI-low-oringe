@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>潮汐邮局 · 第四周教师快速演示</title><link rel="icon" href="data:,">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4efe5;color:#294752;font-family:"Microsoft YaHei",sans-serif}
+    main{max-width:1520px;margin:auto;padding:26px 36px 24px}header{display:flex;gap:28px;align-items:flex-start;justify-content:space-between}
+    h1{font:32px/1.3 "KaiTi","SimSun",serif;margin:0 0 10px}p{margin:0;line-height:1.7}header p{color:#60767d;font-size:14px;max-width:850px}
+    .actions{display:flex;gap:10px;flex-shrink:0}button{padding:12px 18px;border:1px solid #8aa7a1;border-radius:5px;color:#294752;background:#fbf8f1;font:14px "Microsoft YaHei",sans-serif;cursor:pointer}
+    #play{background:#326a65;color:#fbf8f1;border-color:#326a65}button:disabled{opacity:.55;cursor:wait}button:focus-visible{outline:3px solid #d6a64c;outline-offset:3px}
+    .progress{display:flex;align-items:center;gap:12px;margin:20px 0 13px;padding:12px 0;border-top:1px solid #b9c7c6;border-bottom:1px solid #b9c7c6;font-size:13px}
+    .progress span{color:#7a8b8b}.progress .active{color:#2f6262;font-weight:bold}.progress i{font-style:normal;color:#8ba3a2}
+    .viewport{background:#203f43;box-shadow:0 12px 32px #29475225;width:100%;aspect-ratio:16/9;position:relative}
+    iframe{width:100%;height:100%;display:block;border:0}#status{font-size:14px;color:#526d65;margin-top:14px;min-height:24px}
+    footer{display:flex;justify-content:space-between;gap:20px;margin-top:10px;font-size:12px;color:#788b87}footer p{max-width:1000px}
+    @media(max-width:900px){main{padding:20px 16px}header{display:block}h1{font-size:25px}.actions{margin-top:15px}.progress{gap:7px;flex-wrap:wrap}.viewport{min-height:280px;aspect-ratio:auto;height:65vw}footer{display:block}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+  </style>
+</head>
+<body><main>
+  <header><div><h1>潮汐邮局 · 第四周变化演示</h1><p>从保存蓝色信封开始，展开经年使用的海图，调整航点、识别危险、确认安全航线，然后出航。可以自己操作，也可以播放一次完整演示。</p></div><div class="actions"><button id="play" disabled>自动演示完整流程</button><button id="restart" disabled>重新开始</button></div></header>
+  <nav class="progress" aria-label="当前演示步骤"><span data-step="mailbag" class="active">保存邮件</span><i>→</i><span data-step="reveal">展开海图</span><i>→</i><span data-step="map">规划与恢复</span><i>→</i><span data-step="confirmed">确认航线</span><i>→</i><span data-step="sailing">开始航行</span></nav>
+  <div class="viewport"><iframe id="prototype" title="可操作的潮汐邮局完整课程原型"></iframe></div>
+  <p id="status" role="status" aria-live="polite">正在准备邮袋……</p>
+  <footer><p>本 HTML 已内嵌界面代码与美术素材，可离线打开。演示调用实际保存、航点判断、确认与出航功能；自动演示包含一次危险航线及恢复。</p><span>Week 04 · TP-042</span></footer>
+</main>
+<script>
+"use strict";
+const source=new TextDecoder().decode(Uint8Array.from(atob('__PROTOTYPE_BASE64__'),c=>c.charCodeAt(0)));
+const frame=document.querySelector('#prototype'),play=document.querySelector('#play'),restart=document.querySelector('#restart'),status=document.querySelector('#status');
+let generation=0,playing=false,loaded=false;
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function state(){return frame.contentWindow?.__tidalPost?.getState();}
+function refresh(){
+  if(!loaded)return;const s=state();if(!s)return;
+  const step=s.screen==='map'?(s.mapPhase==='MAP_REVEALING'?'reveal':s.routePlan?.confirmed?'confirmed':'map'):s.screen;
+  document.querySelectorAll('[data-step]').forEach(el=>el.classList.toggle('active',el.dataset.step===step));
+  const text={mailbag:s.mailbagSaved?'邮袋已保存。点击“查看航海图”，进入 5.5 秒展开。':'蓝色信封已选中。点击“保存邮袋”开始。',
+    reveal:'纸卷正在展开：起卷加速、经过折痕放慢、再展开并停稳。等待完成或按 Enter 跳过。',
+    map:s.routePlan?.valid?'海图已展开。拖动 W1 / W2，或用方向键移动；确认安全航线后才能出航。':'航线穿过危险区域，确认已锁定。把航点移回北航道，或重置航点恢复。',
+    confirmed:'航线已确认，蓝色信封将送往蓝潮岛北侧码头。点击“出航”进入航行。',
+    sailing:'地图规划已结束，邮船开始航行。点击游戏画面后可按 W 加速、A / D 转向，进入灯塔圈后按 E 投递。'}[step];
+  if(text&&status.textContent!==text)status.textContent=text;
+}
+async function waitUntil(test,token,timeout=15000){const until=performance.now()+timeout;while(!test()){if(token!==generation)throw Error('cancelled');if(performance.now()>until)throw Error('演示等待超时，请重新开始。');await sleep(80);}}
+async function reset(){
+  generation++;playing=false;loaded=false;play.disabled=true;restart.disabled=true;
+  const token=generation;
+  await new Promise(resolve=>{frame.addEventListener('load',resolve,{once:true});frame.srcdoc=source;});
+  if(token!==generation)throw Error('cancelled');
+  await waitUntil(()=>frame.contentWindow?.__tidalPost?.getState().screen==='mailbag',token);
+  loaded=true;play.disabled=false;restart.disabled=false;refresh();return token;
+}
+function click(selector){const el=frame.contentDocument.querySelector(selector);if(!el||el.disabled)throw Error('当前操作不可用：'+selector);el.click();}
+play.addEventListener('click',async()=>{
+  let token;
+  try{
+    token=await reset();playing=true;play.disabled=true;
+    click('#saveMailbagButton');refresh();await sleep(850);if(token!==generation)return;
+    click('#goMapButton');refresh();await waitUntil(()=>state().mapPhase==='MAP_READY',token);
+    await sleep(900);if(token!==generation)return;
+    const waypoint=frame.contentDocument.querySelector('#waypoint-1');
+    // Real keyboard handlers update the waypoint and run the existing collision rules.
+    for(let i=0;i<13;i++)waypoint.dispatchEvent(new frame.contentWindow.KeyboardEvent('keydown',{key:'ArrowDown',shiftKey:true,bubbles:true}));
+    for(let i=0;i<4;i++)waypoint.dispatchEvent(new frame.contentWindow.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));
+    if(state().routePlan.valid)throw Error('危险状态未触发，请手动拖动航点检查。');
+    refresh();await sleep(1700);if(token!==generation)return;
+    click('#reset-route');refresh();await sleep(1000);if(token!==generation)return;
+    click('#confirm-route');refresh();await sleep(1300);if(token!==generation)return;
+    click('[data-action="start-sailing"]');await waitUntil(()=>state().screen==='sailing'&&state().sailing.elapsed>0,token);refresh();
+    window.__teacherDemo.lastRun={complete:true,screen:state().screen,mailbagSaved:state().mailbagSaved,confirmed:state().routePlan.confirmed};
+  }catch(error){if(error.message!=='cancelled')status.textContent=error.message;}
+  finally{if(token===generation){playing=false;play.disabled=false;}}
+});
+restart.addEventListener('click',()=>reset());
+frame.addEventListener('load',()=>refresh());
+setInterval(refresh,250);
+window.__teacherDemo={state,lastRun:null,isPlaying:()=>playing,reset};
+reset();
+</script></body></html>

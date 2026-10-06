@@ -1,0 +1,175 @@
+{
+  "generatedAt": "2026-10-06T08:20:08.474Z",
+  "passed": 17,
+  "total": 17,
+  "samples": [
+    {
+      "elapsed": 1504.1,
+      "progress": 0.137366,
+      "rollX": 192.312,
+      "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+      "inert": true
+    },
+    {
+      "elapsed": 3104.1,
+      "progress": 0.41998500000000005,
+      "rollX": 587.979,
+      "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+      "inert": true
+    },
+    {
+      "elapsed": 4504,
+      "progress": 0.9630909,
+      "rollX": 1348.33,
+      "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+      "inert": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "Saved mailbag permits map entry",
+      "passed": true
+    },
+    {
+      "name": "Wear mask remains active throughout the unroll",
+      "passed": true
+    },
+    {
+      "name": "Roll and material mask stay aligned; route input is locked",
+      "passed": true,
+      "detail": [
+        {
+          "elapsed": 1504.1,
+          "progress": 0.137366,
+          "rollX": 192.312,
+          "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+          "inert": true
+        },
+        {
+          "elapsed": 3104.1,
+          "progress": 0.41998500000000005,
+          "rollX": 587.979,
+          "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+          "inert": true
+        },
+        {
+          "elapsed": 4504,
+          "progress": 0.9630909,
+          "rollX": 1348.33,
+          "mask": "url(\"http://127.0.0.1:4174/week4/assets/art-pass-04/paper-edge-mask.svg\")",
+          "inert": true
+        }
+      ]
+    },
+    {
+      "name": "Natural full reveal stays within 5–6 seconds",
+      "passed": true,
+      "detail": {
+        "duration": 5432.799999999814,
+        "phases": [
+          {
+            "phase": "MAP_REVEALING",
+            "time": 1753.3999999999069
+          },
+          {
+            "phase": "MAP_READY",
+            "time": 7186.199999999721
+          }
+        ]
+      }
+    },
+    {
+      "name": "Completed reveal cleans temporary objects and restores controls",
+      "passed": true
+    },
+    {
+      "name": "Actual pointer input triggers dangerous route and disables confirmation",
+      "passed": true
+    },
+    {
+      "name": "Dangerous route cannot start sailing",
+      "passed": true
+    },
+    {
+      "name": "Moving the waypoint back restores a safe route",
+      "passed": true
+    },
+    {
+      "name": "Confirmation saves a valid route",
+      "passed": true
+    },
+    {
+      "name": "Confirmed map enters the existing sailing engine",
+      "passed": true
+    },
+    {
+      "name": "Six printable pages have no clipped notes or overflow",
+      "passed": true,
+      "detail": [
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        },
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        },
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        },
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        },
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        },
+        {
+          "height": 793.6875,
+          "footerBottom": 761.6875,
+          "notesBelowFooter": false,
+          "overflow": false
+        }
+      ]
+    },
+    {
+      "name": "Standalone teacher HTML starts offline at the mailbag",
+      "passed": true
+    },
+    {
+      "name": "Teacher autoplay demonstrates real collision and disabled confirm",
+      "passed": true
+    },
+    {
+      "name": "Teacher autoplay completes save, reveal, failure/recovery, confirm and sailing",
+      "passed": true
+    },
+    {
+      "name": "Single-file teacher demo makes no external resource requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Teacher restart resets to an unsaved blue envelope",
+      "passed": true
+    },
+    {
+      "name": "No runtime or missing-resource errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

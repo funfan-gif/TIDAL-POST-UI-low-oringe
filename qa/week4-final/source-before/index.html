@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="《潮汐邮局》完整课程原型：邮袋、纸卷摊图、航线规划、航行与投递">
+  <title>潮汐邮局｜完整课程原型</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" as="image" href="week4/assets/art-pass-02/cabin-surface.svg">
+  <link rel="preload" as="image" href="week4/assets/art-pass-02/ledger-paper.svg">
+  <link rel="preload" as="image" href="week4/assets/art-pass-02/dispatch-frame.svg">
+  <link rel="stylesheet" href="styles.css?v=3.0.0">
+  <link rel="stylesheet" href="motion.css?v=3.0.0">
+  <script src="sailing.js?v=3.0.0" defer></script>
+  <link rel="stylesheet" href="route-map.css">
+  <link rel="stylesheet" href="map-reveal.css">
+  <script src="route-map.js" defer></script>
+  <script src="map-reveal.js" defer></script>
+  <script src="app.js?v=4.1.0" defer></script>
+</head>
+<body>
+  <main class="prototype-frame" aria-label="潮汐邮局完整课程原型">
+    <header class="topbar">
+      <div class="brand-block" aria-label="项目名称">
+        <img class="brand-mark" src="assets/icons/01_back.png" alt="">
+        <span>
+          <strong class="brand-cn">潮汐邮局</strong>
+          <small class="brand-en">TIDAL POST · HARBOR SERVICE</small>
+        </span>
+      </div>
+      <div class="screen-marker" aria-live="polite">
+        <span id="screenNumber">01 / 06</span>
+        <strong id="screenName">港口</strong>
+      </div>
+      <div class="account-block">
+        <span>邮票</span>
+        <strong id="stampBalance">120</strong>
+      </div>
+    </header>
+
+    <div class="page-stage">
+      <section class="screen is-active" data-screen="harbor" aria-labelledby="harborTitle">
+        <div class="screen-heading">
+          <div>
+            <p class="eyebrow">01 · HARBOR / 今日潮汐 06:40</p>
+            <h1 id="harborTitle" tabindex="-1">旧邮局港</h1>
+            <p class="lead">一封等待回信的委托已经抵达。确认目的地与奖励后，开始本次邮务航行。</p>
+          </div>
+          <span class="status-chip is-ok">今日可出航</span>
+        </div>
+
+        <div class="harbor-layout">
+          <article class="paper-card mission-card">
+            <img class="feature-art" src="assets/icons/02_commission.png" alt="一封盖有邮戳的委托信">
+            <div class="mission-card-copy">
+              <p class="label">当前委托</p>
+              <h2>蓝潮岛的回信</h2>
+              <p class="muted">收件人 艾琳 · 北侧码头</p>
+              <dl class="fact-list">
+                <div><dt>所需邮件</dt><dd>蓝色信封 ×1</dd></div>
+                <div><dt>航程</dt><dd>2.4 海里</dd></div>
+                <div><dt>完成奖励</dt><dd class="reward-text">邮票 +40</dd></div>
+              </dl>
+            </div>
+            <div class="postal-note">
+              <span>港口留言</span>
+              <strong>“退潮前，北侧码头会留一盏灯。”</strong>
+              <small>先查看委托，再整理邮袋。</small>
+            </div>
+            <div class="card-actions">
+              <span class="muted" id="harborMissionStatus">主线进度 0 / 3</span>
+              <button class="button button-primary" type="button" data-action="open-mission">查看委托</button>
+            </div>
+          </article>
+
+          <aside class="paper-card voyage-log">
+            <p class="label">今日航行记录</p>
+            <h2>完成三项准备后即可离港</h2>
+            <ol class="route-outline">
+              <li data-progress="mission"><span>01</span><div><strong>理解委托</strong><small>确认收件人、邮件与奖励</small></div></li>
+              <li data-progress="mailbag"><span>02</span><div><strong>保存邮袋</strong><small>草稿保存后才算准备完成</small></div></li>
+              <li data-progress="route"><span>03</span><div><strong>规划航线</strong><small>潮位会影响岛屿状态</small></div></li>
+            </ol>
+            <div class="tide-note">
+              <span>潮汐提示</span>
+              <strong>06:40—07:20 蓝潮岛北线可达</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="mission" aria-labelledby="missionTitle" hidden>
+        <div class="screen-heading">
+          <div>
+            <p class="eyebrow">02 · MISSION / 委托单 TP-042</p>
+            <h1 id="missionTitle" tabindex="-1">蓝潮岛的回信</h1>
+            <p class="lead">读完委托，再把任务加入本次航行。</p>
+          </div>
+          <span class="status-chip is-warning" id="missionStateChip">尚未接取</span>
+        </div>
+
+        <div class="mission-layout">
+          <article class="paper-card letter-sheet">
+            <div class="letter-hero">
+              <img src="assets/icons/02_commission.png" alt="">
+              <div>
+                <p class="eyebrow">BLUE TIDE ISLAND · NORTH PIER</p>
+                <h2>寄件要求</h2>
+                <blockquote>“请把港口收到的蓝色信封带来。退潮前，北侧码头会留一盏灯。”</blockquote>
+              </div>
+            </div>
+            <dl class="fact-list letter-facts">
+              <div><dt>收件人</dt><dd>艾琳</dd></div>
+              <div><dt>目的地</dt><dd>蓝潮岛 · 北侧码头</dd></div>
+              <div><dt>所需邮件</dt><dd>蓝色信封 ×1</dd></div>
+              <div><dt>完成奖励</dt><dd class="reward-text">邮票 +40</dd></div>
+            </dl>
+            <small class="document-id">TP / 042 · 港口收件章</small>
+          </article>
+
+          <aside class="paper-card contract-panel">
+            <p class="label">出航条件</p>
+            <h2>接取后按顺序完成</h2>
+            <ol class="condition-list">
+              <li class="is-complete"><span>01</span><div><strong>接取委托</strong><small>加入本次航行</small></div></li>
+              <li><span>02</span><div><strong>保存邮袋</strong><small>蓝色信封 ×1</small></div></li>
+              <li><span>03</span><div><strong>规划航线</strong><small>避开浅滩后确认航线</small></div></li>
+            </ol>
+            <div class="panel-actions">
+              <button class="button button-secondary" type="button" data-action="mission-back">返回港口</button>
+              <button class="button button-primary" type="button" data-action="mission-primary">接取并整理邮袋</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="mailbag" aria-labelledby="mailbagTitle" hidden>
+        <div class="screen-heading">
+          <div>
+            <p class="eyebrow">03 · MAILBAG / 草稿与保存是不同状态</p>
+            <h1 id="mailbagTitle" tabindex="-1">整理本次邮袋</h1>
+            <p class="lead">选择蓝色信封并保存；只有“已保存”才满足出航条件。</p>
+          </div>
+          <span class="status-chip is-warning" id="mailbagStatusChip">尚未选择</span>
+        </div>
+
+        <div class="mailbag-layout">
+          <aside class="paper-card category-rail" aria-label="邮袋分类">
+            <p class="label">分类</p>
+            <button type="button" class="category is-current" data-category="letters">信件 <span>2</span></button>
+            <button type="button" class="category" data-category="parcels">包裹 <span>1</span></button>
+            <button type="button" class="category" data-category="materials">材料 <span>4</span></button>
+            <button type="button" class="category" data-category="keepsakes">纪念品 <span>1</span></button>
+            <div class="bag-rule">
+              <span>邮袋规则</span>
+              <strong>选中 ≠ 已保存</strong>
+              <small>离开前记得保存草稿。</small>
+            </div>
+          </aside>
+
+          <div class="paper-card inventory-panel">
+            <div class="inventory-heading">
+              <h2 id="inventoryCategoryLabel">信件</h2>
+              <span id="inventoryHelp">选择要装入本次邮袋的邮件</span>
+            </div>
+            <div class="inventory-list" id="inventoryList">
+              <button type="button" class="inventory-item" data-item="blue-envelope" aria-pressed="false">
+                <img src="assets/icons/03_mailbag.png" alt="">
+                <span><strong>蓝色信封</strong><small>任务所需 · 未投递</small></span>
+                <span class="item-quantity">×1</span>
+              </button>
+              <button type="button" class="inventory-item" data-item="shell-postcard" aria-pressed="false">
+                <img src="assets/icons/02_commission.png" alt="">
+                <span><strong>海盐账单</strong><small>非本次任务所需</small></span>
+                <span class="item-quantity">×1</span>
+              </button>
+            </div>
+            <div class="selection-feedback" id="selectionFeedback">
+              <strong>先选择一件邮件</strong>
+              <span>当前没有编辑中的选择。</span>
+            </div>
+          </div>
+
+          <article class="paper-card bag-summary">
+            <img class="summary-art" src="assets/icons/03_mailbag.png" alt="邮袋">
+            <h2>本次邮袋</h2>
+            <p class="label" id="bagMatchLabel">任务所需 0 / 1</p>
+            <div class="bag-item-preview" id="bagItemPreview">
+              <span class="muted">等待选择邮件</span>
+            </div>
+            <dl class="fact-list compact">
+              <div><dt>重量</dt><dd id="bagWeight">0.0 kg</dd></div>
+              <div><dt>状态</dt><dd id="saveStateText" class="warning-text">待选择</dd></div>
+            </dl>
+            <div class="panel-actions">
+              <button class="button button-secondary" type="button" data-action="view-mission-from-bag">返回委托</button>
+              <button class="button button-primary" id="saveMailbagButton" type="button" data-action="save-mailbag" disabled>保存邮袋</button>
+            </div>
+            <button class="button button-primary full-width" id="goMapButton" type="button" data-action="go-map" disabled>查看航海图</button>
+            <p class="action-reason" id="mailbagNextReason">选择并保存“蓝色信封”后可以前往地图。</p>
+          </article>
+        </div>
+      </section>
+
+<section class="screen integrated-map" data-screen="map" aria-labelledby="mapTitle" hidden>
+<main class="game-stage" aria-label="潮汐邮局邮务航海图桌">
+  <header class="desk-heading">
+    <a class="back-link" href="#mailbag" data-action="map-back" aria-label="返回 V3 邮袋"><img src="assets/icons/01_back.png" alt=""><span>返回邮袋</span></a>
+    <div class="desk-title"><span>潮汐邮局 <i>/</i> Tidal Post</span><h1 id="mapTitle" tabindex="-1">邮务航海图桌 <small>Mail Route Chart</small></h1></div>
+    <div class="desk-time"><svg class="sun-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="10"/><path d="M24 3v6m0 30v6M3 24h6m30 0h6M9 9l5 5m20 20 5 5M9 39l5-5m20-20 5-5"/></svg><div><strong>06:40</strong><span>低潮回升 · 北线开放</span></div></div>
+  </header>
+
+  <section class="chart-paper" aria-label="可交互的原创航海图">
+    <svg id="chart" viewBox="0 0 1400 930" aria-labelledby="chartTitle chartDesc">
+      <title id="chartTitle">旧邮局港至蓝潮岛北侧码头</title>
+      <desc id="chartDesc">拖动 W1 和 W2 规划航线。北航道水深充足，雾礁浅滩与旧沉船礁在低潮不可通行。航段数据及错误原因同步显示于航线记录。</desc>
+      <defs>
+        <linearGradient id="water" x2=".7" y2="1"><stop stop-color="#e4eee7"/><stop offset=".5" stop-color="#cddfd8"/><stop offset="1" stop-color="#b9d3cd"/></linearGradient>
+        <linearGradient id="land" x2=".8" y2="1"><stop stop-color="#d8dfba"/><stop offset=".55" stop-color="#b6c6a4"/><stop offset="1" stop-color="#90b4a4"/></linearGradient>
+        <pattern id="shoalDots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.2" fill="#8b957a" opacity=".5"/><circle cx="12" cy="12" r=".9" fill="#8b957a" opacity=".4"/></pattern>
+        <pattern id="dangerHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V14" stroke="#b36353" stroke-width="3" opacity=".65"/></pattern>
+        <pattern id="paperGrain" width="130" height="100" patternUnits="userSpaceOnUse"><path d="M3 5h2m29 17h1m43 30h2m30 31h1M16 79h1m37 14h2m28-85h1m28 21h1" stroke="#54766b" stroke-width="1" opacity=".17"/></pattern>
+        <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".024" numOctaves="3" seed="7" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="7"/></filter>
+        <filter id="softShadow"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#294752" flood-opacity=".16"/></filter>
+        <filter id="inkStroke" x="-8%" y="-8%" width="116%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".17" numOctaves="2" seed="11" result="ink-grain"/><feDisplacementMap in="SourceGraphic" in2="ink-grain" scale=".75"/></filter>
+        <radialGradient id="readingWash" cx=".53" cy=".44" r=".63"><stop stop-color="#f7efdc" stop-opacity=".38"/><stop offset=".65" stop-color="#f7efdc" stop-opacity=".13"/><stop offset="1" stop-color="#f7efdc" stop-opacity="0"/></radialGradient>
+        <filter id="pigment" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".027" numOctaves="3" seed="4" result="pigment-grain"/><feDisplacementMap in="SourceGraphic" in2="pigment-grain" scale="11"/><feGaussianBlur stdDeviation=".75"/></filter>
+        <clipPath id="blue-paint-clip"><path d="M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"/></clipPath>
+        <clipPath id="port-paint-clip"><path d="M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"/></clipPath>
+        <symbol id="tree-mark" viewBox="0 0 36 48"><path d="M7 35Q0 27 8 20 3 11 13 8 15-2 22 8 33 5 30 17 40 26 29 33 25 41 7 35Z" fill="#799c77" fill-opacity=".42"/><path d="M17 44q3-19 1-31m0 18-8-7m9 4 7-8" fill="none" stroke="#557765" stroke-width="1.2" stroke-linecap="round"/></symbol>
+        <symbol id="reef" viewBox="-20 -20 40 40"><path d="M-13 8L-7-8 0 1 7-13 15 8Z" fill="#728b85" stroke="#496c69" stroke-width="2" stroke-linejoin="round"/><path d="M-19 14Q-10 8 0 14T19 14" fill="none" stroke="#688b83" stroke-width="2"/></symbol>
+        <symbol id="buoy" viewBox="-20 -32 40 64"><path d="M-14 18Q0 24 14 18L8 8H-8Z" fill="#fbf8f1" stroke="#3b7474" stroke-width="2.5"/><path d="M0 8V-19M-7-12L0-23 7-12Z" fill="#3b7474" stroke="#3b7474" stroke-width="2"/><path d="M-19 26Q-9 20 0 26T19 26" fill="none" stroke="#3b7474" stroke-width="2"/></symbol>
+        <symbol id="warning" viewBox="0 0 40 40"><path d="M20 3L38 35H2Z" fill="#fbf8f1" stroke="#b36353" stroke-width="3" stroke-linejoin="round"/><path d="M20 13V23" stroke="#9a4f40" stroke-width="3.5" stroke-linecap="round"/><circle cx="20" cy="29" r="2" fill="#9a4f40"/></symbol>
+        <symbol id="house" viewBox="0 0 50 50"><path d="M7 23V44H42V23" fill="#f4efe5" stroke="#6f897d" stroke-width="2"/><path d="M3 24L25 5 46 24Z" fill="#d49b7a" stroke="#927866" stroke-width="2"/><path d="M21 44V30H29V44M11 29h5v7h-5m22-7h5v7h-5" fill="#799e94"/></symbol>
+      </defs>
+
+      <!-- 01 sea / 02 watercolor coastal wash -->
+      <rect width="1400" height="930" fill="url(#water)"/>
+      <image class="sea-paper-texture" href="week4/assets/art-pass-02/sea-paper.png" x="0" y="0" width="1400" height="930" preserveAspectRatio="none" pointer-events="none"/>
+      <rect width="1400" height="930" fill="url(#readingWash)" pointer-events="none"/>
+      <path d="M0 0H1400V930H0Z" fill="url(#paperGrain)"/>
+      <path d="M50 920Q450 730 720 845T1420 810M-40 510Q250 330 480 490T1060 620T1500 510M100 190Q470 275 720 185T1430 120" class="water-wash"/>
+
+      <!-- 03 bathymetry: broad shoal contours do not denote another destination -->
+      <g class="bathymetry">
+        <path d="M358 623C335 464 474 378 665 383S1000 456 1012 573 865 764 676 764 395 735 358 623Z"/>
+        <path d="M428 615C400 490 536 412 684 424S948 474 950 565 831 709 678 713 448 701 428 615Z"/>
+        <ellipse cx="730" cy="555" rx="242" ry="155"/>
+        <path d="M1011 166C907 169 980 288 947 374S1007 622 1242 625 1450 524 1450 353"/>
+        <path d="M1066 230C993 214 1034 303 1000 392S1062 571 1245 567 1415 484 1410 368"/>
+        <path d="M-10 434C165 440 167 534 276 577S421 809 349 910M-10 490C108 504 133 576 235 622S355 820 287 920"/>
+      </g>
+      <g class="depths"><text x="378" y="466">20 m</text><text x="505" y="473">10 m</text><text x="562" y="515">5 m</text><text x="352" y="345">24</text><text x="697" y="294">22</text><text x="910" y="221">18</text><text x="807" y="760">16</text><text x="439" y="793">12</text><text x="1250" y="686">20</text><text x="941" y="818">18</text><text x="1280" y="288">10 m</text><text x="177" y="443">10 m</text></g>
+
+      <!-- Art Pass 03: visual contours are independent of the frozen collision proxies. -->
+      <g id="fog-zone" class="hazard-zone landmark-terrain" pointer-events="none">
+        <g class="collision-proxy" opacity="0"><ellipse id="fog-obstacle" data-obstacle="fog" cx="730" cy="555" rx="205" ry="125" class="shoal obstacle"/></g>
+        <image class="location-art" href="week4/assets/art-pass-03/fog-reef-shoal.svg" x="500" y="410" width="460" height="300"/>
+        <path class="hazard-hatch shoal-contour" transform="translate(500 410)" d="M27 141Q22 119 40 101L67 97Q78 83 77 62L106 58 125 37Q146 39 155 24L186 28 204 18Q229 24 246 36L277 31Q304 34 317 51L333 58 349 74Q371 78 387 96L411 103 411 125Q432 136 435 163L423 179 426 199Q409 217 393 217L370 239 347 232Q327 252 303 246L280 260 257 249Q240 267 218 260L197 266 177 252Q150 257 130 244L108 249 91 233Q74 233 65 215L47 210 43 192Q22 189 23 170L16 154Z" fill="url(#dangerHatch)"/>
+        <path class="shoal-danger-edge" transform="translate(500 410)" d="M27 141Q22 119 40 101L67 97Q78 83 77 62L106 58 125 37Q146 39 155 24L186 28 204 18Q229 24 246 36L277 31Q304 34 317 51L333 58 349 74Q371 78 387 96L411 103 411 125Q432 136 435 163L423 179 426 199Q409 217 393 217L370 239 347 232Q327 252 303 246L280 260 257 249Q240 267 218 260L197 266 177 252Q150 257 130 244L108 249 91 233Q74 233 65 215L47 210 43 192Q22 189 23 170L16 154Z"/>
+        <image class="reef-danger-art" href="week4/assets/art-pass-03/fog-reef-danger.svg" x="500" y="410" width="460" height="300"/>
+        <text x="740" y="570" class="place-name" text-anchor="middle">雾礁浅滩</text><text x="740" y="600" class="hazard-note" text-anchor="middle">低潮 · 水深 &lt; 4 m</text>
+      </g>
+      <g id="wreck-zone" class="hazard-zone landmark-terrain" pointer-events="none">
+        <g class="collision-proxy" opacity="0"><ellipse id="wreck-obstacle" data-obstacle="wreck" cx="1065" cy="737" rx="92" ry="58" class="shoal obstacle"/></g>
+        <image class="location-art" href="week4/assets/art-pass-03/old-wreck-shoal.svg" x="960" y="650" width="210" height="160"/>
+        <path class="hazard-hatch shoal-contour" transform="translate(960 650)" d="M17 75L28 52 54 43 70 23 96 28 119 19 143 37 157 36 174 51 188 57 199 84 184 103 187 119 159 126 139 142 114 130 91 140 63 120 42 126 30 107 17 101Z" fill="url(#dangerHatch)"/>
+        <text x="1065" y="838" text-anchor="middle" class="small-label">旧沉船礁 · 3 m</text>
+      </g>
+
+      <!-- Frozen land data remain measurable; only their artwork is replaced. -->
+      <g class="coastline collision-proxy" opacity="0" pointer-events="none">
+        <path id="port-land" data-obstacle="coast" class="obstacle land" d="M0 560C73 538 112 560 154 593S234 635 240 670 234 727 263 773 206 824 208 873L0 930Z"/>
+        <path id="blue-land" data-obstacle="coast" class="obstacle land" d="M1080 383C1045 411 1064 448 1030 477S1064 537 1118 526 1186 570 1240 541 1342 530 1364 492 1307 452 1316 428 1237 413 1214 382 1135 356 1080 383Z"/>
+      </g>
+      <g id="terrain" class="landmark-terrain" pointer-events="none" aria-hidden="true">
+        <image id="old-post-harbor-art" class="location-art" href="week4/assets/art-pass-03/old-post-harbor.svg" x="0" y="520" width="340" height="410"/>
+        <image id="blue-tide-island-art" class="location-art" href="week4/assets/art-pass-03/blue-tide-island.svg" x="1000" y="340" width="400" height="260"/>
+        <image class="location-art" href="week4/assets/art-pass-03/postal-harbor.svg" x="205" y="681" width="110" height="105"/>
+        <image id="north-pier-art" class="location-art" href="week4/assets/art-pass-03/north-pier.svg" x="1097" y="270" width="76" height="150"/>
+      </g>
+      <text x="1196" y="425" class="island-name" text-anchor="middle">蓝 潮 岛</text>
+
+      <!-- 05 local chart grid / coordinates -->
+      <g id="grid" class="chart-grid"></g>
+      <g id="grid-labels" class="grid-labels"></g>
+
+      <!-- 06 landmarks / 07 navigation aids -->
+      <g class="landmark-terrain" transform="translate(330 535)" pointer-events="none">
+        <g class="collision-proxy" opacity="0"><path id="lighthouse-land" data-obstacle="coast" class="obstacle" d="M-36 24Q-32-10-7-20T31 22Z" fill="#b8c5ad" stroke="#8aab9a" stroke-width="2"/></g>
+        <image class="location-art" href="week4/assets/art-pass-03/white-lantern-lighthouse.svg" x="-47" y="-74" width="94" height="122"/>
+        <text x="-15" y="58" class="small-label" text-anchor="middle">白塔灯塔</text>
+      </g>
+      <image class="location-art navigation-aid" href="week4/assets/art-pass-03/north-buoy.svg" x="623" y="361" width="36" height="56" pointer-events="none"/>
+      <text x="673" y="402" class="small-label">邮鸥浮标</text>
+      <image class="location-art navigation-aid" href="week4/assets/art-pass-03/north-buoy.svg" x="977" y="357" width="32" height="50" pointer-events="none"/>
+      <text x="1007" y="403" class="small-label">北口航标</text>
+      <text x="669" y="240" class="channel-name">北 航 道</text>
+      <text x="660" y="267" class="small-label">20 m 以上 · 低潮可通行</text>
+
+      <!-- 08 route / 09 waypoints: JS redraws the three segments, never the geography -->
+      <g id="route-underlay" aria-hidden="true"></g>
+      <g id="route-segments" aria-hidden="true"></g>
+      <g id="route-direction-marks" aria-hidden="true" pointer-events="none"></g>
+      <g id="segment-labels" aria-hidden="true"></g>
+      <g id="recovery-ghost" hidden aria-hidden="true"><path d="M485 655Q465 530 520 355"/><circle cx="520" cy="355" r="23"/><text x="520" y="363" text-anchor="middle">W1</text><text x="489" y="317">移至北航道</text></g>
+      <g id="waypoints">
+        <g class="waypoint" id="waypoint-1" role="button" tabindex="0" aria-label="W1 航点，拖动或用方向键调整" aria-describedby="dragHelp"><circle class="hit-area" r="34"/><circle class="waypoint-halo" r="29"/><path class="pin-tag" d="M-25-14L24-16 26 16-23 18Z"/><circle class="waypoint-disc" r="21"/><path class="pin-ink-ring" d="M-22-6Q-19-25 1-24T23 2 4 24-23 1"/><circle class="pin-head" cx="-13" cy="-15" r="4"/><text y="7" text-anchor="middle">W1</text><g class="waypoint-tip"><rect x="-84" y="39" width="168" height="34" rx="10"/><text x="0" y="62" text-anchor="middle">拖动调整 · 方向键微调</text></g></g>
+        <g class="waypoint" id="waypoint-2" role="button" tabindex="0" aria-label="W2 航点，拖动或用方向键调整" aria-describedby="dragHelp"><circle class="hit-area" r="34"/><circle class="waypoint-halo" r="29"/><path class="pin-tag" d="M-25-14L24-16 26 16-23 18Z"/><circle class="waypoint-disc" r="21"/><path class="pin-ink-ring" d="M-22-6Q-19-25 1-24T23 2 4 24-23 1"/><circle class="pin-head" cx="-13" cy="-15" r="4"/><text y="7" text-anchor="middle">W2</text><g class="waypoint-tip"><rect x="-84" y="39" width="168" height="34" rx="10"/><text x="0" y="62" text-anchor="middle">拖动调整 · 方向键微调</text></g></g>
+      </g>
+
+      <!-- 10 fixed endpoints / labels -->
+      <g class="port-marker" transform="translate(275 720)"><circle r="29"/><circle r="20"/><image href="assets/icons/05_sail.png" x="-26" y="-26" width="52" height="52"/></g>
+      <g class="destination-marker" transform="translate(1115 255)"><circle r="24"/><path d="M-12-8H12V9H-12ZM-12-8L0 2 12-8"/></g>
+      <g class="endpoint-label"><path class="address-paper" d="M279 752L543 749 547 789 544 837 283 842 277 800Z"/><path class="address-rule" d="M294 782Q390 784 455 781"/><text x="294" y="776" class="endpoint-role">当前位置 / 起点</text><text x="294" y="810" class="place-name">旧邮局港</text><text id="port-coordinate" x="294" y="834" class="coordinate"/></g>
+      <g class="endpoint-label destination-label"><path class="address-paper" d="M1012 130L1336 126 1342 165 1337 222 1015 227 1009 179Z"/><path class="address-rule" d="M1028 161Q1170 164 1305 160"/><path class="postal-stripes" d="M1017 141v15m0 9v15m0 9v15"/><text x="1034" y="154" class="endpoint-role">本次邮务 / 固定目的地</text><text x="1034" y="190" class="place-name">蓝潮岛 · 北侧码头</text><text id="target-coordinate" x="1034" y="216" class="coordinate"/></g>
+
+      <!-- 11 state feedback -->
+      <g id="map-warning" hidden><use href="#warning" x="702" y="627" width="36" height="36"/><text x="750" y="653" class="warning-copy">暗礁暴露 · 请绕行</text></g>
+      <g class="chart-caption"><image href="assets/icons/04_map.png" x="38" y="28" width="77" height="77"/><text x="126" y="58" class="chart-name">北线邮务海图</text><text x="128" y="85" class="small-label">旧邮局港 → 蓝潮岛北侧码头</text><text x="128" y="107" class="chart-number">TP / 042 · LOCAL CHART GRID</text></g>
+      <g class="compass" transform="translate(1222 60)"><circle r="42"/><circle r="34"/><path d="M0-37L9 0 0 37-9 0ZM-37 0L0-9 37 0 0 9Z"/><path d="M0-37L0 0 9 0Z" class="north"/><text y="-47" text-anchor="middle">N</text><text x="53" y="5" text-anchor="middle">E</text><text y="60" text-anchor="middle">S</text><text x="-53" y="5" text-anchor="middle">W</text></g>
+      <g class="map-legend" transform="translate(56 886)"><path d="M0 0H35" class="legend-safe"/><text x="44" y="6">可通行航线</text><use href="#warning" x="206" y="-17" width="28" height="28"/><text x="243" y="6">低潮危险</text><circle cx="411" r="11" class="legend-waypoint"/><text x="432" y="6">可拖动航点</text><path d="M703 0h170m-170-6v12m85-12v12m85-12v12" class="scale-line"/><text x="696" y="25">0</text><text x="837" y="25">0.4 nm</text><text x="1048" y="8" class="chart-number">虚构海域 · 邮务局绘制</text></g>
+      <g id="debug-geometry" hidden pointer-events="none"></g>
+    </svg>
+    <div id="dragHelp" class="chart-instruction"><svg class="drag-glyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25L25 5M5 16v9h9M16 5h9v9"/></svg> 拖动 W1 / W2 规划航线 <span>·</span> 避开低潮浅滩</div>
+  </section>
+
+  <aside class="ledger" aria-labelledby="ledgerTitle">
+    <div class="ledger-clip" aria-hidden="true"></div>
+    <header class="ledger-heading"><div><p>TP-042 / NORTH ROUTE</p><h2 id="ledgerTitle">邮务航线记录</h2><span>Mail Route Ledger</span></div><div class="postal-seal" aria-hidden="true">潮汐<br>邮务</div></header>
+    <section class="mail-order"><span>本次邮务 · 已接取</span><strong>蓝色信封 ×1</strong><p>送往 <b>蓝潮岛 · 北侧码头</b></p></section>
+    <section class="tide-window"><div><span>潮汐窗口</span><strong>06:40 <i>→</i> 07:20</strong></div><p>低潮回升 · 北航道可通行</p><div class="tide-line" aria-hidden="true"><span></span><i></i></div></section>
+    <section class="route-list"><div class="section-heading"><h3>航段 / Bearing</h3><span>航向 · 海里</span></div><ol id="route-ledger"></ol><div class="distance-total"><span>预计航程</span><strong><span id="total-distance">2.4</span> <small>nm</small></strong></div></section>
+    <section id="route-status" class="route-status" aria-live="polite" aria-atomic="true"><span id="status-icon" class="state-symbol" aria-hidden="true"></span><div><h3 id="status-title">航线安全</h3><p id="status-reason">三个航段均避开低潮浅滩</p><p id="recovery-copy">航点可继续调整，确认后准备出航</p></div></section>
+    <footer class="ledger-actions"><button id="confirm-route" type="button"><img src="assets/icons/05_sail.png" alt=""><span>确认航线</span><b aria-hidden="true"></b></button><p id="confirm-hint">确认后将航线记入本次邮务</p><button id="reset-route" type="button"><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M7 10Q22 0 24 16T9 25M7 3v8h8"/></svg> 重置航点</button></footer>
+    <span class="ledger-footnote">HARBOR SERVICE / NORTH PASSAGE</span>
+  </aside>
+
+  <dialog id="confirmation" aria-labelledby="confirmation-title"><form method="dialog"><div class="approval-stamp"><strong>ROUTE APPROVED</strong><span>邮务出航许可</span><small>TP-042 / NORTH ROUTE</small></div><img src="assets/icons/05_sail_selected.png" alt=""><span class="success-label">航线已确认</span><h2 id="confirmation-title">北线邮务，准备出航</h2><p>蓝色信封 ×1 → 蓝潮岛 · 北侧码头</p><p id="confirmed-distance"></p><a class="sailing-link" href="#sailing" data-action="start-sailing">出航</a><button type="submit">返回海图调整</button><small>已记入本次邮务航线</small></form></dialog>
+  <output id="debug-panel" hidden></output>
+</main>
+</section>
+
+      <section class="screen sailing-screen" data-screen="sailing" aria-labelledby="sailingTitle" hidden>
+        <div class="sailing-stage">
+          <canvas id="sailingCanvas" width="960" height="540" aria-label="可操控邮船航行区域"></canvas>
+          <div class="sailing-title">
+            <p class="eyebrow">05 · SAILING HUD</p>
+            <h1 id="sailingTitle" tabindex="-1">驶向蓝潮岛</h1>
+            <p>目标：北侧码头 · 距离 <span id="distanceReadout">2.4</span> 海里</p>
+          </div>
+          <div class="mission-hud">
+            <span>本次投递</span><strong>蓝色信封 ×1 → 艾琳</strong><small>奖励 邮票 +40</small>
+          </div>
+          <div class="hud-readouts">
+            <div><span>航速</span><strong id="speedReadout">0.0 kn</strong></div>
+            <div><span>船首向</span><strong id="headingReadout">341° NNW</strong></div>
+            <div id="dangerReadout"><span>航线状态</span><strong>保持航向</strong></div>
+          </div>
+          <div class="voyage-progress" aria-label="航程进度"><span id="voyageProgressBar"></span></div>
+          <p class="voyage-status" id="voyageStatus">W 加速，A/D 调整舵向；进入灯塔圈后按 E 投递。</p>
+          <div class="control-panel" aria-label="航行控制">
+            <button type="button" data-sail-control="throttle-up">W<small>加速</small></button>
+            <button type="button" data-sail-control="left">A<small>左舵</small></button>
+            <button type="button" data-sail-control="throttle-down">S<small>减速</small></button>
+            <button type="button" data-sail-control="right">D<small>右舵</small></button>
+            <button type="button" data-sail-control="deliver" id="deliverButton">E<small>投递</small></button>
+            <button type="button" data-sail-control="map">M<small>地图</small></button>
+            <button type="button" data-sail-control="pause">Esc<small>暂停</small></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="result" aria-labelledby="resultTitle" hidden>
+        <div class="screen-heading">
+          <div>
+            <p class="eyebrow">06 · RESULT / 蓝潮岛北侧码头</p>
+            <h1 id="resultTitle" tabindex="-1">投递完成</h1>
+            <p class="lead">信件已安全送达；奖励仍需手动领取。</p>
+          </div>
+          <span class="status-chip is-reward" id="resultStatusChip">奖励待领取</span>
+        </div>
+
+        <div class="result-layout">
+          <article class="paper-card result-summary">
+            <div class="result-hero">
+              <img src="assets/icons/06_deliver.png" alt="盖有潮汐邮戳的投递邮件">
+              <div>
+                <p class="eyebrow">DELIVERED · 06:58</p>
+                <h2>艾琳已收到回信</h2>
+                <p class="muted">灯塔亮起，蓝潮岛北侧码头恢复平静。</p>
+                <span class="status-chip is-ok">投递成功</span>
+              </div>
+            </div>
+            <dl class="fact-list result-ledger">
+              <div><dt>委托</dt><dd>蓝潮岛的回信</dd></div>
+              <div><dt>邮件</dt><dd>蓝色信封 ×1</dd></div>
+              <div><dt>规划航程</dt><dd id="resultRouteDistance">2.4 海里</dd></div>
+              <div><dt>状态</dt><dd class="sea-text">已完成</dd></div>
+            </dl>
+            <p class="result-note"><strong>邮务记录已写入航海日志</strong><br><span class="muted">领取奖励后可返回港口继续接取任务。</span></p>
+          </article>
+
+          <aside class="paper-card reward-panel">
+            <img src="assets/icons/06_deliver.png" alt="">
+            <h2>待领取奖励</h2>
+            <div class="reward-block">
+              <span>投递完成</span><strong>+40 邮票</strong><small>领取后余额 160</small>
+            </div>
+            <dl class="fact-list compact">
+              <div><dt>当前余额</dt><dd id="resultBalance">120</dd></div>
+              <div><dt>领取后余额</dt><dd id="pendingBalance" class="reward-text">160</dd></div>
+            </dl>
+            <button class="button button-primary full-width" id="claimRewardButton" type="button" data-action="claim-reward">领取奖励</button>
+            <p class="action-reason" id="rewardReason">奖励显示中，尚未到账。</p>
+            <div class="panel-actions">
+              <button class="button button-secondary" id="continueButton" type="button" data-action="continue-task" disabled>继续接取任务</button>
+              <button class="button button-secondary" id="returnHarborButton" type="button" data-action="return-harbor" disabled>返回港口</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <footer class="bottombar">
+      <div class="flow-tracker" aria-label="流程进度">
+        <span class="is-current" data-step="harbor"><img src="assets/icons/01_back.png" alt="">01 港口</span>
+        <span data-step="mission"><img src="assets/icons/02_commission.png" alt="">02 委托</span>
+        <span data-step="mailbag"><img src="assets/icons/03_mailbag.png" alt="">03 邮袋</span>
+        <span data-step="map"><img src="assets/icons/04_map.png" alt="">04 地图</span>
+        <span data-step="sailing"><img src="assets/icons/05_sail_selected.png" alt="">05 航行</span>
+        <span data-step="result"><img src="assets/icons/06_deliver.png" alt="">06 结果</span>
+      </div>
+      <span class="version">TIDAL POST · COURSE PROTOTYPE</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <div class="screen-flash" id="screenFlash" aria-hidden="true"></div>
+
+    <div class="sailing-overlay" id="sailingMapOverlay" hidden>
+      <div class="overlay-card">
+        <img src="assets/icons/04_map.png" alt="">
+        <div><p class="label">航行地图</p><h2>北线航程</h2><p>邮船 → 蓝潮岛北侧码头</p><small>按 M 或点击关闭</small></div>
+        <button class="button button-secondary" type="button" data-sail-control="map">关闭地图</button>
+      </div>
+    </div>
+
+    <div class="sailing-overlay" id="pauseOverlay" hidden>
+      <div class="overlay-card">
+        <img src="assets/icons/05_sail_selected.png" alt="">
+        <div><p class="label">航行暂停</p><h2>海面暂时静止</h2><p>按 Esc 或点击继续航行。</p></div>
+        <button class="button button-primary" type="button" data-sail-control="pause">继续航行</button>
+      </div>
+    </div>
+
+    <aside class="debug-panel" id="debugPanel" hidden>
+      <strong>V3 Runtime</strong>
+      <span id="debugState"></span>
+    </aside>
+  </main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+/* The integrated map uses the same permanent material layer as standalone Week4. */
+.integrated-map .chart-paper {
+  -webkit-mask-image:url("week4/assets/art-pass-04/paper-edge-mask.svg");
+  mask-image:url("week4/assets/art-pass-04/paper-edge-mask.svg");
+  mask-mode:luminance;
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+}
+.integrated-map .chart-paper::after {
+  content:"";
+  position:absolute;
+  inset:-7px;
+  z-index:3;
+  background:url("week4/assets/art-pass-04/paper-wear.svg") center / 100% 100% no-repeat;
+  pointer-events:none;
+}

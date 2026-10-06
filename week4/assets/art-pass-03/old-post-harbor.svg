@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="410" viewBox="0 0 340 410">
+  <defs>
+    <filter id="wet" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".033" numOctaves="2" seed="23" result="grain"/><feDisplacementMap in="SourceGraphic" in2="grain" scale="4.8"/><feGaussianBlur stdDeviation=".6"/></filter>
+    <clipPath id="shore"><path d="M-8 46L16 41 30 36Q62 31 86 45L105 54 113 65 134 74 148 89 165 97 172 112 195 124 207 139 226 146 233 160 239 177 232 187Q212 185 197 201T191 222Q205 239 237 237L252 245 266 258 260 275 246 289 220 304 217 327 207 349 208 366-8 417Z"/></clipPath>
+  </defs>
+  <!-- Inlet and irregular shallow-water apron are independent of collision geometry. -->
+  <g filter="url(#wet)">
+    <path d="M-8 29Q56 2 103 32L157 69 203 99 244 127 253 162 275 188Q318 206 291 244L278 276 239 317 226 359 220 380-8 427Z" fill="#a5c4b7" opacity=".29"/>
+    <path d="M-8 38Q55 14 93 40L144 76 196 114 238 145 245 178Q224 184 207 202L204 222Q225 235 250 236L273 258 258 282 229 310 220 353 217 374-8 420Z" fill="#e0d7b6" opacity=".8"/>
+    <path d="M201 187Q249 176 281 194T300 232Q274 262 232 244T191 221Z" fill="#bfd6c4" opacity=".52"/>
+  </g>
+  <path d="M-8 46L16 41 30 36Q62 31 86 45L105 54 113 65 134 74 148 89 165 97 172 112 195 124 207 139 226 146 233 160 239 177 232 187Q212 185 197 201T191 222Q205 239 237 237L252 245 266 258 260 275 246 289 220 304 217 327 207 349 208 366-8 417Z" fill="#b6bd94" fill-opacity=".9" stroke="#73907a" stroke-width="1.6" stroke-linejoin="round"/>
+  <g clip-path="url(#shore)" filter="url(#wet)">
+    <path d="M-10 65Q80 27 135 112T182 214Q153 248 95 195T-10 181Z" fill="#8ea681" opacity=".38"/>
+    <path d="M-10 249Q53 218 106 261T203 329L217 369Q110 325 62 367T-10 386Z" fill="#89a486" opacity=".4"/>
+    <path d="M13 103Q60 85 103 123T120 193Q76 171 26 194Z" fill="#d9cfa2" opacity=".45"/>
+    <path d="M145 257Q196 271 217 316L205 354Q169 330 143 337T96 311Z" fill="#c9c994" opacity=".46"/>
+    <path d="M-10 375Q75 343 141 364T217 390L210 415H-10Z" fill="#8aa18a" opacity=".32"/>
+  </g>
+  <!-- Pale footpath unites the postal office, loading shed and quay. -->
+  <path d="M85 311Q116 277 143 245T180 206L176 183M144 246L47 196" fill="none" stroke="#e1d8b8" stroke-width="7" stroke-linecap="round" opacity=".72"/>
+  <path d="M10 86q31-16 54-1m-49 216q35-19 60-5m30 48q30-12 47-6" fill="none" stroke="#668873" stroke-width="1.3" opacity=".35"/>
+  <!-- Old Harbor Post Office: a long hall, small clock tower, envelope board and flag. -->
+  <g transform="translate(112 116)" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M4 77L84 73 94 85 5 90Z" fill="#688c7c" opacity=".14"/>
+    <path d="M7 38L74 36 75 77 8 80Z" fill="#eee3c7" stroke="#738777" stroke-width="1.7"/>
+    <path d="M74 36L85 43 85 74 75 77Z" fill="#d2d3b1" stroke="#738777" stroke-width="1.4"/>
+    <path d="M0 40L19 16 70 13 86 39 46 44Z" fill="#bf9174" stroke="#8c8170" stroke-width="1.6"/>
+    <path d="M19 16L46 44M23 20L68 18M11 33L32 31M55 29L79 29" fill="none" stroke="#d9ad8c" stroke-width="1.8" opacity=".8"/>
+    <path d="M34 17V-1L49-3 50 21Z" fill="#f0e5c8" stroke="#728575" stroke-width="1.5"/>
+    <path d="M29 0L42-12 56-2Z" fill="#bf9174" stroke="#8c8170" stroke-width="1.4"/>
+    <circle cx="42" cy="8" r="4.6" fill="#e2d6b5" stroke="#788573" stroke-width="1.2"/><path d="M42 5v3l3 1" fill="none" stroke="#728575" stroke-width="1.1"/>
+    <path d="M38 80V58Q43 52 49 56L51 79" fill="#7b9b87" stroke="#698775" stroke-width="1.4"/>
+    <path d="M16 49H27V62H16ZM59 48H69V61H59Z" fill="#8ba997" stroke="#6b8675" stroke-width="1.3"/>
+    <path d="M21 49v13m-5-6h11M64 48v13m-5-7h10" fill="none" stroke="#dcdcc1" stroke-width="1.2"/>
+    <path d="M33 45H53V53H33ZM33 45l10 6 10-6" fill="#f4ead4" stroke="#738777" stroke-width="1.15"/>
+    <path d="M88 39V3" stroke="#83907b" stroke-width="1.6"/><path d="M88 5q12-4 21 1l-3 13q-7-5-18-1Z" fill="#eaddbc" stroke="#87957d" stroke-width="1.2"/>
+    <path d="M92 9h11v6H92Zm0 0 5.5 4 5.5-4" fill="none" stroke="#768a74" stroke-width="1"/>
+    <path d="M79 82V64q1-8 9-5v22Z" fill="#b58a6b" stroke="#7d8571" stroke-width="1.3"/><path d="M81 67h5" stroke="#f0dfba" stroke-width="1.3"/>
+  </g>
+  <!-- One narrow fisher's cottage; it does not reuse the post-office silhouette. -->
+  <g transform="translate(26 167)" stroke-linejoin="round">
+    <path d="M5 19L32 17 33 47 5 49Z" fill="#e9dfc1" stroke="#7d927d" stroke-width="1.4"/>
+    <path d="M0 20L19 2 40 18 23 25Z" fill="#b39b79" stroke="#87927c" stroke-width="1.4"/>
+    <path d="M22 25L40 18 39 43 33 47" fill="#b7c2a1" stroke="#7d927d" stroke-width="1.3"/>
+    <path d="M11 48V34H18V48M24 29h5v9h-5M17 5L22 23" fill="#84a18a" stroke="#82927a" stroke-width="1"/>
+    <path d="M-2 53q14 3 27-1M36 51l13-4" fill="none" stroke="#77977e" stroke-width="1.3"/>
+  </g>
+  <!-- Low mail shed with stacked parcel silhouettes. -->
+  <g transform="translate(84 268)" stroke-linejoin="round">
+    <path d="M5 21L47 17 47 49 6 54Z" fill="#b4b594" stroke="#82927a" stroke-width="1.4"/>
+    <path d="M-2 21L6 6 46 2 55 17Z" fill="#95a18a" stroke="#7b8d77" stroke-width="1.4"/>
+    <path d="M17 24L35 22 35 49 18 51Z" fill="#8a9d83" stroke="#7b8d77" stroke-width="1.2"/>
+    <path d="M18 29l17-2m-17 10 17-2M6 30l10-1m24-4 7-1" fill="none" stroke="#d2cfaa" stroke-width="1"/>
+    <path d="M48 44l13-2 1 12-14 2Z" fill="#d0bd94" stroke="#929378" stroke-width="1.1"/><path d="M51 42l1 13m-3-8 13-2" fill="none" stroke="#a39b7c" stroke-width="1"/>
+    <path d="M1 48q-7-5-8 4t12 6q4-8-4-10Z" fill="#b5b69b" stroke="#87967d" stroke-width="1.1"/>
+  </g>
+  <!-- Three restrained shrub clusters, dry brush and shoreline stones. -->
+  <g fill="#829f7f" fill-opacity=".55" stroke="#6f8e74" stroke-width=".8">
+    <path d="M65 103q-16-1-11-12-7-11 7-15 11-10 17 3 15 7 3 17Z"/><path d="M26 249q-17-4-9-14-4-15 11-13 13-3 18 10 1 14-20 17Z"/><path d="M163 332q-13-2-8-11-5-12 9-14 14 5 13 18Z"/>
+  </g>
+  <g fill="none" stroke="#78967b" stroke-width="1.1" stroke-linecap="round" opacity=".6"><path d="M66 113l-1-17m0 9-7-6m7 0 8-7M29 257l-1-17m0 8 7-5M164 341v-14m0 9-5-4M55 346l2-9m1 7 6-7m29-232 6-4m4 10 7-3"/></g>
+  <g fill="#aeb5a0" stroke="#819789" stroke-width=".8" opacity=".8"><path d="M224 292l7-3 5 4-2 6-9 1Z"/><path d="M215 305l7-4 5 4-2 5-9 2Z"/><path d="M208 323l4-5 6 3-1 6-7 2Z"/></g>
+  <g fill="none" stroke="#e4eee0" stroke-width="2" stroke-linecap="round" opacity=".8"><path d="M254 167l8 6m-42 40q17-5 28-2m-13 24 13-1m18 48-8 10m-36 69-3 9"/></g>
+</svg>

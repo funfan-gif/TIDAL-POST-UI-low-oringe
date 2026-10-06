@@ -1,0 +1,349 @@
+{
+  "generatedAt": "2026-10-04T10:39:01.750Z",
+  "baseCommit": "c70c3e7908927593aa0fff65173556b2c088711d",
+  "passed": true,
+  "assertions": [
+    {
+      "name": "Valid preset: all three segments navigable",
+      "passed": true,
+      "detail": {
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 355
+          },
+          {
+            "x": 940,
+            "y": 315
+          }
+        ],
+        "confirmed": false,
+        "valid": true,
+        "segments": [
+          {
+            "a": {
+              "x": 275,
+              "y": 720
+            },
+            "b": {
+              "x": 520,
+              "y": 355
+            },
+            "bearing": 29.83119307297909,
+            "distance": 1.0518795509753627,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 520,
+              "y": 355
+            },
+            "b": {
+              "x": 940,
+              "y": 315
+            },
+            "bearing": 83.63825523695493,
+            "distance": 0.9024831848049422,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 940,
+              "y": 315
+            },
+            "b": {
+              "x": 1115,
+              "y": 255
+            },
+            "bearing": 68.13046689519149,
+            "distance": 0.4026906661338432,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          }
+        ],
+        "total": 2.357053401914148
+      }
+    },
+    {
+      "name": "Distance from shared chart projection rounds to 2.4 nm",
+      "passed": true,
+      "detail": 2.357053401914148
+    },
+    {
+      "name": "Fixed Blue Tide target; Fog Reef has no destination control",
+      "passed": true
+    },
+    {
+      "name": "Confirm enabled on valid route",
+      "passed": true
+    },
+    {
+      "name": "No debug in submission state",
+      "passed": true
+    },
+    {
+      "name": "Waypoint hover exposes manipulation hint",
+      "passed": true
+    },
+    {
+      "name": "Real pointer drag W1 blocks W1-W2",
+      "passed": true,
+      "detail": {
+        "waypoints": [
+          {
+            "x": 484.999961716037,
+            "y": 665.000021988067
+          },
+          {
+            "x": 940,
+            "y": 315
+          }
+        ],
+        "confirmed": false,
+        "valid": false,
+        "segments": [
+          {
+            "a": {
+              "x": 275,
+              "y": 720
+            },
+            "b": {
+              "x": 484.999961716037,
+              "y": 665.000021988067
+            },
+            "bearing": 72.95685516790087,
+            "distance": 0.4691362031391052,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 484.999961716037,
+              "y": 665.000021988067
+            },
+            "b": {
+              "x": 940,
+              "y": 315
+            },
+            "bearing": 47.99854427759442,
+            "distance": 1.3076301656542908,
+            "hazards": [
+              "fog"
+            ],
+            "blocked": true,
+            "tooShort": false
+          },
+          {
+            "a": {
+              "x": 940,
+              "y": 315
+            },
+            "b": {
+              "x": 1115,
+              "y": 255
+            },
+            "bearing": 68.13046689519149,
+            "distance": 0.4026906661338432,
+            "hazards": [],
+            "blocked": false,
+            "tooShort": false
+          }
+        ],
+        "total": 2.179457034927239
+      }
+    },
+    {
+      "name": "Collision checks entire segment: W1 and W2 outside ellipse",
+      "passed": true
+    },
+    {
+      "name": "Drag changes bearing, distance and ledger together",
+      "passed": true
+    },
+    {
+      "name": "Blocked confirmation disabled",
+      "passed": true
+    },
+    {
+      "name": "Redundant blocked line, hatch, warning, explanation and ghost",
+      "passed": true
+    },
+    {
+      "name": "Blocked route cannot confirm even through dispatched click",
+      "passed": true
+    },
+    {
+      "name": "W1 recovery restores safe solid line and enables confirmation",
+      "passed": true
+    },
+    {
+      "name": "Real W2 drag independently triggers collision",
+      "passed": true
+    },
+    {
+      "name": "W2 recovery synchronizes map and ledger",
+      "passed": true
+    },
+    {
+      "name": "Land crossing blocked with specific cause",
+      "passed": true
+    },
+    {
+      "name": "Reset restores safe reference route",
+      "passed": true
+    },
+    {
+      "name": "Old wreck reef independently blocks route",
+      "passed": true
+    },
+    {
+      "name": "Lighthouse islet uses its transformed SVG collision geometry",
+      "passed": true
+    },
+    {
+      "name": "Coincident waypoints blocked with recoverable explanation",
+      "passed": true
+    },
+    {
+      "name": "Keyboard moves focused waypoint by 8 units",
+      "passed": true
+    },
+    {
+      "name": "Shift arrow precision modifier",
+      "passed": true
+    },
+    {
+      "name": "Confirm creates explicit successful modal and route data",
+      "passed": true
+    },
+    {
+      "name": "Any adjustment revokes previous confirmation and saved sailing plan",
+      "passed": true
+    },
+    {
+      "name": "Blocked preset deterministic",
+      "passed": true
+    },
+    {
+      "name": "1920x1080: scene bounds and ledger content fit",
+      "passed": true,
+      "detail": {
+        "within": [
+          {
+            "sel": ".chart-paper",
+            "x": 33.977725982666016,
+            "y": 109.95011138916016,
+            "right": 1438.022159576416,
+            "bottom": 1046.049903869629,
+            "inside": true
+          },
+          {
+            "sel": ".ledger",
+            "x": 1467.4168701171875,
+            "y": 127.45509338378906,
+            "right": 1871.5831298828125,
+            "bottom": 1044.544937133789,
+            "inside": true
+          },
+          {
+            "sel": "#confirm-route",
+            "x": 1498.26416015625,
+            "y": 857.668212890625,
+            "right": 1835.8507080078125,
+            "bottom": 936.3126220703125,
+            "inside": true
+          },
+          {
+            "sel": ".desk-heading",
+            "x": 49,
+            "y": 26,
+            "right": 1871,
+            "bottom": 92,
+            "inside": true
+          }
+        ],
+        "overflowing": [],
+        "footerFits": true,
+        "documentWidth": 1920
+      }
+    },
+    {
+      "name": "50% game scale retains 34px pointer target",
+      "passed": true,
+      "detail": {
+        "x": 245.7320556640625,
+        "y": 371.1387023925781,
+        "width": 33.63397216796875,
+        "height": 33.63397216796875
+      }
+    },
+    {
+      "name": "Pointer drag works under 50% scaled and rotated chart",
+      "passed": true
+    },
+    {
+      "name": "Letterbox fits 1366x768",
+      "passed": true,
+      "detail": {
+        "x": 0.33331298828125,
+        "y": 0,
+        "width": 1365.3334350585938,
+        "height": 768
+      }
+    },
+    {
+      "name": "Letterbox fits 1440x900",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 45,
+        "width": 1440,
+        "height": 810
+      }
+    },
+    {
+      "name": "Route draft survives reload and return",
+      "passed": true,
+      "detail": [
+        {
+          "x": 560.0000053111135,
+          "y": 330.0000080575612
+        },
+        {
+          "x": 940,
+          "y": 315
+        }
+      ]
+    },
+    {
+      "name": "Confirmed state survives reload",
+      "passed": true
+    },
+    {
+      "name": "Debug geometry and state opt-in only",
+      "passed": true
+    },
+    {
+      "name": "Board renders both full-resolution screenshots",
+      "passed": true
+    },
+    {
+      "name": "No route or board console errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "No failed local resource requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "consoleErrors": [],
+  "networkFailures": []
+}

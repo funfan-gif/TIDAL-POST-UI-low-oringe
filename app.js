@@ -4,7 +4,7 @@ const screenMeta = {
   harbor: ["01 / 06", "港口"],
   mission: ["02 / 06", "委托详情"],
   mailbag: ["03 / 06", "邮袋"],
-  map: ["04 / 06", "群岛地图"],
+  map: ["04 / 06", "邮务航海图桌"],
   sailing: ["05 / 06", "航行 HUD"],
   result: ["06 / 06", "投递结果"]
 };
@@ -24,8 +24,27 @@ const state = {
   rewardClaimed: false,
   completed: false,
   missionReturnTarget: "harbor",
-  activeCategory: "letters"
+  activeCategory: "letters",
+  routePlan: null,
+  mapRevealSeen: false,
+  mapPhase: "MAILBAG",
+  missionRound: 1
 };
+
+const prototypeStorageKey = "tidalPost.prototype.v4";
+if (!capturePreset) {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(prototypeStorageKey));
+    if (saved && screenMeta[saved.screen] && Number.isFinite(saved.stamps)) {
+      for (const key of Object.keys(state)) if (Object.hasOwn(saved, key)) state[key] = saved[key];
+      if (["map", "sailing"].includes(state.screen) && !state.mailbagSaved) state.screen = "mailbag";
+    }
+  } catch { /* Storage is optional for local-file use. */ }
+}
+function persistPrototype() {
+  if (capturePreset) return;
+  try { sessionStorage.setItem(prototypeStorageKey, JSON.stringify(state)); } catch { }
+}
 
 const categoryCopy = {
   letters: ["信件", "选择要装入本次邮袋的邮件"],
@@ -38,6 +57,8 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 let toastTimer;
 let sailing;
+let routeMap;
+let mapReveal;
 
 function applyCapturePreset() {
   const target = {
@@ -61,6 +82,7 @@ function applyCapturePreset() {
     state.selectedIsland = "blue";
   }
   if (target === "result") state.completed = true;
+  if (["sailing", "result"].includes(target)) state.routePlan = { valid: true, confirmed: true, distance: 2.4, destination: "blue-tide-north-pier" };
   return target;
 }
 
@@ -90,10 +112,16 @@ function flashSuccess() {
   window.setTimeout(() => flash.classList.remove("is-active"), 500);
 }
 
-function navigate(screen) {
+function navigate(screen, options = {}) {
   if (!screenMeta[screen]) return;
+  if (screen === "sailing" && !(state.mailbagSaved && state.routePlan?.valid && state.routePlan?.confirmed)) return;
+  if (state.screen === "map" && screen !== "map") {
+    mapReveal?.finish({ focus: false });
+    routeMap?.closeConfirmation();
+  }
   if (state.screen === "sailing" && screen !== "sailing") sailing?.stop();
   state.screen = screen;
+  $(".prototype-frame").classList.toggle("map-mode", screen === "map");
 
   $$(".screen").forEach((node) => {
     const active = node.dataset.screen === screen;
@@ -107,14 +135,41 @@ function navigate(screen) {
   updateFlowTracker();
   render();
 
+  if (screen === "map") {
+    const root = $('[data-screen="map"]');
+    if (!routeMap) {
+      routeMap = window.TidalRouteMap.create(root, { onChange: syncRoutePlan });
+      mapReveal = window.TidalMapReveal.create(root, routeMap, phase => {
+        state.mapPhase = phase === "MAP_READY" && state.routePlan?.confirmed ? "MAP_CONFIRMED" : phase;
+        persistPrototype(); updateDebug();
+      });
+    } else routeMap.refresh();
+    const full = options.reveal === true && !state.mapRevealSeen;
+    if (options.reveal) state.mapRevealSeen = true;
+    mapReveal.start({ full, continuity: options.continuity, immediate: options.immediate === true });
+  }
+
   if (screen === "sailing") {
     window.requestAnimationFrame(() => sailing?.start({ fresh: !state.completed }));
   }
 
   const heading = $("[data-screen=\"" + screen + "\"] h1");
-  if (heading && !capturePreset) {
+  if (heading && !capturePreset && screen !== "map") {
     window.requestAnimationFrame(() => heading.focus({ preventScroll: true }));
   }
+  persistPrototype();
+}
+
+function syncRoutePlan(route) {
+  state.routePlan = {
+    commission: "TP-042", destination: "blue-tide-north-pier", start: route.start,
+    w1: route.waypoints[0], w2: route.waypoints[1], waypoints: route.waypoints,
+    distance: route.total, bearings: route.segments.map(s => s.bearing), segments: route.segments,
+    valid: route.valid, confirmed: route.confirmed
+  };
+  state.selectedIsland = "blue";
+  if (state.mapPhase !== "MAP_REVEALING") state.mapPhase = route.confirmed ? "MAP_CONFIRMED" : "MAP_READY";
+  renderHarbor(); persistPrototype(); updateDebug();
 }
 
 function updateFlowTracker() {
@@ -127,12 +182,12 @@ function updateFlowTracker() {
 }
 
 function renderHarbor() {
-  const completedCount = [state.missionAccepted, state.mailbagSaved, state.selectedIsland === "blue"].filter(Boolean).length;
+  const completedCount = [state.missionAccepted, state.mailbagSaved, state.routePlan?.confirmed].filter(Boolean).length;
   $("#harborMissionStatus").textContent = state.completed ? "本轮投递已完成" : "主线进度 " + completedCount + " / 3";
   const progress = {
     mission: state.missionAccepted,
     mailbag: state.mailbagSaved,
-    route: state.selectedIsland === "blue"
+    route: state.routePlan?.confirmed
   };
   $$("[data-progress]").forEach((node) => node.classList.toggle("is-complete", Boolean(progress[node.dataset.progress])));
 }
@@ -199,31 +254,15 @@ function renderMailbag() {
   $("#saveMailbagButton").disabled = !state.selectedItem || state.mailbagSaved;
   $("#saveMailbagButton").textContent = state.mailbagSaved ? "邮袋已保存" : "保存邮袋";
   $("#goMapButton").disabled = !state.mailbagSaved;
-  $("#mailbagNextReason").textContent = state.mailbagSaved ? "邮袋已锁定，可以前往群岛地图。" : selectedWrong ? "当前邮件不匹配任务，保存会触发失败反馈。" : "选择并保存“蓝色信封”后可以前往地图。";
+  $("#mailbagNextReason").textContent = state.mailbagSaved ? "邮袋已保存，可以查看航海图。" : selectedWrong ? "当前邮件不匹配任务，请改选蓝色信封。" : "选择并保存“蓝色信封”后可以查看航海图。";
 }
 
 function renderMap() {
-  const selectedBlue = state.selectedIsland === "blue";
-  const selectedFog = state.selectedIsland === "fog";
-  $$(".map-node[data-island]").forEach((node) => {
-    const selected = node.dataset.island === state.selectedIsland;
-    node.classList.toggle("is-selected", selected && selectedBlue);
-    node.classList.toggle("is-failed", selected && selectedFog);
-    if (!node.disabled) node.setAttribute("aria-pressed", String(selected));
-  });
-  $("#blueRoute").classList.toggle("is-visible", selectedBlue);
-  $("#fogRoute").classList.toggle("is-visible", selectedFog);
-  $("#routeEmptyState").hidden = selectedBlue || selectedFog;
-  $("#routeBlueState").hidden = !selectedBlue;
-  $("#routeFogState").hidden = !selectedFog;
-  $("#startSailingButton").disabled = !selectedBlue;
-  $("#routeReason").textContent = selectedBlue ? "航线已确认，开始航行后进入真实操控。" : selectedFog ? "该路线失败：请恢复到蓝潮岛北线。" : "选择一个当前可达的目的岛。";
-  $("#mapStatusChip").textContent = selectedFog ? "航线失败" : selectedBlue ? "蓝潮岛已选" : "目的地可达";
-  $("#mapStatusChip").classList.toggle("is-warning", selectedFog);
-  $("#mapStatusChip").classList.toggle("is-ok", !selectedFog);
+  // The reusable route controller owns the final Week4 screen's DOM.
 }
 
 function renderResult() {
+  $("#resultRouteDistance").textContent = (state.routePlan?.distance || 2.4).toFixed(1) + " 海里";
   $("#resultBalance").textContent = state.stamps;
   $("#pendingBalance").textContent = state.rewardClaimed ? state.stamps : state.stamps + 40;
   $("#claimRewardButton").disabled = state.rewardClaimed;
@@ -255,6 +294,7 @@ function render() {
   renderMap();
   renderResult();
   updateDebug();
+  persistPrototype();
 }
 
 function openMission() {
@@ -281,6 +321,8 @@ function viewMissionFromBag() {
 function selectInventoryItem(item) {
   state.selectedItem = item;
   state.mailbagSaved = false;
+  if (state.routePlan) state.routePlan.confirmed = false;
+  routeMap?.invalidateConfirmation();
   render();
   showToast(item === "blue-envelope" ? "蓝色信封已加入草稿，尚未保存。" : "海盐账单不是任务所需邮件。");
 }
@@ -296,35 +338,21 @@ function saveMailbag() {
     return;
   }
   state.mailbagSaved = true;
+  state.mapPhase = "MAILBAG_SAVED";
   render();
-  showToast("邮袋已保存。现在可以前往群岛地图。");
+  showToast("邮袋已保存。现在可以查看航海图。");
 }
 
 function goMap() {
   if (!state.mailbagSaved) return;
-  navigate("map");
-}
-
-function selectIsland(island) {
-  if (!["blue", "fog"].includes(island)) return;
-  state.selectedIsland = island;
-  render();
-  if (island === "fog") {
-    shake($(".route-panel"));
-    showToast("航线失败：雾礁受低潮封锁。");
-  } else {
-    showToast("蓝潮岛北线已选中。");
-  }
-}
-
-function recoverBlue() {
-  state.selectedIsland = "blue";
-  render();
-  showToast("已恢复到可达的蓝潮岛北线。");
+  const continuity = !state.mapRevealSeen ? window.TidalMapReveal.captureMailbag() : null;
+  $("#toast").hidden = true;
+  navigate("map", { reveal: true, continuity });
 }
 
 function startSailing() {
-  if (!state.mailbagSaved || state.selectedIsland !== "blue") return;
+  if (state.mapPhase === "MAP_REVEALING" || !state.mailbagSaved || !state.routePlan?.valid || !state.routePlan?.confirmed) return;
+  routeMap?.closeConfirmation();
   state.completed = false;
   navigate("sailing");
 }
@@ -364,6 +392,11 @@ function continueTask() {
   state.completed = false;
   state.missionReturnTarget = "harbor";
   state.activeCategory = "letters";
+  state.routePlan = null;
+  state.mapRevealSeen = false;
+  state.mapPhase = "MAILBAG";
+  state.missionRound += 1;
+  routeMap?.reset({ discardSaved: true });
   sailing?.reset();
   navigate("mission");
   showToast("新的委托流程已准备。");
@@ -376,7 +409,6 @@ const actions = {
   "view-mission-from-bag": viewMissionFromBag,
   "save-mailbag": saveMailbag,
   "go-map": goMap,
-  "recover-blue": recoverBlue,
   "map-back": () => navigate("mailbag"),
   "start-sailing": startSailing,
   "claim-reward": claimReward,
@@ -387,6 +419,7 @@ const actions = {
 document.addEventListener("click", (event) => {
   const actionNode = event.target.closest("[data-action]");
   if (actionNode && !actionNode.disabled) {
+    event.preventDefault();
     actions[actionNode.dataset.action]?.();
     return;
   }
@@ -404,8 +437,6 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const islandNode = event.target.closest("[data-island]");
-  if (islandNode && !islandNode.disabled) selectIsland(islandNode.dataset.island);
 });
 
 document.addEventListener("keydown", (event) => {
@@ -420,11 +451,7 @@ sailing = window.TidalSailing?.create({
 });
 
 const initialScreen = applyCapturePreset();
-if (initialScreen) navigate(initialScreen);
-else {
-  updateFlowTracker();
-  render();
-}
+navigate(initialScreen || state.screen, { immediate: true });
 
 if (debugEnabled) window.setInterval(updateDebug, 120);
 
@@ -433,6 +460,7 @@ window.__tidalPost = {
   navigate,
   actions,
   selectInventoryItem,
-  selectIsland,
-  sailing
+  sailing,
+  routeMap: () => routeMap,
+  reveal: () => mapReveal?.getState()
 };

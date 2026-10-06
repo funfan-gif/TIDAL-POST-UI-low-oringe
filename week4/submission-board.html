@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>潮汐邮局 · 第四周课程提交</title><link rel="icon" href="data:,"><link rel="stylesheet" href="submission-board.css?v=4.2.0"></head><body>
+<nav class="document-tools" aria-label="提交材料"><strong>潮汐邮局 · 第四周提交</strong><span><a href="submission-board.pdf" download>下载六页 PDF</a><a href="../teacher-demo.html">教师快速演示</a><a href="../index.html">完整交互原型</a></span></nav>
+<main class="submission"><article class="sheet" aria-labelledby="page1-title">
+<header><div><span class="chapter">邮务准备</span><h1 id="page1-title">保存邮件，让出航准备有起点</h1></div><div class="identity">潮汐邮局 / Tidal Post<br>游戏界面设计 · 第四周</div></header>
+<div class="content"><figure><img src="submission-assets/01-mailbag-saved.png" alt="蓝色信封 ×1 · 委托 TP-042 · 蓝潮岛北侧码头"><figcaption>蓝色信封 ×1 · 委托 TP-042 · 蓝潮岛北侧码头</figcaption></figure><div class="notes"><section><h2>玩家任务</h2><p>准备委托要求的邮件，并明确本次投递目标。保存成功后，才能查看航海图。</p></section><section><h2>状态与反馈</h2><p>选择邮件形成草稿；保存后显示已保存状态。错误邮件会说明不匹配原因，并允许重新选择。</p></section><section><h2>本次连接</h2><p>邮袋进入海图，再确认航线、开始航行；邮件、目的地和规划结果在同一任务中延续。</p></section></div></div>
+<footer><span>保存邮件 → 展开海图 → 规划与恢复 → 确认航线 → 开始航行</span><span>01 / 06</span></footer></article>
+<article class="sheet" aria-labelledby="page2-title">
+<header><div><span class="chapter">新增过渡状态</span><h1 id="page2-title">展开海图，从邮件准备进入空间规划</h1></div><div class="identity">Map Revealing<br>完整时长 5.5 秒</div></header>
+<div class="content"><figure><img src="submission-assets/02-map-unroll.png" alt="实际展开中段 · 掉纸、折痕、污迹随地图一同显露 · 完成后开放航点操作"><figcaption>实际展开中段 · 掉纸、折痕、污迹随地图一同显露 · 完成后开放航点操作</figcaption></figure><div class="notes"><section><h2>纸张与使用痕迹</h2><p>四角磨损、边缘缺口、少量纸孔与折痕，让海图像长期随船使用的邮务工具。</p></section><section><h2>有变化的展开节奏</h2><p>起卷加速，经过旧折痕时放慢，再继续展开并轻轻停稳。裁剪边界与卷筒同步移动。</p></section><section><h2>交互恢复</h2><p>展开中锁定规划输入；可点击或按 Enter / Space / Esc 跳过。完成后焦点回到 W1。</p></section></div></div>
+<footer><span>PDF 展示关键帧；完整动效可在教师演示 HTML 与在线原型中观看</span><span>02 / 06</span></footer></article>
+<article class="sheet" aria-labelledby="page3-title">
+<header><div><span class="chapter">核心地图页面</span><h1 id="page3-title">目标固定，航线由玩家规划</h1></div><div class="identity">Route Valid<br>安全路线可确认</div></header>
+<div class="content"><figure><img src="submission-assets/03-map-ready.png" alt="当前位置 · 固定目的地 · W1 / W2 · 坐标与航向 · 潮汐窗口 · 航线记录"><figcaption>当前位置 · 固定目的地 · W1 / W2 · 坐标与航向 · 潮汐窗口 · 航线记录</figcaption></figure><div class="notes"><section><h2>呼应老师建议</h2><p>加入坐标、方位、海上地标和航标。玩家依据空间信息设定路线，而非重复选择委托目的地。</p></section><section><h2>信息层级</h2><p>先看起点、终点、航线和确认状态；再查航向、距离和潮汐。海图承担主要规划任务。</p></section><section><h2>可操作的地图</h2><p>拖动 W1 / W2，或聚焦后按方向键移动。航线、距离和记录实时更新，安全后允许确认。</p></section></div></div>
+<footer><span>地图几何、地物碰撞与航点位置保持原规则；旧损只改变纸张材质</span><span>03 / 06</span></footer></article>
+<article class="sheet" aria-labelledby="page4-title">
+<header><div><span class="chapter">关键失败状态</span><h1 id="page4-title">解释危险，也给出恢复方向</h1></div><div class="identity">Route Blocked<br>穿越低潮浅滩</div></header>
+<div class="content"><figure><img src="submission-assets/04-map-blocked.png" alt="航段进入雾礁 → 虚线、斜线与警告 → 确认锁定 → 调整至北航道恢复"><figcaption>航段进入雾礁 → 虚线、斜线与警告 → 确认锁定 → 调整至北航道恢复</figcaption></figure><div class="notes"><section><h2>冗余状态编码</h2><p>危险同时通过颜色、虚线、三角警告、浅滩斜线和文字说明表达，灰度下仍可辨认。</p></section><section><h2>失败原因</h2><p>指出具体危险航段和低潮限制。禁止确认与出航，避免把不可通行路线带入下一阶段。</p></section><section><h2>恢复路径</h2><p>玩家将航点移回北航道后，警告消失、确认恢复。提示帮助理解规则，保留玩家的判断与操作。</p></section></div></div>
+<footer><span>判断 → 操作 → 系统反馈 → 解释原因 → 调整恢复</span><span>04 / 06</span></footer></article>
+<article class="sheet" aria-labelledby="page5-title">
+<header><div><span class="chapter">规划结果</span><h1 id="page5-title">确认安全航线，取得出航许可</h1></div><div class="identity">Map Confirmed<br>邮件与路线一并确认</div></header>
+<div class="content"><figure><img src="submission-assets/05-map-confirmed.png" alt="蓝色信封 ×1 → 蓝潮岛 · 北侧码头 · 出航 / 返回海图调整"><figcaption>蓝色信封 ×1 → 蓝潮岛 · 北侧码头 · 出航 / 返回海图调整</figcaption></figure><div class="notes"><section><h2>确认操作的结果</h2><p>以邮务放行印章、任务邮件、目的地和规划航程明确告诉玩家：本次路线已经记录。</p></section><section><h2>明确下一步</h2><p>“出航”进入航行；“返回海图调整”继续规划。确认后再改航点，会撤销原有出航许可。</p></section><section><h2>返回保留状态</h2><p>返回邮袋保留邮件与航点草稿，再进地图只做短淡入；每轮任务首次进入才完整展开。</p></section></div></div>
+<footer><span>出航条件：邮袋已保存 + 航线有效 + 航线已确认</span><span>05 / 06</span></footer></article>
+<article class="sheet" aria-labelledby="page6-title">
+<header><div><span class="chapter">接回完整课程原型</span><h1 id="page6-title">规划结束，邮船开始航行</h1></div><div class="identity">Sailing<br>保留原航行与投递闭环</div></header>
+<div class="content"><figure><img src="submission-assets/06-sailing.png" alt="港口 → 委托 → 邮袋 → 海图 → 航行 → 投递与奖励"><figcaption>港口 → 委托 → 邮袋 → 海图 → 航行 → 投递与奖励</figcaption></figure><div class="notes"><section><h2>本周的完整变化</h2><p>地图从简单目的地选择扩展为可操作的航线规划，并通过纸卷展开接回邮件准备和出航流程。</p></section><section><h2>课程知识的落实</h2><p>以玩家任务决定信息层级，用操作与系统状态形成反馈闭环；失败可恢复，返回保留状态。</p></section><section><h2>查看与体验</h2><p><a href="https://funfan-gif.github.io/TIDAL-POST-UI-low-oringe/teacher-demo.html">教师快速演示</a> · <a href="https://funfan-gif.github.io/TIDAL-POST-UI-low-oringe/">在线完整原型</a><br>航点用于规划与许可，船舶物理仍沿用原航行引擎。</p></section></div></div>
+<footer><span>原创虚构海图 · 1920 × 1080 游戏界面 · 离线教师 HTML 内嵌代码与素材</span><span>06 / 06</span></footer></article></main></body></html>

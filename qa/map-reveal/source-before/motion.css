@@ -1,0 +1,98 @@
+@keyframes screen-enter {
+  from { opacity: 0; transform: translateY(10px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; transform: translate(-50%, 10px) scale(.96); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+@keyframes feedback-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes reward-pop {
+  0% { transform: scale(.92); opacity: .4; }
+  55% { transform: scale(1.035); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes soft-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(214 166 76 / 0); }
+  50% { box-shadow: 0 0 0 8px rgb(214 166 76 / 18%); }
+}
+
+@keyframes flash-success {
+  0% { opacity: 0; }
+  18% { opacity: .22; }
+  100% { opacity: 0; }
+}
+
+.screen.is-active {
+  animation: screen-enter 260ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.toast:not([hidden]) {
+  animation: toast-enter 180ms ease-out;
+}
+
+.is-shaking {
+  animation: feedback-shake 320ms ease-out;
+}
+
+.reward-block.is-claimed,
+.account-block.is-rewarded {
+  animation: reward-pop 420ms cubic-bezier(.18, .88, .24, 1.2);
+}
+
+#deliverButton.is-ready {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--night);
+  animation: soft-pulse 1100ms ease-in-out infinite;
+}
+
+.screen-flash.is-active {
+  animation: flash-success 460ms ease-out;
+}
+
+.button,
+.category,
+.inventory-item,
+.map-node,
+.control-panel button,
+.flow-tracker span,
+.status-chip {
+  transition:
+    transform 140ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.route-line,
+.voyage-progress span {
+  transition: width 160ms linear, opacity 220ms ease, border-color 220ms ease;
+}
+
+.sailing-overlay:not([hidden]) .overlay-card {
+  animation: reward-pop 220ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

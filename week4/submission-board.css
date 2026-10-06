@@ -1,0 +1,24 @@
+*{box-sizing:border-box}
+body{margin:0;background:#315451;color:#294752;font-family:"Microsoft YaHei",sans-serif}
+.document-tools{display:flex;justify-content:space-between;align-items:center;gap:20px;max-width:1122px;margin:0 auto;padding:22px 0;color:#f4efe5;font-size:14px}
+.document-tools span{display:flex;gap:12px}.document-tools a{border:1px solid #a9c3b9;padding:9px 14px;border-radius:3px}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}a:focus-visible{outline:3px solid #d6a64c;outline-offset:3px}
+.submission{padding-bottom:30px}
+.sheet{width:1122px;height:793px;margin:0 auto 30px;padding:32px 38px;display:grid;grid-template-rows:64px 1fr 30px;gap:12px;background:#f4efe5;box-shadow:0 15px 30px #132e3433;overflow:hidden}
+header{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.chapter{display:block;font:13px "Microsoft YaHei",sans-serif;color:#55776b;margin-bottom:5px}
+h1{font:29px/1.25 "KaiTi","STKaiti","SimSun",serif;margin:0}
+.identity{text-align:right;flex-shrink:0;font:14px/1.6 "KaiTi","SimSun",serif;color:#60776b}
+.content{display:grid;grid-template-rows:536px 1fr;gap:10px;min-height:0}
+figure{margin:0;display:grid;grid-template-rows:510px 26px}
+figure img{width:100%;height:510px;object-fit:contain;background:#25494a}
+figcaption{font-size:11px;line-height:26px;color:#60766e;white-space:nowrap}
+.notes{display:grid;grid-template-columns:1fr 1fr 1.18fr;gap:26px;min-height:0}
+h2{font:17px/1.3 "KaiTi","SimSun",serif;margin:0 0 5px}
+.notes p{font-size:12px;line-height:1.7;margin:0;color:#536f65}
+.notes a{text-decoration:underline;text-underline-offset:3px}
+footer{display:flex;justify-content:space-between;align-items:end;font-size:10px;color:#73857b;border-top:1px solid #b9c7b8;padding-top:9px}
+@media screen and (max-width:1160px){.document-tools{padding:18px;flex-wrap:wrap}.sheet{width:calc(100% - 32px);height:auto;padding:24px;grid-template-rows:auto 1fr auto}.content{grid-template-rows:auto auto}figure{grid-template-rows:auto auto}figure img{height:auto;aspect-ratio:16/9}figcaption{white-space:normal;line-height:1.5;padding:8px 0}.notes{gap:16px}.identity{font-size:12px}h1{font-size:25px}}
+@media screen and (max-width:650px){header{display:block}.identity{text-align:left;margin-top:10px}.notes{grid-template-columns:1fr}.document-tools span{flex-wrap:wrap}footer{gap:20px;line-height:1.5}}
+@page{size:A4 landscape;margin:0}
+@media print{body{background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}.document-tools{display:none}.submission{padding:0}.sheet{width:297mm;height:210mm;margin:0;box-shadow:none;break-after:page;page-break-after:always}.sheet:last-child{break-after:auto;page-break-after:auto}}

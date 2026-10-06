@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "file": "map-reveal-flow.webm",
+      "seekTarget": 1.13,
+      "position": 1.299002,
+      "passed": true
+    },
+    {
+      "file": "map-reveal-flow.webm",
+      "seekTarget": 1.63,
+      "position": 1.792377,
+      "passed": true
+    },
+    {
+      "file": "map-reveal-flow.webm",
+      "seekTarget": 2.26,
+      "position": 2.416647,
+      "passed": true
+    },
+    {
+      "file": "map-reveal-flow.webm",
+      "width": 1920,
+      "height": 1080,
+      "duration": 2.513,
+      "played": true,
+      "passed": true
+    },
+    {
+      "file": "mailbag-to-sailing.webm",
+      "seekTarget": 3.83,
+      "position": 3.996223,
+      "passed": true
+    },
+    {
+      "file": "mailbag-to-sailing.webm",
+      "seekTarget": 5.53,
+      "position": 5.685077,
+      "passed": true
+    },
+    {
+      "file": "mailbag-to-sailing.webm",
+      "seekTarget": 7.66,
+      "position": 7.82234,
+      "passed": true
+    },
+    {
+      "file": "mailbag-to-sailing.webm",
+      "width": 1920,
+      "height": 1080,
+      "duration": 8.511,
+      "played": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,220 @@
+{
+  "generatedAt": "2026-10-04T14:52:24.245Z",
+  "passed": true,
+  "checkCount": 16,
+  "checks": [
+    {
+      "name": "Historical files and frozen JS/CSS retain their SHA-256 hashes",
+      "passed": true,
+      "detail": {
+        "fileCount": 111,
+        "changed": []
+      }
+    },
+    {
+      "name": "Original 36-check script is copied without changing assertions",
+      "passed": true
+    },
+    {
+      "name": "valid: header, ledger, dialog, labels, endpoints, routes and hitbox DOM unchanged",
+      "passed": true
+    },
+    {
+      "name": "valid: all frozen layout and hitbox bounds unchanged",
+      "passed": true
+    },
+    {
+      "name": "valid: obstacle data, transforms, stroke and global point probes unchanged",
+      "passed": true,
+      "detail": {
+        "obstacleCount": 5,
+        "probesPerObstacle": 3337
+      }
+    },
+    {
+      "name": "valid: route result and numeric state unchanged",
+      "passed": true
+    },
+    {
+      "name": "blocked: header, ledger, dialog, labels, endpoints, routes and hitbox DOM unchanged",
+      "passed": true
+    },
+    {
+      "name": "blocked: all frozen layout and hitbox bounds unchanged",
+      "passed": true
+    },
+    {
+      "name": "blocked: obstacle data, transforms, stroke and global point probes unchanged",
+      "passed": true,
+      "detail": {
+        "obstacleCount": 5,
+        "probesPerObstacle": 3337
+      }
+    },
+    {
+      "name": "blocked: route result and numeric state unchanged",
+      "passed": true
+    },
+    {
+      "name": "All new location image references decode and ignore pointer events",
+      "passed": true,
+      "detail": [
+        {
+          "href": "assets/art-pass-03/fog-reef-shoal.svg",
+          "pointer": "none",
+          "width": 460,
+          "height": 300
+        },
+        {
+          "href": "assets/art-pass-03/fog-reef-danger.svg",
+          "pointer": "none",
+          "width": 460,
+          "height": 300
+        },
+        {
+          "href": "assets/art-pass-03/old-wreck-shoal.svg",
+          "pointer": "none",
+          "width": 210,
+          "height": 160
+        },
+        {
+          "href": "assets/art-pass-03/old-post-harbor.svg",
+          "pointer": "none",
+          "width": 340,
+          "height": 410
+        },
+        {
+          "href": "assets/art-pass-03/blue-tide-island.svg",
+          "pointer": "none",
+          "width": 400,
+          "height": 260
+        },
+        {
+          "href": "assets/art-pass-03/postal-harbor.svg",
+          "pointer": "none",
+          "width": 110,
+          "height": 105
+        },
+        {
+          "href": "assets/art-pass-03/north-pier.svg",
+          "pointer": "none",
+          "width": 76,
+          "height": 150
+        },
+        {
+          "href": "assets/art-pass-03/white-lantern-lighthouse.svg",
+          "pointer": "none",
+          "width": 100,
+          "height": 130
+        },
+        {
+          "href": "assets/art-pass-03/north-buoy.svg",
+          "pointer": "none",
+          "width": 40,
+          "height": 60
+        },
+        {
+          "href": "assets/art-pass-03/north-buoy.svg",
+          "pointer": "none",
+          "width": 40,
+          "height": 60
+        }
+      ]
+    },
+    {
+      "name": "Independent SVG assets parse successfully",
+      "passed": true,
+      "detail": [
+        {
+          "href": "assets/art-pass-03/fog-reef-shoal.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/fog-reef-danger.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/old-wreck-shoal.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/old-post-harbor.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/blue-tide-island.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/postal-harbor.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/north-pier.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/white-lantern-lighthouse.svg",
+          "valid": true
+        },
+        {
+          "href": "assets/art-pass-03/north-buoy.svg",
+          "valid": true
+        }
+      ]
+    },
+    {
+      "name": "Every location asset is below the interactive route layer",
+      "passed": true
+    },
+    {
+      "name": "Blocked retains non-colour route, contour hatching, warning, reason and lock cues",
+      "passed": true,
+      "detail": {
+        "dash": "13px, 9px",
+        "hatch": "0.5",
+        "contourTag": "path",
+        "warning": true,
+        "lock": true,
+        "reason": "W1—W2 穿越 4m 以下浅滩"
+      }
+    },
+    {
+      "name": "Debug proxies remain visible and transformed after visual separation",
+      "passed": true,
+      "detail": [
+        {
+          "opacity": "1",
+          "width": 404.8985595703125,
+          "transform": "matrix(0.9999999999999999 0 0 0.9999999999999999 -4.440892098500626e-16 0)"
+        },
+        {
+          "opacity": "1",
+          "width": 181.72698974609375,
+          "transform": "matrix(0.9999999999999999 0 0 0.9999999999999999 -4.440892098500626e-16 0)"
+        },
+        {
+          "opacity": "1",
+          "width": 266.55682373046875,
+          "transform": "matrix(0.9999999999999999 0 0 0.9999999999999999 -4.440892098500626e-16 0)"
+        },
+        {
+          "opacity": "1",
+          "width": 342.6021728515625,
+          "transform": "matrix(0.9999999999999999 0 0 0.9999999999999999 -4.440892098500626e-16 0)"
+        },
+        {
+          "opacity": "1",
+          "width": 66.18682861328125,
+          "transform": "matrix(0.9999999999999999 0 0 0.9999999999999999 329.99999999999994 535)"
+        }
+      ]
+    },
+    {
+      "name": "No runtime or local request failures",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}
