@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" role="img" aria-labelledby="title desc">
+  <title id="title">雾礁浅滩</title>
+  <desc id="desc">从青绿浅水过渡到沙黄色低潮浅滩，内含体积明确的礁石和水深刻度。</desc>
+  <defs>
+    <filter id="wash" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".028" numOctaves="3" seed="21" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="8"/><feGaussianBlur stdDeviation=".35"/></filter>
+    <linearGradient id="shelf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8fc9bd" stop-opacity=".16"/><stop offset=".55" stop-color="#b9d6bf" stop-opacity=".6"/><stop offset="1" stop-color="#d9cb98" stop-opacity=".48"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9cf9e" stop-opacity=".68"/><stop offset="1" stop-color="#c9b77d" stop-opacity=".52"/></linearGradient>
+    <linearGradient id="rock" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#a7b6a6"/><stop offset=".45" stop-color="#758f87"/><stop offset="1" stop-color="#4e6e6c"/></linearGradient>
+  </defs>
+  <path d="M21 145C27 86 77 62 126 58 153 22 210 24 244 39 291 25 337 46 356 76 405 82 439 114 436 158 444 204 404 233 361 238 323 272 281 260 246 253 203 276 166 258 135 243 85 249 45 218 39 188 15 178 10 158 21 145Z" fill="url(#shelf)" filter="url(#wash)"/>
+  <path d="M63 143C67 101 111 78 151 83 178 51 225 53 251 70 289 54 328 76 337 104 376 111 397 137 385 169 399 194 367 220 331 215 302 238 269 226 242 219 210 239 175 227 151 211 111 220 78 194 82 169 56 163 51 151 63 143Z" fill="url(#sand)" stroke="#8ba68e" stroke-opacity=".32" stroke-width="2" filter="url(#wash)"/>
+  <path d="M99 139C118 102 159 96 186 104 207 82 246 82 266 100 303 91 335 112 337 140 357 158 332 186 303 184 282 204 250 193 228 188 201 209 169 194 153 178 123 183 101 164 99 139Z" fill="#e0d29c" fill-opacity=".52" stroke="#9e9b71" stroke-opacity=".3" stroke-width="2" stroke-dasharray="7 9"/>
+  <g fill="none" stroke="#5f9188" stroke-linecap="round" opacity=".36">
+    <path d="M29 121C72 91 106 97 138 74"/><path d="M52 207C91 227 120 217 150 229"/><path d="M292 61C321 66 345 86 367 92"/><path d="M326 229C364 221 388 203 410 185"/>
+  </g>
+  <g filter="url(#wash)">
+    <g transform="translate(150 122) rotate(-10)"><path d="M-31 12L-20-14 2-25 27-8 35 14 11 25-18 21Z" fill="url(#rock)" stroke="#466866" stroke-width="3"/><path d="M-17-8L0-17 15-5M-20 12L5 16 24 8" fill="none" stroke="#c6d0b8" stroke-width="4" stroke-linecap="round" opacity=".64"/><path d="M-40 28Q-15 19 3 29T43 25" fill="none" stroke="#f2ead3" stroke-width="4" stroke-linecap="round" opacity=".8"/></g>
+    <g transform="translate(255 158) rotate(8)"><path d="M-36 9L-23-20 0-29 32-13 39 14 12 30-19 25Z" fill="url(#rock)" stroke="#466866" stroke-width="3"/><path d="M-21-10L0-21 20-8M-22 11L4 19 24 8" fill="none" stroke="#c6d0b8" stroke-width="4" stroke-linecap="round" opacity=".58"/><path d="M-48 34Q-21 24 1 34T48 29" fill="none" stroke="#f2ead3" stroke-width="4" stroke-linecap="round" opacity=".78"/></g>
+    <g transform="translate(329 127) rotate(-14)"><path d="M-24 11L-16-13 4-22 24-5 29 16 8 23-20 20Z" fill="url(#rock)" stroke="#466866" stroke-width="3"/><path d="M-12-8L4-14 15-4" fill="none" stroke="#c6d0b8" stroke-width="4" stroke-linecap="round" opacity=".55"/></g>
+    <g transform="translate(196 201) scale(.68) rotate(12)"><path d="M-24 11L-16-13 4-22 24-5 29 16 8 23-20 20Z" fill="url(#rock)" stroke="#466866" stroke-width="3"/></g>
+  </g>
+  <g font-family="Georgia,serif" font-style="italic" fill="#5e8278" opacity=".72"><text x="82" y="107" font-size="16">5</text><text x="214" y="88" font-size="16">4</text><text x="358" y="177" font-size="16">3</text></g>
+</svg>

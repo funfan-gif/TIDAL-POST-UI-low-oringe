@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-10-13T14:36:53.142Z",
+  "checks": [
+    {
+      "name": "prototype opens at Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Harbor opens TP-042 mission",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mission accepted and Mailbag opened",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "blue envelope selected as draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mailbag saves required envelope",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "first map entry plays unroll reveal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "map reveal skip restores interactive MAP_READY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "map exposes at least three selectable ports",
+      "passed": true,
+      "detail": "3 ports"
+    },
+    {
+      "name": "W1 remains keyboard-draggable",
+      "passed": true,
+      "detail": "355 → 363"
+    },
+    {
+      "name": "destination switching changes endpoint geometry",
+      "passed": true,
+      "detail": "{\"id\":\"east-tide-fishery\",\"x\":1363,\"y\":520,\"name\":\"东汐渔港\",\"ledger\":\"东汐渔港\",\"type\":\"近岸渔港\",\"matches\":false}"
+    },
+    {
+      "name": "wrong address is independent from route danger",
+      "passed": true,
+      "detail": "match=false; safe=false"
+    },
+    {
+      "name": "wrong address locks route confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "correct TP-042 destination restores matching state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "default northern route remains safe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "safe matching route can be confirmed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "changing destination invalidates old confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "confirmed route opens Sailing HUD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "TP-042 reaches delivery result",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reward is claimed once",
+      "passed": true,
+      "detail": "stamps=160"
+    },
+    {
+      "name": "completed flow returns to Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no runtime or asset errors",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 21,
+  "failed": 0,
+  "errors": []
+}

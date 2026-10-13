@@ -82,7 +82,7 @@ function applyCapturePreset() {
     state.selectedIsland = "blue";
   }
   if (target === "result") state.completed = true;
-  if (["sailing", "result"].includes(target)) state.routePlan = { valid: true, confirmed: true, distance: 2.4, destination: "blue-tide-north-pier" };
+  if (["sailing", "result"].includes(target)) state.routePlan = { valid: true, confirmed: true, destinationMatches: true, distance: 2.4, destination: "blue-tide-north-pier" };
   return target;
 }
 
@@ -114,7 +114,7 @@ function flashSuccess() {
 
 function navigate(screen, options = {}) {
   if (!screenMeta[screen]) return;
-  if (screen === "sailing" && !(state.mailbagSaved && state.routePlan?.valid && state.routePlan?.confirmed)) return;
+  if (screen === "sailing" && !(state.mailbagSaved && state.routePlan?.valid && state.routePlan?.destinationMatches && state.routePlan?.confirmed)) return;
   if (state.screen === "map" && screen !== "map") {
     mapReveal?.finish({ focus: false });
     routeMap?.closeConfirmation();
@@ -162,12 +162,12 @@ function navigate(screen, options = {}) {
 
 function syncRoutePlan(route) {
   state.routePlan = {
-    commission: "TP-042", destination: "blue-tide-north-pier", start: route.start,
+    commission: "TP-042", destination: route.destination.id, destinationName: route.destination.name, destinationMatches: route.destinationMatches, start: route.start,
     w1: route.waypoints[0], w2: route.waypoints[1], waypoints: route.waypoints,
     distance: route.total, bearings: route.segments.map(s => s.bearing), segments: route.segments,
     valid: route.valid, confirmed: route.confirmed
   };
-  state.selectedIsland = "blue";
+  state.selectedIsland = route.destination.id;
   if (state.mapPhase !== "MAP_REVEALING") state.mapPhase = route.confirmed ? "MAP_CONFIRMED" : "MAP_READY";
   renderHarbor(); persistPrototype(); updateDebug();
 }
@@ -246,7 +246,7 @@ function renderMailbag() {
   const preview = $("#bagItemPreview");
   if (state.selectedItem) {
     const valid = selectedBlue;
-    preview.innerHTML = '<img src="assets/icons/' + (valid ? "03_mailbag.png" : "02_commission.png") + '" alt=""><span><strong>' + (valid ? "蓝色信封" : "海盐账单") + "</strong><small>" + (state.mailbagSaved ? "已保存至邮袋" : valid ? "任务匹配 · 草稿" : "非任务所需") + "</small></span>";
+    preview.innerHTML = '<img src="' + (valid ? "assets/week5/blue-envelope-v3.svg" : "assets/icons/02_commission.png") + '" alt=""><span><strong>' + (valid ? "蓝色信封" : "海盐账单") + "</strong><small>" + (state.mailbagSaved ? "已保存至邮袋" : valid ? "任务匹配 · 草稿" : "非任务所需") + "</small></span>";
   } else {
     preview.innerHTML = '<span class="muted">等待选择邮件</span>';
   }
@@ -351,7 +351,7 @@ function goMap() {
 }
 
 function startSailing() {
-  if (state.mapPhase === "MAP_REVEALING" || !state.mailbagSaved || !state.routePlan?.valid || !state.routePlan?.confirmed) return;
+  if (state.mapPhase === "MAP_REVEALING" || !state.mailbagSaved || !state.routePlan?.valid || !state.routePlan?.destinationMatches || !state.routePlan?.confirmed) return;
   routeMap?.closeConfirmation();
   state.completed = false;
   navigate("sailing");

@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-10-13T14:40:29.752Z",
+  "url": "http://127.0.0.1:4174/?capture=04-map",
+  "checks": [
+    {
+      "name": "1920×1080 map and ledger remain inside viewport",
+      "passed": true,
+      "detail": "{\"chart\":{\"x\":33.977725982666016,\"y\":109.95011138916016,\"w\":1404.04443359375,\"h\":936.0997924804688},\"ledger\":{\"x\":1467.4168701171875,\"y\":127.45509338378906,\"w\":404.166259765625,\"h\":917.08984375,\"scrollHeight\":915},\"actionBottom\":1001.3106079101562,\"footTop\":1007.66357421875}"
+    },
+    {
+      "name": "ledger content does not overlap footnote",
+      "passed": true,
+      "detail": "actions 1001.3, footnote 1007.7"
+    },
+    {
+      "name": "hover opens compass ring and label",
+      "passed": true,
+      "detail": "{\"ring\":\"1\",\"label\":\"1\",\"selected\":false}"
+    },
+    {
+      "name": "hover and selected are distinct states",
+      "passed": true,
+      "detail": "{\"ring\":\"1\",\"label\":\"1\",\"selected\":false}"
+    },
+    {
+      "name": "blue-tide port is selected and address matches",
+      "passed": true,
+      "detail": "blue-tide-north-pier"
+    },
+    {
+      "name": "click changes actual route destination",
+      "passed": true,
+      "detail": "{\"id\":\"white-lantern-supply\",\"x\":385,\"y\":505,\"name\":\"白塔补给站\",\"ledger\":\"白塔补给站\",\"type\":\"灯塔补给港\",\"matches\":false}"
+    },
+    {
+      "name": "wrong destination and route safety are separate states",
+      "passed": true,
+      "detail": "match=false, valid=true"
+    },
+    {
+      "name": "wrong destination cannot be confirmed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "wrong feedback is concise and does not reveal answer",
+      "passed": true,
+      "detail": "邮址未匹配 / 当前邮件与所选港口的邮址不同"
+    },
+    {
+      "name": "fog shoal still blocks a crossing route",
+      "passed": true,
+      "detail": "[[],[\"fog\"],[]]"
+    },
+    {
+      "name": "mailbag uses a distinct envelope asset",
+      "passed": true,
+      "detail": "{\"src\":\"assets/week5/blue-envelope-v3.svg\",\"loaded\":true,\"width\":200,\"height\":150}"
+    },
+    {
+      "name": "no browser runtime errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1366×768 layout has no document overflow",
+      "passed": true,
+      "detail": "{\"stage\":{\"x\":0.33331298828125,\"y\":0,\"w\":1365.33349609375,\"h\":768},\"ledger\":{\"x\":1043.829833984375,\"y\":90.63473510742188,\"right\":1331.23681640625,\"bottom\":742.7875671386719},\"overflowX\":false,\"overflowY\":false}"
+    },
+    {
+      "name": "1366×768 ledger remains visible",
+      "passed": true,
+      "detail": "{\"x\":1043.829833984375,\"y\":90.63473510742188,\"right\":1331.23681640625,\"bottom\":742.7875671386719}"
+    },
+    {
+      "name": "reduced motion disables port transitions",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 15,
+  "failed": 0,
+  "errors": [],
+  "samples": {
+    "layout1920": {
+      "chart": {
+        "x": 33.977725982666016,
+        "y": 109.95011138916016,
+        "w": 1404.04443359375,
+        "h": 936.0997924804688
+      },
+      "ledger": {
+        "x": 1467.4168701171875,
+        "y": 127.45509338378906,
+        "w": 404.166259765625,
+        "h": 917.08984375,
+        "scrollHeight": 915
+      },
+      "actionBottom": 1001.3106079101562,
+      "footTop": 1007.66357421875
+    },
+    "wrong": {
+      "selectedPortId": "white-lantern-supply",
+      "destination": {
+        "id": "white-lantern-supply",
+        "x": 385,
+        "y": 505,
+        "name": "白塔补给站",
+        "ledger": "白塔补给站",
+        "type": "灯塔补给港",
+        "matches": false
+      },
+      "destinationMatches": false,
+      "waypoints": [
+        {
+          "x": 520,
+          "y": 355
+        },
+        {
+          "x": 940,
+          "y": 315
+        }
+      ],
+      "confirmed": false,
+      "valid": true,
+      "confirmable": false,
+      "segments": [
+        {
+          "a": {
+            "x": 275,
+            "y": 720
+          },
+          "b": {
+            "x": 520,
+            "y": 355
+          },
+          "bearing": 29.83119307297909,
+          "distance": 1.0518795509753627,
+          "hazards": [],
+          "blocked": false,
+          "tooShort": false
+        },
+        {
+          "a": {
+            "x": 520,
+            "y": 355
+          },
+          "b": {
+            "x": 940,
+            "y": 315
+          },
+          "bearing": 83.63825523695493,
+          "distance": 0.9024831848049422,
+          "hazards": [],
+          "blocked": false,
+          "tooShort": false
+        },
+        {
+          "a": {
+            "x": 940,
+            "y": 315
+          },
+          "b": {
+            "x": 385,
+            "y": 505
+          },
+          "bearing": 248.16130710714145,
+          "distance": 1.2768996575659268,
+          "hazards": [],
+          "blocked": false,
+          "tooShort": false
+        }
+      ],
+      "total": 3.2312623933462317
+    },
+    "layout1366": {
+      "stage": {
+        "x": 0.33331298828125,
+        "y": 0,
+        "w": 1365.33349609375,
+        "h": 768
+      },
+      "ledger": {
+        "x": 1043.829833984375,
+        "y": 90.63473510742188,
+        "right": 1331.23681640625,
+        "bottom": 742.7875671386719
+      },
+      "overflowX": false,
+      "overflowY": false
+    }
+  }
+}

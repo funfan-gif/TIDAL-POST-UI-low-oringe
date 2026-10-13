@@ -1,0 +1,42 @@
+[
+  {
+    "name": "03-title-before-after",
+    "title": "A · 海图题签",
+    "x": 44,
+    "y": 116,
+    "w": 410,
+    "h": 158
+  },
+  {
+    "name": "04-north-channel-before-after",
+    "title": "B · 北航道",
+    "x": 470,
+    "y": 285,
+    "w": 590,
+    "h": 220
+  },
+  {
+    "name": "05-blue-port-before-after",
+    "title": "C · 蓝潮岛港口",
+    "x": 965,
+    "y": 228,
+    "w": 470,
+    "h": 300
+  },
+  {
+    "name": "06-fog-reef-before-after",
+    "title": "D · 雾礁浅滩",
+    "x": 515,
+    "y": 505,
+    "w": 520,
+    "h": 300
+  },
+  {
+    "name": "07-wreck-before-after",
+    "title": "E · 旧沉船残骸",
+    "x": 895,
+    "y": 690,
+    "w": 470,
+    "h": 280
+  }
+]

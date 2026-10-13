@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="title desc">
+  <title id="title">蓝潮岛邮务信封</title>
+  <desc id="desc">蓝绿色手绘信封，带珊瑚纹衬纸、麻绳和贝壳蜡封。</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9efd7"/><stop offset=".58" stop-color="#ead7ad"/><stop offset="1" stop-color="#d8be8c"/></linearGradient>
+    <linearGradient id="lining" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8cc4bd"/><stop offset="1" stop-color="#4d8c89"/></linearGradient>
+    <filter id="ink" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="17" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".55" numOctaves="2" seed="5" result="g"/><feComposite in="g" in2="SourceGraphic" operator="in" result="t"/><feBlend in="SourceGraphic" in2="t" mode="multiply"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#173f42" flood-opacity=".24"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M34 58Q35 42 54 39L276 43Q291 44 292 61L286 196Q285 211 269 212L49 207Q31 206 31 189Z" fill="url(#paper)" stroke="#55766c" stroke-width="5" stroke-linejoin="round" filter="url(#ink)"/>
+    <path d="M39 58L158 151 287 62 276 43 53 39Z" fill="url(#lining)" stroke="#4f7770" stroke-width="4" stroke-linejoin="round" filter="url(#ink)"/>
+    <path d="M53 45L159 132 276 49" fill="none" stroke="#d7ece2" stroke-opacity=".65" stroke-width="3"/>
+    <path d="M34 190L123 111Q154 86 184 112L286 196" fill="url(#paper)" stroke="#6b8272" stroke-width="4" stroke-linejoin="round" filter="url(#ink)"/>
+    <path d="M33 63L126 142Q156 166 187 142L290 66" fill="none" stroke="#9c8c6c" stroke-opacity=".55" stroke-width="3"/>
+    <path d="M52 52Q76 67 96 57M220 58Q243 69 270 53" fill="none" stroke="#3c7776" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <path d="M58 185Q109 159 157 176T269 185" fill="none" stroke="#b69057" stroke-width="5" stroke-linecap="round" stroke-dasharray="5 8" opacity=".72"/>
+    <g transform="translate(161 145) rotate(-4)" filter="url(#ink)">
+      <circle r="35" fill="#c86753" stroke="#8d443b" stroke-width="5"/>
+      <circle r="27" fill="none" stroke="#e8a078" stroke-width="2.5" stroke-dasharray="3 4"/>
+      <path d="M-16 10Q-11-5 0-17 12-5 17 10 6 4 0 15-6 4-16 10ZM0-17V15" fill="none" stroke="#f3c29b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <path d="M75 78q15-12 31 0m-26 11q20-14 40 0" fill="none" stroke="#f4d8b2" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+  </g>
+</svg>

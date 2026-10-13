@@ -1,0 +1,267 @@
+/* Week 5 / Map V3 — art and interaction overrides. The 1400×930 chart coordinate system stays unchanged. */
+:root{
+  --v3-chart-paper:#eee0be;
+  --v3-chart-ink:#315e57;
+  --v3-chart-ink-soft:#67887c;
+  --v3-channel:#76aaa2;
+  --v3-gold:#c9a35d;
+  --v3-gold-dark:#8c713e;
+  --v3-danger:#a65746;
+}
+
+.integrated-map .chart-paper{
+  background-color:var(--v3-chart-paper);
+}
+.integrated-map .sea-paper-texture{opacity:.78;}
+.integrated-map #chart > rect[fill="url(#readingWash)"]{opacity:1.22;}
+.integrated-map #chart > rect,
+.integrated-map #chart > path,
+.integrated-map #chart > .bathymetry,
+.integrated-map #chart > .depths,
+.integrated-map #chart > .chart-caption,
+.integrated-map #chart > .compass,
+.integrated-map #chart > .map-legend,
+.integrated-map #chart > .north-channel{pointer-events:none;}
+
+/* A · an engraved chart title, not a task/debug card */
+.integrated-map .chart-caption{filter:url(#inkStroke);}
+.integrated-map .chart-caption .chart-name{
+  font:700 31px/1 var(--chart-display);
+  fill:#315f58;
+  letter-spacing:.16em;
+}
+.integrated-map .caption-subtitle{
+  fill:#5f8176;
+  font:15px var(--chart-display);
+  letter-spacing:.2em;
+}
+.integrated-map .caption-rule,
+.integrated-map .caption-flourish{
+  fill:none;
+  stroke:#66877b;
+  stroke-width:1.2;
+  opacity:.7;
+}
+.integrated-map .survey-seal{color:#728c76;opacity:.68;}
+.integrated-map .survey-seal circle,
+.integrated-map .survey-seal path{fill:none;stroke:currentColor;stroke-width:1.1;}
+.integrated-map .survey-seal text{font:14px var(--chart-display);fill:currentColor;stroke:none;}
+
+/* B · bathymetry draws the channel before the label names it. */
+.integrated-map .north-channel{filter:url(#inkStroke);}
+.integrated-map .channel-wash{
+  fill:none;
+  stroke:url(#channelWater);
+  stroke-width:78;
+  stroke-linecap:round;
+  opacity:.72;
+}
+.integrated-map .channel-boundary{
+  fill:none;
+  stroke:#5c8f83;
+  stroke-width:1.35;
+  stroke-dasharray:9 10;
+  opacity:.55;
+}
+.integrated-map .channel-current{
+  fill:none;
+  stroke:#5b8c82;
+  stroke-width:2;
+  stroke-linecap:round;
+  opacity:.34;
+}
+.integrated-map .channel-title path{fill:none;stroke:#597f73;stroke-width:1;opacity:.52;}
+.integrated-map .channel-title text:first-of-type{
+  fill:#476f66;
+  font:25px var(--chart-display);
+  letter-spacing:.28em;
+  paint-order:stroke;
+  stroke:#e6ead7aa;
+  stroke-width:5;
+}
+.integrated-map .channel-title text:last-of-type{
+  fill:#69887c;
+  font:italic 13px Georgia,var(--chart-display);
+  letter-spacing:.06em;
+  paint-order:stroke;
+  stroke:#e6ead7aa;
+  stroke-width:4;
+}
+
+/* D · the hazard shape, painted shoal and runtime collision share the same local coordinates. */
+.integrated-map .fog-reef-art{opacity:.98;}
+.integrated-map .shoal-label .place-name{
+  font:700 26px var(--chart-display);
+  fill:#466d64;
+  paint-order:stroke;
+  stroke:#e8dfc1c7;
+  stroke-width:6;
+  stroke-linejoin:round;
+}
+.integrated-map .shoal-label .hazard-note{
+  font:16px var(--chart-display);
+  fill:#806d50;
+  letter-spacing:.08em;
+  paint-order:stroke;
+  stroke:#eadfbdcf;
+  stroke-width:5;
+}
+.integrated-map #fog-zone.is-danger .shoal-label .place-name,
+.integrated-map #fog-zone.is-danger .shoal-label .hazard-note{fill:#914f42;}
+
+/* E · a top-down painted wreck tied into shallow-water contours. */
+.integrated-map .wreck-water-wash{fill:url(#wreckWater);filter:url(#wash);}
+.integrated-map .wreck-depth-line{
+  fill:none;
+  stroke:#6f9d90;
+  stroke-width:1.25;
+  stroke-dasharray:9 10;
+  opacity:.48;
+}
+.integrated-map .wreck-art{opacity:.9;filter:saturate(.78) sepia(.08);}
+.integrated-map .wreck-label{
+  fill:#5f786e;
+  font-size:15px;
+  letter-spacing:.08em;
+  paint-order:stroke;
+  stroke:#e8e2c9;
+  stroke-width:4;
+}
+.integrated-map .wreck-label tspan{font:italic 13px Georgia,serif;fill:#7b8068;}
+.integrated-map #wreck-zone.is-danger .wreck-depth-line{stroke:var(--v3-danger);stroke-width:2;opacity:.82;}
+.integrated-map #wreck-zone.is-danger .wreck-art{filter:saturate(.8) sepia(.18) drop-shadow(0 0 5px #a6574670);}
+
+/* C · selectable ports: calm at rest, progressive feedback on hover/focus, persistent selected state. */
+.integrated-map .interactive-ports{pointer-events:auto;}
+.integrated-map .map-port{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center;pointer-events:all!important;}
+.integrated-map .port-hit{fill:#fff;fill-opacity:.001;stroke:none;pointer-events:all!important;}
+.integrated-map .port-token{
+  fill:#f4ead3;
+  stroke:#3a6c65;
+  stroke-width:2.2;
+  filter:url(#softShadow);
+  transition:transform 190ms ease-out,fill 190ms ease-out,stroke 190ms ease-out;
+}
+.integrated-map .port-icon{
+  fill:none;
+  stroke:#35675f;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
+}
+.integrated-map .fish-icon{fill:#5e9186;stroke-width:1.8;}
+.integrated-map .port-compass-ring,
+.integrated-map .port-compass-ticks{
+  fill:none;
+  stroke:var(--v3-gold);
+  stroke-width:1.8;
+  opacity:0;
+  transform:scale(.68) rotate(-12deg);
+  transform-origin:center;
+  transition:opacity 160ms ease-out,transform 220ms cubic-bezier(.2,.75,.2,1);
+  pointer-events:none;
+}
+.integrated-map .port-compass-ring{stroke-dasharray:4 4 20 5;}
+.integrated-map .map-port:hover .port-token,
+.integrated-map .map-port:focus-visible .port-token{transform:translateY(-4px) scale(1.06);fill:#faefd3;stroke:var(--v3-gold-dark);}
+.integrated-map .map-port:hover .port-compass-ring,
+.integrated-map .map-port:hover .port-compass-ticks,
+.integrated-map .map-port:focus-visible .port-compass-ring,
+.integrated-map .map-port:focus-visible .port-compass-ticks,
+.integrated-map .map-port.is-selected .port-compass-ring,
+.integrated-map .map-port.is-selected .port-compass-ticks{opacity:1;transform:scale(1) rotate(0);}
+.integrated-map .map-port:focus-visible .port-hit{stroke:var(--v3-gold-dark);stroke-width:2;stroke-dasharray:3 5;}
+.integrated-map .port-name-tag{opacity:0;transform-box:fill-box;transform-origin:center bottom;transition:opacity 140ms ease-out,transform 190ms ease-out;pointer-events:none;}
+.integrated-map .port-name-tag path{fill:#f3e6cbdc;stroke:#8d9877;stroke-width:1;filter:url(#pigment);}
+.integrated-map .port-name-tag text:first-of-type{fill:#294f4e;font:700 18px var(--chart-display);}
+.integrated-map .port-name-tag text:last-of-type{fill:#698073;font:12px var(--chart-display);letter-spacing:.12em;}
+.integrated-map .map-port:hover .port-name-tag,
+.integrated-map .map-port:focus-visible .port-name-tag,
+.integrated-map .map-port.is-selected .port-name-tag{opacity:1;transform:translateY(-4px);}
+.integrated-map .map-port.is-wrong:not(:hover):not(:focus-visible) .port-name-tag{opacity:0;transform:none;}
+.integrated-map .port-selected-seal{
+  opacity:0;
+  fill:#f4ead3;
+  stroke:#3b7467;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
+  transform:translate(26px,-26px) scale(.48);
+  transform-origin:center;
+}
+.integrated-map .port-selected-seal path{fill:none;stroke-width:3.5;}
+.integrated-map .port-selected-seal circle{stroke-dasharray:3 4 18 5;}
+.integrated-map .map-port.is-selected .port-selected-seal{opacity:.72;animation:port-stamp 310ms cubic-bezier(.17,.82,.28,1);}
+.integrated-map .port-error-stamp{
+  opacity:0;
+  color:var(--v3-danger);
+  fill:#f1dfc7e8;
+  stroke:currentColor;
+  stroke-width:2;
+  pointer-events:none;
+}
+.integrated-map .port-error-stamp text{fill:currentColor;stroke:none;font:700 12px var(--chart-display);paint-order:stroke;}
+.integrated-map .map-port.is-wrong .port-error-stamp{opacity:.94;}
+.integrated-map .map-port.is-wrong.is-wrong-pulse .port-error-stamp{animation:wrong-stamp 360ms cubic-bezier(.15,.78,.28,1);}
+.integrated-map .destination-coordinate{
+  font-size:13px;
+  opacity:.68;
+  paint-order:stroke;
+  stroke:#e9e3c9;
+  stroke-width:4;
+  pointer-events:none;
+}
+.integrated-map .destination-coordinate[hidden]{display:none;}
+
+@keyframes port-stamp{0%{opacity:0;transform:translate(26px,-26px) scale(.8) rotate(-13deg)}58%{opacity:.9;transform:translate(26px,-26px) scale(.44) rotate(3deg)}100%{opacity:.72;transform:translate(26px,-26px) scale(.48) rotate(0)}}
+@keyframes wrong-stamp{0%{opacity:0;transform:translateY(-9px) scale(1.35) rotate(-11deg)}55%{opacity:1;transform:translateY(1px) scale(.94) rotate(3deg)}100%{opacity:.94;transform:none}}
+
+/* Three information levels: geographic ink, selected port/address, then full live data in the ledger. */
+.integrated-map .depths{opacity:.62;}
+.integrated-map .small-label{font-size:17px;paint-order:stroke;stroke:#e9e5ce99;stroke-width:3;}
+.integrated-map .island-name{paint-order:stroke;stroke:#e2e5c5aa;stroke-width:5;}
+
+.integrated-map .mail-order{padding:17px 0 14px;}
+.integrated-map .mail-order > span{margin-bottom:6px;}
+.integrated-map .mail-order p{margin-top:7px;}
+.integrated-map .tide-window{padding:13px 0 10px;}
+.integrated-map .route-list li{height:38px;}
+.integrated-map .distance-total{padding-top:10px;}
+.integrated-map .distance-total strong{font-size:32px;}
+.integrated-map .destination-check{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:10px 2px 9px;
+  border-top:1px dashed #8d9f7e88;
+  color:#436f59;
+}
+.integrated-map .destination-check > span{
+  width:24px;height:24px;flex:0 0 24px;border:1.8px solid currentColor;border-radius:50%;position:relative;
+}
+.integrated-map .destination-check > span:before{content:"";position:absolute;left:6px;top:4px;width:8px;height:12px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(43deg);}
+.integrated-map .destination-check strong{display:block;font:700 18px var(--chart-display);}
+.integrated-map .destination-check small{display:block;color:#6a806d;font-size:11px;margin-top:2px;}
+.integrated-map .destination-check.is-mismatch{color:var(--v3-danger);}
+.integrated-map .destination-check.is-mismatch > span{border-radius:2px;transform:rotate(-6deg);}
+.integrated-map .destination-check.is-mismatch > span:before{left:5px;top:10px;width:13px;height:0;border:0;border-top:2px solid currentColor;transform:rotate(45deg);}
+.integrated-map .destination-check.is-mismatch > span:after{content:"";position:absolute;left:5px;top:10px;width:13px;border-top:2px solid currentColor;transform:rotate(-45deg);}
+.integrated-map .destination-check.is-mismatch small{color:#8b6254;}
+.integrated-map .route-status{margin-top:4px;padding:10px 3px 8px;min-height:86px;}
+.integrated-map .route-status h3{font-size:23px;margin-bottom:3px;}
+.integrated-map .route-status p{line-height:1.45;}
+.integrated-map .ledger-actions{padding-top:8px;}
+.integrated-map .ledger-actions > button:first-child{height:65px;font-size:23px;}
+.integrated-map .ledger-actions p{margin-top:5px;}
+.integrated-map .ledger-footnote{bottom:11px;}
+
+.inventory-item[data-item="blue-envelope"] img,
+.bag-item-preview img[src*="blue-envelope-v3"]{object-fit:contain;filter:drop-shadow(0 4px 7px #29475224);}
+.inventory-item[data-item="blue-envelope"] img{transform:rotate(-2deg) scale(.94);}
+
+@media (prefers-reduced-motion:reduce){
+  .integrated-map .map-port *,
+  .integrated-map .map-port{animation:none!important;transition:none!important;}
+}

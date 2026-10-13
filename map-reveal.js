@@ -68,7 +68,7 @@ window.TidalMapReveal = (() => {
       animate(origin.querySelector(".paper-roll-shadow"),[{transform:"scaleX(1)",opacity:1},{transform:"scaleX(.12)",opacity:0}],{delay:5000,duration:200,easing:"ease-out"});
       animate(origin.querySelector(".paper-roll-seal"),[{opacity:1,transform:"rotate(-3deg)"},{opacity:0,transform:"translateY(13px) rotate(-18deg)"}],{delay:200,duration:300,easing:"ease-out"});
       animate(root.querySelector(".chart-paper"),unroll.map(({position,...frame})=>({...frame,clipPath:`inset(0 ${100*(1-position)}% 0 0)`})),{delay:UNROLL_START,duration:UNROLL_DURATION});
-      for(const el of root.querySelectorAll("#route-underlay,#route-segments,#route-direction-marks,#waypoints,.port-marker,.destination-marker"))animate(el,[{opacity:0},{opacity:1}],{delay:5050,duration:180,easing:"ease-out"});
+      for(const el of root.querySelectorAll("#route-underlay,#route-segments,#route-direction-marks,#waypoints,.port-marker,.interactive-ports"))animate(el,[{opacity:0},{opacity:1}],{delay:5050,duration:180,easing:"ease-out"});
       for(const el of root.querySelectorAll("#chart text,.chart-instruction"))animate(el,[{opacity:0},{opacity:1}],{delay:5150,duration:180,easing:"ease-out"});
       animate(root.querySelector(".desk-heading"),[{opacity:0},{opacity:1}],{delay:150,duration:200,easing:"ease-out"});
       animate(root.querySelector(".ledger"),[{opacity:0,translate:"16px 0"},{opacity:1,translate:"0px 0"}],{delay:5250,duration:230,easing:"ease-out"});
