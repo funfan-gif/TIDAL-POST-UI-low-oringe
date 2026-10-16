@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-10-14T04:19:43.530Z",
+  "checks": [
+    {
+      "name": "prototype opens at the quiet Harbor event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "arrival can be skipped without losing the commission",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "letter acceptance opens TP-042 Mission",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mission accepted and Mailbag opened",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "blue envelope selected as draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mailbag saves required envelope",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "first map entry still plays unroll reveal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "map reveal restores MAP_READY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "map still exposes three destinations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "W1 remains keyboard-draggable",
+      "passed": true,
+      "detail": "355 → 363"
+    },
+    {
+      "name": "wrong destination remains independently address-invalid",
+      "passed": true,
+      "detail": "match=false; safe=true"
+    },
+    {
+      "name": "wrong address keeps confirmation locked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "correct destination restores matching and safe states",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "matching route can be confirmed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "destination changes still invalidate confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "confirmed route opens Sailing HUD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "TP-042 reaches delivery result",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reward is claimed once",
+      "passed": true,
+      "detail": "stamps=160"
+    },
+    {
+      "name": "completed flow returns to opened Harbor letter",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "diegetic Harbor postage token reflects the reward",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no runtime or asset errors",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 21,
+  "failed": 0,
+  "errors": []
+}

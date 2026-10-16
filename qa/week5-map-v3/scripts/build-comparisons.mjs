@@ -1,10 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createRequire} from 'node:module';
-
-const require=createRequire('C:/Users/jk666/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/package.json');
-const {chromium}=require('playwright');
+import {launchBrowser} from '../../playwright-runtime.mjs';
 const qa=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const before='http://127.0.0.1:4174/qa/week5-map-v3/before/01-original-full-map.png';
 const after='http://127.0.0.1:4174/qa/week5-map-v3/after/01-map-default-1920x1080.png';
@@ -16,7 +13,7 @@ const regions=[
   {name:'06-fog-reef-before-after',title:'D · 雾礁浅滩',x:515,y:505,w:520,h:300},
   {name:'07-wreck-before-after',title:'E · 旧沉船残骸',x:895,y:690,w:470,h:280}
 ];
-const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+const browser=await launchBrowser();
 for(const region of regions){
   const viewport={width:region.w*2+56,height:region.h+78};
   const context=await browser.newContext({viewport,deviceScaleFactor:1});const page=await context.newPage();

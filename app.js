@@ -28,6 +28,7 @@ const state = {
   routePlan: null,
   mapRevealSeen: false,
   mapPhase: "MAILBAG",
+  harborEventPhase: "waiting",
   missionRound: 1
 };
 
@@ -41,6 +42,7 @@ if (!capturePreset) {
     }
   } catch { /* Storage is optional for local-file use. */ }
 }
+if (state.harborEventPhase === "arriving") state.harborEventPhase = "waiting";
 function persistPrototype() {
   if (capturePreset) return;
   try { sessionStorage.setItem(prototypeStorageKey, JSON.stringify(state)); } catch { }
@@ -59,10 +61,13 @@ let toastTimer;
 let sailing;
 let routeMap;
 let mapReveal;
+let harborEvent;
 
 function applyCapturePreset() {
   const target = {
     "01-harbor": "harbor",
+    "01-harbor-waiting": "harbor",
+    "01-harbor-letter": "harbor",
     "02-mission": "mission",
     "03-mailbag": "mailbag",
     "04-map": "map",
@@ -71,6 +76,9 @@ function applyCapturePreset() {
   }[capturePreset];
 
   if (!target) return null;
+
+  if (capturePreset === "01-harbor-waiting") state.harborEventPhase = "waiting";
+  if (capturePreset === "01-harbor" || capturePreset === "01-harbor-letter") state.harborEventPhase = "revealed";
 
   if (["mailbag", "map", "sailing", "result"].includes(target)) {
     state.missionAccepted = true;
@@ -122,6 +130,7 @@ function navigate(screen, options = {}) {
   if (state.screen === "sailing" && screen !== "sailing") sailing?.stop();
   state.screen = screen;
   $(".prototype-frame").classList.toggle("map-mode", screen === "map");
+  $(".prototype-frame").classList.toggle("harbor-event-mode", screen === "harbor");
 
   $$(".screen").forEach((node) => {
     const active = node.dataset.screen === screen;
@@ -153,8 +162,17 @@ function navigate(screen, options = {}) {
     window.requestAnimationFrame(() => sailing?.start({ fresh: !state.completed }));
   }
 
+  if (screen === "harbor") {
+    harborEvent?.render({ phase: state.harborEventPhase, missionAccepted: state.missionAccepted });
+  }
+
   const heading = $("[data-screen=\"" + screen + "\"] h1");
-  if (heading && !capturePreset && screen !== "map") {
+  if (!capturePreset && screen === "harbor") {
+    const harborFocus = state.harborEventPhase === "revealed"
+      ? $(".letter-accept")
+      : $("[data-action='wait-letter']");
+    window.requestAnimationFrame(() => harborFocus?.focus({ preventScroll: true }));
+  } else if (heading && !capturePreset && screen !== "map") {
     window.requestAnimationFrame(() => heading.focus({ preventScroll: true }));
   }
   persistPrototype();
@@ -182,8 +200,14 @@ function updateFlowTracker() {
 }
 
 function renderHarbor() {
-  const completedCount = [state.missionAccepted, state.mailbagSaved, state.routePlan?.confirmed].filter(Boolean).length;
-  $("#harborMissionStatus").textContent = state.completed ? "本轮投递已完成" : "主线进度 " + completedCount + " / 3";
+  $("#harborMissionStatus").textContent = state.completed
+    ? "这封信已经送达，潮汐会记住你的回应。"
+    : state.missionAccepted
+      ? "信件已归入邮务记录，继续完成这份委托。"
+      : "一位尚未超度的灵魂，正等着你的回应。";
+  const harborBalance = $("#harborStampBalance");
+  if (harborBalance) harborBalance.textContent = state.stamps;
+  harborEvent?.render({ phase: state.harborEventPhase, missionAccepted: state.missionAccepted });
   const progress = {
     mission: state.missionAccepted,
     mailbag: state.mailbagSaved,
@@ -298,8 +322,20 @@ function render() {
 }
 
 function openMission() {
+  if (state.harborEventPhase !== "revealed") return;
   state.missionReturnTarget = "harbor";
   navigate("mission");
+}
+
+function waitForLetter() {
+  if (state.harborEventPhase !== "waiting") return;
+  state.harborEventPhase = "arriving";
+  persistPrototype();
+  harborEvent?.start();
+}
+
+function skipLetterArrival() {
+  harborEvent?.skip();
 }
 
 function missionPrimary() {
@@ -395,7 +431,9 @@ function continueTask() {
   state.routePlan = null;
   state.mapRevealSeen = false;
   state.mapPhase = "MAILBAG";
+  state.harborEventPhase = "waiting";
   state.missionRound += 1;
+  harborEvent?.reset();
   routeMap?.reset({ discardSaved: true });
   sailing?.reset();
   navigate("mission");
@@ -403,6 +441,8 @@ function continueTask() {
 }
 
 const actions = {
+  "wait-letter": waitForLetter,
+  "skip-letter": skipLetterArrival,
   "open-mission": openMission,
   "mission-primary": missionPrimary,
   "mission-back": missionBack,
@@ -450,6 +490,19 @@ sailing = window.TidalSailing?.create({
   onArrive: handleArrival
 });
 
+harborEvent = window.TidalHarborEvent?.create($("#harborEvent"), {
+  onPhaseChange: (phase) => {
+    state.harborEventPhase = phase;
+    persistPrototype();
+    updateDebug();
+  },
+  onReveal: () => {
+    state.harborEventPhase = "revealed";
+    renderHarbor();
+    persistPrototype();
+  }
+});
+
 const initialScreen = applyCapturePreset();
 navigate(initialScreen || state.screen, { immediate: true });
 
@@ -461,6 +514,7 @@ window.__tidalPost = {
   actions,
   selectInventoryItem,
   sailing,
+  harbor: () => harborEvent?.getState(),
   routeMap: () => routeMap,
   reveal: () => mapReveal?.getState()
 };

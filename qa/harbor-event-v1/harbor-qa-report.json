@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-10-14T04:19:29.455Z",
+  "durationMs": 6603,
+  "checks": [
+    {
+      "name": "Harbor opens as an event scene",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "dashboard chrome is removed on Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "waiting state exposes one action only",
+      "passed": true,
+      "detail": "等待来信"
+    },
+    {
+      "name": "1920×1080 waiting state has no overflow",
+      "passed": true,
+      "detail": "1920×1920×1080×1080"
+    },
+    {
+      "name": "waiting action has keyboard focus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "activating wait begins the arrival state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "spirit gull becomes visible during phase 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "core envelope becomes visible during phase 2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "letter begins unfolding before the final state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "normal arrival completes in the required 5–8 second rhythm",
+      "passed": true,
+      "detail": "6603ms"
+    },
+    {
+      "name": "final artifact communicates the undead commission",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "final action receives focus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "letter is fully visible",
+      "passed": true,
+      "detail": "1"
+    },
+    {
+      "name": "accepting the letter preserves the existing Mission transition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "standard chrome returns after the diegetic event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "return flow keeps the opened letter state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "390×844 layout avoids horizontal overflow",
+      "passed": true,
+      "detail": "390 / 390"
+    },
+    {
+      "name": "mobile letter action remains on-screen",
+      "passed": true,
+      "detail": "{\"x\":254,\"y\":633.46875,\"width\":96,\"height\":96,\"top\":633.46875,\"right\":350,\"bottom\":729.46875,\"left\":254}"
+    },
+    {
+      "name": "reduced-motion mode reveals without a long cinematic",
+      "passed": true,
+      "detail": "289ms"
+    },
+    {
+      "name": "no runtime or asset errors occurred",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 20,
+  "failed": 0,
+  "errors": []
+}

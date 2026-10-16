@@ -1,0 +1,46 @@
+{
+  "fileKey": "m3YZJuwn5JkYnFCPW8fh5W",
+  "fileUrl": "https://www.figma.com/design/m3YZJuwn5JkYnFCPW8fh5W/",
+  "page": {
+    "id": "79:68",
+    "name": "Week 5 — Harbor Event"
+  },
+  "presentation": {
+    "id": "80:86",
+    "name": "Harbor Event — Presentation"
+  },
+  "states": [
+    { "id": "80:171", "name": "01 / Waiting at Old Post Harbor", "time": "0.0s" },
+    { "id": "80:242", "name": "02 / Spirit Gull Arrival", "time": "2.1s" },
+    { "id": "80:343", "name": "03 / Envelope Focus and Seal", "time": "4.2s" },
+    { "id": "80:427", "name": "04 / Commission Letter Revealed", "time": "6.6s" }
+  ],
+  "componentBoard": {
+    "id": "80:90",
+    "name": "Harbor Event — Components"
+  },
+  "components": {
+    "worldMark": "80:93",
+    "postage": "80:97",
+    "tideAction": "80:101",
+    "envelope": "80:105",
+    "spiritGullCarrier": "80:117",
+    "objectiveWhisper": "80:134",
+    "spiritLetter": "80:140"
+  },
+  "semanticVariables": {
+    "color/harbor/world": "VariableID:80:76",
+    "color/harbor/ink": "VariableID:80:77",
+    "color/harbor/tide": "VariableID:80:78",
+    "color/harbor/glow": "VariableID:80:79",
+    "color/harbor/coral": "VariableID:80:80",
+    "color/harbor/paper": "VariableID:80:81",
+    "color/harbor/paper-light": "VariableID:80:82",
+    "color/harbor/mist": "VariableID:80:83"
+  },
+  "textStyles": {
+    "letterTitle": "S:651d2d491dec2bf9832d08412ecad4b15d12a7ac,",
+    "letterQuote": "S:0211026ca84b07924cc11b4ed41e2411ec75f37c,"
+  },
+  "implementation": "Semantic editable Figma nodes built with existing TP variables plus Harbor extensions. Live-page capture was intentionally abandoned after the semantic build succeeded."
+}

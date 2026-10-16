@@ -1,16 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createRequire} from 'node:module';
-
-const require=createRequire('C:/Users/jk666/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/package.json');
-const {chromium}=require('playwright');
+import {launchBrowser} from '../../playwright-runtime.mjs';
 const here=path.dirname(fileURLToPath(import.meta.url));
 const qa=path.resolve(here,'..');
 const after=path.join(qa,'after');
 fs.mkdirSync(after,{recursive:true});
 
-const browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+const browser=await launchBrowser();
 const checks=[];
 const errors=[];
 const samples={};

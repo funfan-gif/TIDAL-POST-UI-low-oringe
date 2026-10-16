@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">旧邮局港清晨</title>
+  <desc id="desc">水彩绘本风的旧邮局港，木屋、邮灯、码头与远处海岛环绕平静潮面。</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7caeb4"/>
+      <stop offset=".58" stop-color="#c8d8c9"/>
+      <stop offset="1" stop-color="#efd9ac"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#559493"/>
+      <stop offset="1" stop-color="#214e58"/>
+    </linearGradient>
+    <linearGradient id="dock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9d7250"/>
+      <stop offset="1" stop-color="#4d3c35"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe6a0" stop-opacity=".95"/>
+      <stop offset=".48" stop-color="#edbd62" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#edbd62" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wash" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .04" numOctaves="3" seed="12" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="7"/>
+    </filter>
+    <filter id="paper" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1450" cy="180" r="205" fill="#f6dfa7" opacity=".2"/>
+  <g fill="#ecf0df" opacity=".36" filter="url(#wash)">
+    <path d="M-30 252c96-90 205-112 306-45 69-66 182-61 230 31 88-43 185-15 225 66H-30z"/>
+    <path d="M1190 208c84-84 211-86 276 3 84-53 215-15 263 75 82-24 171 19 207 87h-746z"/>
+  </g>
+  <g opacity=".42" fill="none" stroke="#f7efd9" stroke-width="7" stroke-linecap="round">
+    <path d="M320 300c45-22 86-21 126 5"/>
+    <path d="M1500 335c38-20 79-19 119 4"/>
+  </g>
+
+  <path d="M0 555c167-75 310-52 434 17 115-98 270-122 427-31 152-73 327-63 445 35 189-103 417-69 614 20v484H0z" fill="#496f68" opacity=".34" filter="url(#wash)"/>
+  <path d="M0 640c221-29 401 15 603-7 210-23 372-54 571 2 218 62 486-47 746 13v432H0z" fill="url(#sea)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M0 710c210-52 387 35 594-5 205-40 403 21 599-4 221-28 470 16 727-8" stroke="#b7d7c9" stroke-width="7" opacity=".43"/>
+    <path d="M0 790c176 28 370-15 541 12 207 33 385-27 588 4 260 40 474-35 791 9" stroke="#8fc2bd" stroke-width="4" opacity=".34"/>
+    <path d="M80 897c205-43 430 13 628-9 245-28 473 49 701 0 145-31 302-12 464 20" stroke="#dce9d4" stroke-width="3" opacity=".24"/>
+  </g>
+
+  <g transform="translate(70 245)">
+    <path d="M35 244 129 99l350 1 91 144-17 350H72z" fill="#6f6b57" stroke="#294752" stroke-width="10"/>
+    <path d="M4 257 126 65l359 0 118 192-48 21-89-131H146L57 279z" fill="#334f4c" stroke="#294752" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M111 294h381v300H111z" fill="#d3b27d" opacity=".72"/>
+    <path d="M177 358h122v178H177z" fill="#315258" stroke="#294752" stroke-width="9"/>
+    <path d="M343 356h103v107H343z" fill="#8cc0b5" stroke="#294752" stroke-width="9"/>
+    <path d="M353 367h83v87H353z" fill="#efd690" opacity=".48"/>
+    <path d="M107 292c128 22 259-24 390 3" fill="none" stroke="#f0d39b" stroke-width="12" opacity=".5"/>
+    <path d="M282 188c15-27 43-44 73-44 32 0 61 17 77 44-16 28-45 45-77 45-30 0-58-17-73-45Z" fill="#ead9ac" stroke="#294752" stroke-width="7"/>
+    <path d="M309 189c28-15 54-15 82 0-28 15-54 15-82 0Z" fill="#4b8a83"/>
+    <path d="M347 164v51" stroke="#294752" stroke-width="5"/>
+    <g transform="translate(492 316)">
+      <circle cx="0" cy="0" r="92" fill="url(#lamp)"/>
+      <path d="M-18-35h36l10 62h-56z" fill="#ecc671" stroke="#294752" stroke-width="6"/>
+      <path d="M0-58v23M-24-38h48" stroke="#294752" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <path d="M96 594h432v31H96z" fill="#294752"/>
+    <path d="M132 625l-28 240M470 625l31 240" stroke="#294752" stroke-width="28" opacity=".82"/>
+  </g>
+
+  <g transform="translate(1450 380)" opacity=".8">
+    <path d="M-170 246c59-122 131-180 219-170 57 7 111 54 170 170z" fill="#4d7669" stroke="#2d5857" stroke-width="8"/>
+    <path d="M50 70h62l24 170H28z" fill="#d6c78f" stroke="#294752" stroke-width="8"/>
+    <path d="M36 75h92l-15-48H52z" fill="#315b5a" stroke="#294752" stroke-width="8"/>
+    <circle cx="82" cy="51" r="19" fill="#f3cb72"/>
+    <path d="M82 27V-12" stroke="#294752" stroke-width="6"/>
+    <path d="M81-9c-36-2-68 10-101 31M84-9c35-3 68 9 103 29" stroke="#f0dd9a" stroke-width="7" opacity=".43"/>
+  </g>
+
+  <g transform="translate(0 822)">
+    <path d="M-70 83c346-71 693-53 1045 0 341 52 684 50 1029-6v250H-70z" fill="#1c343f" opacity=".66"/>
+    <path d="M-30 72c369-63 703-44 1039 7 314 48 627 43 941-13" fill="none" stroke="url(#dock)" stroke-width="72"/>
+    <path d="M-10 38c396-47 734-26 1024 13 319 43 615 41 906-16" fill="none" stroke="#c49465" stroke-width="12" opacity=".66"/>
+    <g fill="#3f332e">
+      <path d="M210 75h36v260h-36z"/><path d="M705 76h42v259h-42z"/><path d="M1195 76h42v259h-42z"/><path d="M1667 59h42v276h-42z"/>
+    </g>
+    <path d="M1407 52c-12-98 23-140 72-112 34 19 39 74 28 130" fill="none" stroke="#8e6b4e" stroke-width="20" stroke-linecap="round"/>
+    <path d="M1381 72c42-26 96-22 144 5" fill="none" stroke="#d0aa73" stroke-width="6" opacity=".7"/>
+  </g>
+
+  <rect width="1920" height="1080" fill="#fff5de" opacity=".075" filter="url(#paper)"/>
+  <path d="M0 0h1920v1080H0z" fill="none" stroke="#203e46" stroke-width="44" opacity=".08"/>
+</svg>

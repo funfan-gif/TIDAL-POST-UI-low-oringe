@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "Standalone file opens offline",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Letter event still unfolds",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Accepting letter opens the blank transition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Transition only exposes the continuation button",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Continuation receives keyboard focus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Continuation opens original second page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Original commission information is preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mission return reconnects to the new Harbor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Re-entering keeps one embedded prototype",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mailbag selection and save work",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Map reveal and planning work",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Map confirmation enters sailing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Delivery result and reward work",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Full loop returns to Harbor with updated balance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Transition fits 1366×768",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All embedded images load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No network or runtime dependencies",
+      "passed": true,
+      "detail": "{\"errors\":[],\"external\":[]}"
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "errors": [],
+  "external": []
+}

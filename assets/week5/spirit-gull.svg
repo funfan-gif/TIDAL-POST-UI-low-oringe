@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="260" viewBox="0 0 420 260" role="img" aria-labelledby="title desc">
+  <title id="title">携带跨界信封的异界海鸥</title>
+  <desc id="desc">半透明的海鸥张开翅膀，脚下悬着带双潮印记的信封。</desc>
+  <defs>
+    <radialGradient id="aura" cx="50%" cy="45%" r="53%"><stop offset="0" stop-color="#dffff4" stop-opacity=".82"/><stop offset="1" stop-color="#75c8bc" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8dc"/><stop offset=".52" stop-color="#c7e6d7"/><stop offset="1" stop-color="#73aaa3"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <ellipse cx="210" cy="112" rx="190" ry="108" fill="url(#aura)"/>
+  <g filter="url(#glow)" stroke="#315d5b" stroke-linejoin="round">
+    <path d="M206 126C147 45 76 24 22 47c61 12 91 42 118 91-48-25-85-27-113-9 61 11 100 39 150 67z" fill="url(#wing)" stroke-width="7"/>
+    <path d="M213 126c54-80 128-103 185-77-62 11-96 43-122 92 46-27 84-29 118-9-63 13-104 39-151 66z" fill="url(#wing)" stroke-width="7"/>
+    <path d="M166 117c25-30 65-38 96-19 26 15 37 44 27 67-12 28-48 43-87 31-45-13-61-49-36-79z" fill="#eaf2dc" stroke-width="7"/>
+    <path d="M270 111c31-18 64-12 83 12-16 24-45 33-75 24z" fill="#f2eed2" stroke-width="6"/>
+    <circle cx="319" cy="115" r="5" fill="#1c343f" stroke="none"/>
+    <path d="m350 123 31 10-30 12z" fill="#dc9364" stroke-width="5"/>
+    <path d="M198 192c-6 18-5 30 4 43M247 193c7 17 7 29-1 42" fill="none" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(167 205)">
+    <path d="M0 0h100v52H0z" fill="#e7dbc1" stroke="#315d5b" stroke-width="5"/>
+    <path d="M3 3l47 31L97 3" fill="#d7c9ab" stroke="#315d5b" stroke-width="4"/>
+    <circle cx="50" cy="33" r="12" fill="#5aa19a" stroke="#315d5b" stroke-width="4"/>
+    <path d="M42 33c5-8 11-8 16 0-5 8-11 8-16 0z" fill="#e3d39c" stroke="none"/>
+  </g>
+</svg>

@@ -1,2 +1,16 @@
 .edge-v3-audit/
 
+# Local dependencies, caches, logs, and credentials
+node_modules/
+**/node_modules/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.log
+Typora_Hook_Log.txt
+Thumbs.db
+.DS_Store
+
